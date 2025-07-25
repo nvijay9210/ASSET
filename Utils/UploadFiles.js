@@ -11,7 +11,10 @@ const uploadFileMiddleware = (options) => {
     updateValidationFn,
   } = options;
 
+  console.log(options)
+
   return async (req, res, next) => {
+    console.log(req.body)
     try {
       // Ensure folder exists
       const ensureFolderExists = (folderPath) => {

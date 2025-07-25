@@ -28,8 +28,8 @@ const assetFileMiddleware = uploadFileMiddleware({
       multiple: false,
     },
   ],
-  createValidationFn: assetValidationSchema.createAssetSchema,
-  updateValidationFn: assetValidationSchema.updateAssetSchema,
+  createValidationFn: assetValidationSchema.validateCreateAsset,
+  updateValidationFn: assetValidationSchema.validateUpdateAsset,
 });
 
 // ===================== ROUTES ===================== //

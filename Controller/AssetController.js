@@ -12,6 +12,7 @@ const {
  */
 exports.createAsset = async (req, res, next) => {
   const details = req.body;
+  console.log(details)
 
   try {
     // Validate asset data

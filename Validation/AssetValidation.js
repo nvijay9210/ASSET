@@ -126,7 +126,18 @@ const updateAssetSchema = baseAssetSchema.keys({
   updated_by: Joi.string().max(100).required()
 });
 
+const validateCreateAsset = async (data) => {
+  return await createAssetSchema.validateAsync(data, { abortEarly: false });
+};
+
+const validateUpdateAsset = async (data) => {
+  return await updateAssetSchema.validateAsync(data, { abortEarly: false });
+};
+
+
 module.exports = {
+   validateCreateAsset,
+  validateUpdateAsset,
   createAssetSchema,
   updateAssetSchema
 };
