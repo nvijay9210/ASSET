@@ -1,5 +1,5 @@
 const { CustomError } = require("../Middleware/CustomeError");
-const assetModel = require("../Model/AssetModel");
+const assetModel = require("../Model/AssetAllocationModel");
 const {
   getOrSetCache,
   invalidateCacheByPattern,
@@ -52,21 +52,21 @@ const assetAllocationFieldsReverseMap = {
 
 // Field mapping for assets (similar to treatment)
 
-// Create AssetAllocation
-const createAsset = async (data) => {
+// Create AssetAllocationAllocation
+const createAssetAllocation = async (data) => {
   const fieldMap = {
     ...assetAllocationFields,
     created_by: (val) => val,
   };
   try {
     const { columns, values } = mapFields(data, fieldMap);
-    const assetId = await assetModel.createAsset(
+    const assetAllocationId = await assetModel.createAssetAllocation(
       "assetAllocation",
       columns,
       values
     );
     await invalidateCacheByPattern("assetAllocation:*");
-    return assetId;
+    return assetAllocationId;
   } catch (error) {
     console.error("Failed to create assetAllocation:", error);
     throw new CustomError(
@@ -76,8 +76,8 @@ const createAsset = async (data) => {
   }
 };
 
-// Get All Assets by Tenant ID with Caching
-const getAllAssetsByTenantId = async (tenantId, page = 1, limit = 10) => {
+// Get All AssetAllocations by Tenant ID with Caching
+const getAllAssetAllocationsByTenantId = async (tenantId, page = 1, limit = 10) => {
   const offset = (page - 1) * limit;
   const cacheKey = buildCacheKey("assetAllocation", "list", {
     tenant_id: tenantId,
@@ -86,7 +86,7 @@ const getAllAssetsByTenantId = async (tenantId, page = 1, limit = 10) => {
   });
   try {
     const assets = await getOrSetCache(cacheKey, async () => {
-      const result = await assetModel.getAllAssetsByTenantId(
+      const result = await assetModel.getAllAssetAllocationsByTenantId(
         tenantId,
         Number(limit),
         offset
@@ -105,7 +105,7 @@ const getAllAssetsByTenantId = async (tenantId, page = 1, limit = 10) => {
   }
 };
 
-const getAllAssetsByTenantIdAndReferenceTypeAndReferenceId = async (
+const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId = async (
   tenantId,
   reference_type,
   reference_id,
@@ -123,7 +123,7 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceId = async (
   try {
     const assets = await getOrSetCache(cacheKey, async () => {
       const result =
-        await assetModel.getAllAssetsByTenantIdAndReferenceTypeAndReferenceId(
+        await assetModel.getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId(
           tenantId,
           reference_type,
           reference_id,
@@ -144,12 +144,12 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceId = async (
   }
 };
 
-// Get AssetAllocation by ID & Tenant
-const getAssetByTenantIdAndAssetId = async (tenantId, assetId) => {
+// Get AssetAllocationAllocation by ID & Tenant
+const getAssetAllocationByTenantIdAndAssetAllocationId = async (tenantId, assetAllocationId) => {
   try {
-    const assetAllocation = await assetModel.getAssetByTenantAndAssetId(
+    const assetAllocation = await assetModel.getAssetAllocationByTenantAndAssetAllocationId(
       tenantId,
-      assetId
+      assetAllocationId
     );
     const convertedRows = helper.convertDbToFrontend(
       assetAllocation,
@@ -166,7 +166,7 @@ const getAssetByTenantIdAndAssetId = async (tenantId, assetId) => {
 };
 
 // Update AssetAllocation
-const updateAsset = async (assetId, data, tenant_id) => {
+const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
   const fieldMap = {
     ...assetAllocationFields,
     updated_by: (val) => val,
@@ -174,8 +174,8 @@ const updateAsset = async (assetId, data, tenant_id) => {
   try {
     const { columns, values } = mapFields(data, fieldMap);
 
-    const affectedRows = await assetModel.updateAsset(
-      assetId,
+    const affectedRows = await assetModel.updateAssetAllocation(
+      assetAllocationId,
       columns,
       values,
       tenant_id
@@ -197,11 +197,11 @@ const updateAsset = async (assetId, data, tenant_id) => {
 };
 
 // Delete AssetAllocation
-const deleteAssetByTenantIdAndAssetId = async (tenantId, assetId) => {
+const deleteAssetAllocationByTenantIdAndAssetAllocationId = async (tenantId, assetAllocationId) => {
   try {
-    const affectedRows = await assetModel.deleteAssetByTenantAndAssetId(
+    const affectedRows = await assetModel.deleteAssetAllocationByTenantAndAssetAllocationId(
       tenantId,
-      assetId
+      assetAllocationId
     );
     if (affectedRows === 0) {
       throw new CustomError("AssetAllocation not found.", 404);
@@ -217,7 +217,7 @@ const deleteAssetByTenantIdAndAssetId = async (tenantId, assetId) => {
   }
 };
 
-const getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate =
+const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate =
   async (
     tenant_id,
     reference_type,
@@ -240,7 +240,7 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate
     try {
       const assets = await getOrSetCache(cacheKey, async () => {
         const result =
-          await assetModel.getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate(
+          await assetModel.getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate(
             tenant_id,
             reference_type,
             reference_id,
@@ -264,11 +264,11 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate
   };
 
 module.exports = {
-  createAsset,
-  getAllAssetsByTenantId,
-  getAllAssetsByTenantIdAndReferenceTypeAndReferenceId,
-  getAssetByTenantIdAndAssetId,
-  updateAsset,
-  deleteAssetByTenantIdAndAssetId,
-  getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate,
+  createAssetAllocation,
+  getAllAssetAllocationsByTenantId,
+  getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId,
+  getAssetAllocationByTenantIdAndAssetAllocationId,
+  updateAssetAllocation,
+  deleteAssetAllocationByTenantIdAndAssetAllocationId,
+  getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate,
 };
