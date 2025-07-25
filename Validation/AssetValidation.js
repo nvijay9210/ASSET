@@ -82,6 +82,7 @@ const Joi = require("joi");
 
 // Base schema (common fields for create and update)
 const baseAssetSchema = Joi.object({
+  asset_id: Joi.number().integer().allow(null),
   tenant_id: Joi.number().integer().required(),
 
   source_app: Joi.string().max(50).required(),

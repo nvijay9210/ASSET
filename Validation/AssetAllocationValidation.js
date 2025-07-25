@@ -2,10 +2,11 @@ const Joi = require("joi");
 
 // Base schema (common fields for create and update)
 const baseAssetAllocationSchema = Joi.object({
+    asset_allocation_id: Joi.number().integer().allow(null),
     tenant_id: Joi.number().integer().required(),
     asset_id: Joi.number().integer().required(),
   
-    reference_type: Joi.string().valid("clinic", "group").required(),
+    reference_type: Joi.string().max(100).required(),
     reference_id: Joi.string().max(100).required(),
   
     allocated_to: Joi.string().max(100).required(),

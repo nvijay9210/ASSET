@@ -39,7 +39,7 @@ const createTableQuery = {
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 `,
   addAssetAllocation: `CREATE TABLE IF NOT EXISTS asset_allocation (
-  allocation_id INT AUTO_INCREMENT PRIMARY KEY,
+  asset_allocation_id INT AUTO_INCREMENT PRIMARY KEY,
   tenant_id INT NOT NULL,
   asset_id INT NOT NULL,
   reference_type VARCHAR(50) NOT NULL,

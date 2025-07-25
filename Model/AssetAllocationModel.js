@@ -47,8 +47,8 @@ const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId = async (
   limit,
   offset
 ) => {
-  const query1 = `SELECT * FROM assetAllocation  WHERE tenant_id = ? AND reference_type=? AND reference_id = ? limit ? offset ?`;
-  const query2 = `SELECT count(*) as total FROM assetAllocation  WHERE tenant_id = ? AND reference_type=? AND reference_id = ?`;
+  const query1 = `SELECT * FROM asset_allocation  WHERE tenant_id = ? AND reference_type=? AND reference_id = ? limit ? offset ?`;
+  const query2 = `SELECT count(*) as total FROM asset_allocation  WHERE tenant_id = ? AND reference_type=? AND reference_id = ?`;
   const conn = await pool.getConnection();
   try {
     const [rows] = await conn.query(query1, [
@@ -73,14 +73,14 @@ const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId = async (
 };
 
 // Get assetAllocation by tenant ID and assetAllocation ID
-const getAssetAllocationByTenantAndAssetAllocationId = async (tenant_id, asset_id) => {
+const getAssetAllocationByTenantAndAssetAllocationId = async (tenant_id, asset_allocation_id) => {
   try {
     const rows = await record.getRecordByIdAndTenantId(
       TABLE,
       "tenant_id",
       tenant_id,
-      "asset_id",
-      asset_id
+      "asset_allocation_id",
+      asset_allocation_id
     );
     return rows;
   } catch (error) {
@@ -90,10 +90,10 @@ const getAssetAllocationByTenantAndAssetAllocationId = async (tenant_id, asset_i
 };
 
 // Update assetAllocation
-const updateAssetAllocation = async (asset_id, columns, values, tenant_id) => {
+const updateAssetAllocation = async (asset_allocation_id, columns, values, tenant_id) => {
   try {
-    const conditionColumn = ["tenant_id", "asset_id"];
-    const conditionValue = [tenant_id, asset_id];
+    const conditionColumn = ["tenant_id", "asset_allocation_id"];
+    const conditionValue = [tenant_id, asset_allocation_id];
 
     return await record.updateRecord(
       TABLE,
@@ -109,10 +109,10 @@ const updateAssetAllocation = async (asset_id, columns, values, tenant_id) => {
 };
 
 // Delete assetAllocation
-const deleteAssetAllocationByTenantAndAssetAllocationId = async (tenant_id, asset_id) => {
+const deleteAssetAllocationByTenantAndAssetAllocationId = async (tenant_id, asset_allocation_id) => {
   try {
-    const conditionColumn = ["tenant_id", "asset_id"];
-    const conditionValue = [tenant_id, asset_id];
+    const conditionColumn = ["tenant_id", "asset_allocation_id"];
+    const conditionValue = [tenant_id, asset_allocation_id];
 
     const result = await record.deleteRecord(
       TABLE,
@@ -136,8 +136,8 @@ const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDate
     limit,
     offset
   ) => {
-    const query1 = `SELECT * FROM assetAllocation WHERE tenant_id = ? AND reference_type=? AND reference_id = ? AND created_time between ? AND ? limit ? offset ?`;
-    const query2 = `SELECT count(*) as total FROM assetAllocation WHERE tenant_id = ? AND reference_type=? AND reference_id = ? AND created_time between ?`;
+    const query1 = `SELECT * FROM asset_allocation WHERE tenant_id = ? AND reference_type=? AND reference_id = ? AND created_time between ? AND ? limit ? offset ?`;
+    const query2 = `SELECT count(*) as total FROM asset_allocation WHERE tenant_id = ? AND reference_type=? AND reference_id = ? AND created_time between ?`;
     const conn = await pool.getConnection();
     try {
       const [rows] = await conn.query(query1, [
