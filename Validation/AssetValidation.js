@@ -114,7 +114,12 @@ const baseAssetSchema = Joi.object({
   expired_date: Joi.date().iso().allow(null),
   invoice_number: Joi.string().max(50).allow('', null),
   location: Joi.string().max(100).allow('', null),
-  remarks: Joi.string().allow('', null)
+  remarks: Joi.string().allow('', null),
+
+  created_by: Joi.string().max(100).allow('', null),
+  updated_by: Joi.string().max(100).allow('', null),
+  created_time: Joi.date().iso().allow(null),
+  updated_time: Joi.date().iso().allow(null)
 });
 
 // Create schema
