@@ -1,5 +1,5 @@
-const createTableQuery={
-    addAsset: `CREATE TABLE IF NOT EXISTS asset (
+const createTableQuery = {
+  addAsset: `CREATE TABLE IF NOT EXISTS asset (
   asset_id INT AUTO_INCREMENT PRIMARY KEY,
   tenant_id INT NOT NULL,
   source_app VARCHAR(50) NOT NULL,
@@ -37,8 +37,29 @@ const createTableQuery={
   KEY idx_asset_code (asset_code),
   KEY idx_status (asset_status)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-`
-  
-}
+`,
+  addAssetAllocation: `CREATE TABLE IF NOT EXISTS asset_allocation (
+  allocation_id INT AUTO_INCREMENT PRIMARY KEY,
+  tenant_id INT NOT NULL,
+  asset_id INT NOT NULL,
+  reference_type VARCHAR(50) NOT NULL,
+  reference_id VARCHAR(100) NOT NULL,
+  allocated_to VARCHAR(100),
+  allocated_by VARCHAR(100),
+  allocation_date DATE,
+  expected_return_date DATE,
+  actual_return_date DATE,
+  status VARCHAR(50),
+  remarks TEXT,
+  created_by VARCHAR(30) NOT NULL DEFAULT 'ADMIN',
+  created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_by VARCHAR(30),
+  updated_time TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  KEY idx_tenant (tenant_id),
+  KEY idx_asset (asset_id),
+  KEY idx_reference (reference_type, reference_id),
+  KEY idx_status (status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;`,
+};
 
-module.exports={createTableQuery}
+module.exports = { createTableQuery };

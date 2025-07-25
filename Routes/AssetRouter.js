@@ -8,7 +8,11 @@ const {
 } = require("../Middleware/ValidateFilters");
 const assetValidationSchema = require("../Validation/AssetValidation");
 
-router.post("/addasset", validateBody(assetValidationSchema.createAssetSchema), assetController.createAsset);
+router.post(
+  "/addasset",
+  validateBody(assetValidationSchema.createAssetSchema),
+  assetController.createAsset
+);
 
 router.get(
   "/getallassets",
