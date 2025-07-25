@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 
 const errorHandler = require('./Middleware/errorHandler');
 const assetRouter = require('./Routes/AssetRouter');
+const assetAllocationRouter = require('./Routes/AssetAllocationRouter');
 const { redisconnect } = require('./Config/redisConfig');
 const createTable = require('./Query/CreateModel'); // Uncomment if needed
 
@@ -45,6 +46,7 @@ app.get('/test', (req, res) => {
 
 // Routes
 app.use('/asset', assetRouter);
+app.use('/assetallocation', assetAllocationRouter);
 
 // Error handler (always last)
 app.use(errorHandler);

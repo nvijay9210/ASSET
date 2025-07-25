@@ -21,7 +21,7 @@ router.get(
 );
 router.get(
   "/getallassetAllocationsbyreference",
-  validateQuery(["tenant_id", "clinic_id"]),
+  validateQuery(["tenant_id", "reference_type","reference_id"]),
   assetAllocationController.getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId
 );
 router.get(

@@ -39,6 +39,7 @@ router.post(
   "/createasset",
   authenticateTenantClinicGroup(["tenant", "dentist", "super-user"]),
   upload.any(),
+  validateBody(assetValidationSchema.createAssetSchema),
   assetFileMiddleware,
   assetController.createAsset
 );
@@ -85,14 +86,10 @@ router.get(
 // Update Asset
 router.put(
   "/updateasset/:asset_id/:tenant_id",
-  authenticateTenantClinicGroup([
-    "tenant",
-    "dentist",
-    "super-user",
-    "receptionist",
-  ]),
+  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
   validateParams(["asset_id", "tenant_id"]),
   upload.any(),
+  validateBody(assetValidationSchema.updateAssetSchema),
   assetFileMiddleware,
   assetController.updateAsset
 );
