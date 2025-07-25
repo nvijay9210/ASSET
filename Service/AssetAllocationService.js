@@ -61,7 +61,7 @@ const createAssetAllocation = async (data) => {
   try {
     const { columns, values } = mapFields(data, fieldMap);
     const assetAllocationId = await assetModel.createAssetAllocation(
-      "assetAllocation",
+      "asset_allocation",
       columns,
       values
     );

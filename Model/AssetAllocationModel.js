@@ -28,7 +28,7 @@ const getAllAssetAllocationsByTenantId = async (tenantId, limit, offset) => {
       throw new CustomError("Invalid pagination parameters.", 400);
     }
     return await record.getAllRecords(
-      "assetAllocation",
+      "asset_allocation",
       "tenant_id",
       tenantId,
       limit,

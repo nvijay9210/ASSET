@@ -1,50 +1,81 @@
 const express = require("express");
 const router = express.Router();
+
 const assetAllocationController = require("../Controller/AssetAllocationController");
+const assetAllocationValidationSchema = require("../Validation/AssetAllocationValidation");
+const {
+  authenticateTenantClinicGroup,
+} = require("../Keycloak/AuthenticateTenantAndClient");
+
 const {
   validateParams,
   validateQuery,
   validateBody,
 } = require("../Middleware/ValidateFilters");
-const assetAllocationValidationSchema = require("../Validation/AssetAllocationValidation");
 
+// ===================== ROUTES ===================== //
+
+// Create Asset Allocation
 router.post(
-  "/addassetAllocation",
+  "/addassetallocation",
+  authenticateTenantClinicGroup(["tenant", "dentist", "super-user"]),
   validateBody(assetAllocationValidationSchema.createAssetAllocationSchema),
   assetAllocationController.createAssetAllocation
 );
 
+// Get All Allocations by Tenant
 router.get(
-  "/getallassetAllocations",
+  "/getallassetallocations",
+  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
   validateQuery(["tenant_id"]),
   assetAllocationController.getAllAssetAllocationsByTenantId
 );
+
+// Get Allocations by Reference
 router.get(
-  "/getallassetAllocationsbyreference",
-  validateQuery(["tenant_id", "reference_type","reference_id"]),
+  "/getallassetallocationsbyreference",
+  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
+  validateQuery(["tenant_id", "reference_type", "reference_id"]),
   assetAllocationController.getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId
 );
+
+// Get Allocation by ID
 router.get(
-  "/getassetAllocationbytenant/:assetAllocation_id/:tenant_id",
+  "/getassetallocationbytenant/:assetAllocation_id/:tenant_id",
+  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
   validateParams(["assetAllocation_id", "tenant_id"]),
   assetAllocationController.getAssetAllocationByTenantIdAndAssetAllocationId
 );
 
+// Update Allocation
 router.put(
-  "/updateassetAllocation/:assetAllocation_id/:tenant_id",
+  "/updateassetallocation/:assetAllocation_id/:tenant_id",
+  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
   validateParams(["assetAllocation_id", "tenant_id"]),
   validateBody(assetAllocationValidationSchema.updateAssetAllocationSchema),
   assetAllocationController.updateAssetAllocation
 );
+
+// Delete Allocation
 router.delete(
-  "/deleteassetAllocation/:assetAllocation_id/:tenant_id",
+  "/deleteassetallocation/:assetAllocation_id/:tenant_id",
+  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
   validateParams(["assetAllocation_id", "tenant_id"]),
   assetAllocationController.deleteAssetAllocationByTenantIdAndAssetAllocationId
 );
 
+// Report by Date + Reference
 router.get(
-  "/getallassetAllocationsreportbyreference",
+  "/getallassetallocationsreportbyreference",
+  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
+  validateQuery([
+    "tenant_id",
+    "reference_type",
+    "reference_id",
+    "start_date",
+    "end_date",
+  ]),
   assetAllocationController.getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate
-); // Add validation if needed
+);
 
 module.exports = router;
