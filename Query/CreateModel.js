@@ -17,7 +17,23 @@ const createAssetTable = async () => {
     conn.release();
   }
 };
+const createAssetAllocationTable = async () => {
+  const query =  createTableQuery.addAssetAllocation
+  const conn = await pool.getConnection();
+  try {
+    await conn.query(query);
+    console.log("AssetAllocation table created successfully.");
+  } catch (error) {
+    console.error("Error creating AssetAllocation table:", error);
+    throw new Error(
+      "Database error occurred while creating the AssetAllocation table."
+    );
+  } finally {
+    conn.release();
+  }
+};
 
 module.exports = {
-  createAssetTable
+  createAssetTable,
+  createAssetAllocationTable
 };

@@ -30,6 +30,7 @@ redisconnect();
 async function initializeTables() {
   try {
     await createTable.createAssetTable();
+    await createTable.createAssetAllocationTable();
     console.log('✅ Asset tables created.');
   } catch (err) {
     console.error('❌ Error creating tables:', err);

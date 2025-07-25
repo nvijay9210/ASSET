@@ -15,7 +15,7 @@ exports.createAsset = async (req, res, next) => {
 
   try {
     // Validate asset data
-    await assetValidation.createAssetValidation(details);
+    // await assetValidation.createAssetValidation(details);
 
     // Create the asset
     const id = await assetService.createAsset(details);
@@ -34,7 +34,7 @@ exports.getAllAssetsByTenantId = async (req, res, next) => {
   if (!tenant_id) throw new CustomError("tenant Required Fields", 400);
 
   try {
-    await validateTenantIdAndPageAndLimit(tenant_id, page, limit);
+
     const assets = await assetService.getAllAssetsByTenantId(
       tenant_id,
       page,
@@ -57,7 +57,7 @@ exports.getAllAssetsByTenantIdAndReferenceTypeAndReferenceId = async (
       "Tenantid and Referencetype and ReferenceId is Required Fields",
       400
     );
-  // await validateTenantIdAndPageAndLimit(tenant_id, page, limit);
+  
   try {
     const assets =
       await assetService.getAllAssetsByTenantIdAndReferenceTypeAndReferenceId(
@@ -113,7 +113,7 @@ exports.updateAsset = async (req, res, next) => {
 
   try {
     // Validate update input
-    await assetValidation.updateAssetValidation(asset_id, details);
+    // await assetValidation.updateAssetValidation(asset_id, details);
 
     // Update the asset
     await assetService.updateAsset(asset_id, details, tenant_id);
