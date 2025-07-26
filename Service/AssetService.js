@@ -33,7 +33,7 @@ const assetFields = {
   asset_photo: (val) => val,
   asset_image_url: (val) => helper.safeStringify(val),
 
-  description:  (val) => val,
+  description:  (val) => helper.safeStringify(val),
   allocated_to: (val) => val,
 
   purchased_date: (val) => formatDateOnly(val),
@@ -70,7 +70,7 @@ const assetFieldsReverseMap = {
   asset_photo: (val) => val,
   asset_image_url: (val) => helper.safeJsonParse(val),
 
-  description: (val) => val,
+  description: (val) => helper.safeJsonParse(val),
   allocated_to: (val) => val,
 
   purchased_date: (val) => (val ? formatDateOnly(val) : null),

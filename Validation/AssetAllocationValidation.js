@@ -1,50 +1,65 @@
-const Joi = require("joi");
+const { CustomError } = require("../Middleware/CustomeError");
+const { validateInput } = require("./InputValidation");
+const { checkIfIdExists, checkIfExists } = require("../Model/checkIfExists");
 
-// Base schema (common fields for create and update)
-const baseAssetAllocationSchema = Joi.object({
-    asset_allocation_id: Joi.number().integer().allow(null),
-    tenant_id: Joi.number().integer().required(),
-    asset_id: Joi.number().integer().required(),
-  
-    reference_type: Joi.string().max(100).required(),
-    reference_id: Joi.string().max(100).required(),
-  
-    allocated_to: Joi.string().max(100).required(),
-    allocated_by: Joi.string().max(100).required(),
-  
-    allocation_date: Joi.date().iso().required(),
-    expected_return_date: Joi.date().iso().optional().allow(null),
-    actual_return_date: Joi.date().iso().optional().allow(null),
-  
-    status: Joi.string().max(100).optional(), // example values
-    remarks: Joi.string().allow("", null),
-});
+const asset_allocationColumnConfig = [
+  { columnname: "tenant_id", type: "int", null: false },
+  { columnname: "asset_id", type: "int", null: false },
+  { columnname: "reference_type", type: "varchar", size: 50, null: false },
+  { columnname: "reference_id", type: "varchar", size: 100, null: false },
+  { columnname: "allocated_to", type: "varchar", size: 100, null: true },
+  { columnname: "allocated_by", type: "varchar", size: 100, null: true },
+  { columnname: "allocation_date", type: "date", null: true },
+  { columnname: "expected_return_date", type: "date", null: true },
+  { columnname: "actual_return_date", type: "date", null: true },
+  { columnname: "status", type: "varchar", size: 50, null: true },
+  { columnname: "remarks", type: "text", null: true },
+];
 
-const validateCreateAssetAllocation = async (data) => {
-  return await createAssetAllocationSchema.validateAsync(data, {
-    abortEarly: false,
-  });
+
+// AssetAllocation Column Configuration for Validation
+const createColumnConfig = [
+  ...asset_allocationColumnConfig,
+  { columnname: "created_by", type: "varchar", size: 30, null: false },
+];
+
+const updateColumnConfig = [
+  ...asset_allocationColumnConfig,
+  { columnname: "updated_by", type: "varchar", size: 30, null: false },
+];
+
+/**
+ * Validate Create AssetAllocation Input with Tenant Scope
+ */
+const createAssetAllocationValidation = async (details) => {
+  validateInput(details, createColumnConfig);
+
+  // Check if referenced records exist within the same tenant
+  await Promise.all([
+    checkIfIdExists("tenant", "tenant_id", details.tenant_id),
+    checkIfExists("clinic", "clinic_id", details.clinic_id, details.tenant_id),
+  ]);
 };
 
-const validateUpdateAssetAllocation = async (data) => {
-  return await updateAssetAllocationSchema.validateAsync(data, {
-    abortEarly: false,
-  });
+/**
+ * Validate Update AssetAllocation Input with Tenant Scope
+ */
+const updateAssetAllocationValidation = async (assetId, details) => {
+  validateInput(details, updateColumnConfig);
+
+  const exists = await checkIfExists(
+    "asset",
+    "asset_id",
+    assetId,
+    details.tenant_id
+  );
+  if (!exists) {
+    throw new CustomError("AssetAllocation not found", 404);
+  }
 };
-
-// Create schema
-const createAssetAllocationSchema = baseAssetAllocationSchema.keys({
-  created_by: Joi.string().max(100).required(),
-});
-
-// Update schema
-const updateAssetAllocationSchema = baseAssetAllocationSchema.keys({
-  updated_by: Joi.string().max(100).required(),
-});
 
 module.exports = {
-  validateCreateAssetAllocation,
-  validateUpdateAssetAllocation,
-  createAssetAllocationSchema,
-  updateAssetAllocationSchema,
+  createAssetAllocationValidation,
+  updateAssetAllocationValidation,
 };
+
