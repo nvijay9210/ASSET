@@ -18,8 +18,7 @@ const {
 // Create Asset Allocation
 router.post(
   "/addassetallocation",
-  authenticateTenantClinicGroup(["tenant", "dentist", "super-user"]),
-  assetAllocationController.createAssetAllocation
+  authenticateTenantClinicGroup(["tenant", "dentist", "super-user"])
 );
 
 // Get All Allocations by Tenant

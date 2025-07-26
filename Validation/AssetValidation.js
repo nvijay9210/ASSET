@@ -1,7 +1,6 @@
 const { CustomError } = require("../Middleware/CustomeError");
 const { validateInput } = require("./InputValidation");
 const { checkIfIdExists, checkIfExists } = require("../Model/checkIfExists");
-const { validateReference } = require("../Utils/ReferenceValidation");
 
 const assetColumnConfig = [
   { columnname: "tenant_id", type: "int", null: false },
@@ -51,9 +50,10 @@ const createAssetValidation = async (details) => {
   validateInput(details, createColumnConfig);
 
   // Check if referenced records exist within the same tenant
-
-  const isValid = await validateReference(details.reference_type,details.reference_id,details.tenant_id);
-  if(!isValid) throw new CustomError('Reference_id not exists',400)
+  await Promise.all([
+    checkIfIdExists("tenant", "tenant_id", details.tenant_id),
+    checkIfExists("clinic", "clinic_id", details.clinic_id, details.tenant_id),
+  ]);
 };
 
 /**
@@ -77,3 +77,4 @@ module.exports = {
   createAssetValidation,
   updateAssetValidation,
 };
+
