@@ -30,7 +30,7 @@ const assetAllocationFields = {
 };
 
 const assetAllocationFieldsReverseMap = {
-  allocation_id: (val) => val,
+  asset_allocation_id: (val) => val,
   tenant_id: (val) => val,
   asset_id: (val) => val,
   reference_type: (val) => val,

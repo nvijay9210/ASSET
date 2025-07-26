@@ -15,7 +15,7 @@ exports.createAssetAllocation = async (req, res, next) => {
 
   try {
     // Validate assetAllocation data
-    // await assetAllocationValidation.createAssetAllocationValidation(details);
+    await assetAllocationValidation.createAssetAllocationValidation(details);
 
     // Create the assetAllocation
     const id = await assetAllocationService.createAssetAllocation(details);
@@ -113,7 +113,7 @@ exports.updateAssetAllocation = async (req, res, next) => {
 
   try {
     // Validate update input
-    // await assetAllocationValidation.updateAssetAllocationValidation(assetAllocation_id, details);
+    await assetAllocationValidation.updateAssetAllocationValidation(assetAllocation_id, details);
 
     // Update the assetAllocation
     await assetAllocationService.updateAssetAllocation(assetAllocation_id, details, tenant_id);
