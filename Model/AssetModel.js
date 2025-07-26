@@ -1,6 +1,6 @@
-const pool = require("../config/db");
+const {assetPool} = require("../config/db");
 const { CustomError } = require("../Middleware/CustomeError");
-const record = require("../query/Records");
+const record = require("../Query/Records");
 
 const TABLE = "asset";
 
@@ -49,7 +49,7 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceId = async (
 ) => {
   const query1 = `SELECT * FROM asset  WHERE tenant_id = ? AND reference_type=? AND reference_id = ? limit ? offset ?`;
   const query2 = `SELECT count(*) as total FROM asset  WHERE tenant_id = ? AND reference_type=? AND reference_id = ?`;
-  const conn = await pool.getConnection();
+  const conn = await assetPool.getConnection();
   try {
     const [rows] = await conn.query(query1, [
       tenantId,
@@ -138,7 +138,7 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate
   ) => {
     const query1 = `SELECT * FROM asset WHERE tenant_id = ? AND reference_type=? AND reference_id = ? AND purchased_date between ? AND ? limit ? offset ?`;
     const query2 = `SELECT count(*) as total FROM asset WHERE tenant_id = ? AND reference_type = ? AND reference_id = ? AND purchased_date BETWEEN ? AND ?`;
-    const conn = await pool.getConnection();
+    const conn = await assetPool.getConnection();
     try {
       const [rows] = await conn.query(query1, [
         tenant_id,

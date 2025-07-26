@@ -1,28 +1,26 @@
 const mysql = require('mysql2/promise');
-
-// require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
 require('dotenv').config();
 
-
-const pool = mysql.createPool({
-  host:process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
+const assetPool = mysql.createPool({
+  host: process.env.ASSET_DB_HOST,
+  user: process.env.ASSET_DB_USER,
+  password: process.env.ASSET_DB_PASS,
+  database: process.env.ASSET_DB_NAME,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
-  timezone: '+00:00' 
+  timezone: '+00:00',
 });
 
-// (async () => {
-//   try {
-//     const conn = await pool.getConnection();
-//     console.log('✅ MySQL connection established.');
-//     conn.release();
-//   } catch (err) {
-//     console.error('❌ MySQL connection failed:', err.message);
-//   }
-// })();
+const dentalPool = mysql.createPool({
+  host: process.env.DENTAL_DB_HOST,
+  user: process.env.DENTAL_DB_USER,
+  password: process.env.DENTAL_DB_PASS,
+  database: process.env.DENTAL_DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+  timezone: '+00:00',
+});
 
-module.exports = pool;
+module.exports = { assetPool, dentalPool };

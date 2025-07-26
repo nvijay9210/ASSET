@@ -1,6 +1,6 @@
-const pool = require("../config/db");
+const {assetPool} = require("../config/db");
 const { CustomError } = require("../Middleware/CustomeError");
-const record = require("../query/Records");
+const record = require("../Query/Records");
 
 const TABLE = "asset_allocation";
 
@@ -49,7 +49,7 @@ const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId = async (
 ) => {
   const query1 = `SELECT * FROM asset_allocation  WHERE tenant_id = ? AND reference_type=? AND reference_id = ? limit ? offset ?`;
   const query2 = `SELECT count(*) as total FROM asset_allocation  WHERE tenant_id = ? AND reference_type=? AND reference_id = ?`;
-  const conn = await pool.getConnection();
+  const conn = await assetPool.getConnection();
   try {
     const [rows] = await conn.query(query1, [
       tenantId,
@@ -73,19 +73,47 @@ const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId = async (
 };
 
 // Get assetAllocation by tenant ID and assetAllocation ID
-const getAssetAllocationByTenantAndAssetAllocationId = async (tenant_id, asset_allocation_id) => {
+// const getAssetAllocationByTenantAndAssetAllocationId = async (tenant_id, asset_allocation_id) => {
+//   try {
+//     const rows = await record.getRecordByIdAndTenantId(
+//       TABLE,
+//       "tenant_id",
+//       tenant_id,
+//       "asset_allocation_id",
+//       asset_allocation_id
+//     );
+//     return rows;
+//   } catch (error) {
+//     console.error("Error fetching assetAllocation:", error);
+//     throw new CustomError("Error fetching assetAllocation.", 500);
+//   }
+// };
+
+const getAssetAllocationByTenantAndAssetAllocationId = async (
+  tenant_id, asset_allocation_id
+) => {
+  console.log(tenant_id,asset_allocation_id)
+  const query = `
+  SELECT 
+    a.*, 
+    al.*
+  FROM asset_allocation al 
+  JOIN asset a ON a.asset_id = al.asset_id
+  WHERE 
+    al.tenant_id = ? AND 
+    al.asset_allocation_id = ?
+`;
+
+  const conn = await assetPool.getConnection();
   try {
-    const rows = await record.getRecordByIdAndTenantId(
-      TABLE,
-      "tenant_id",
-      tenant_id,
-      "asset_allocation_id",
-      asset_allocation_id
-    );
-    return rows;
+    const [rows] = await conn.query(query, [tenant_id, asset_allocation_id]);
+    console.log(rows)
+    return rows.length > 0 ? rows[0] : null;
   } catch (error) {
-    console.error("Error fetching assetAllocation:", error);
-    throw new CustomError("Error fetching assetAllocation.", 500);
+    console.log(error);
+    throw new Error("Database Operation Failed");
+  } finally {
+    conn.release();
   }
 };
 
@@ -138,7 +166,7 @@ const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDate
   ) => {
     const query1 = `SELECT * FROM asset_allocation WHERE tenant_id = ? AND reference_type=? AND reference_id = ? AND created_time between ? AND ? limit ? offset ?`;
     const query2 = `SELECT count(*) as total FROM asset_allocation WHERE tenant_id = ? AND reference_type=? AND reference_id = ? AND created_time between ?`;
-    const conn = await pool.getConnection();
+    const conn = await assetPool.getConnection();
     try {
       const [rows] = await conn.query(query1, [
         tenant_id,

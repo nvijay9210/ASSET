@@ -18,7 +18,8 @@ const {
 // Create Asset Allocation
 router.post(
   "/addassetallocation",
-  authenticateTenantClinicGroup(["tenant", "dentist", "super-user"])
+  authenticateTenantClinicGroup(["tenant", "dentist", "super-user"]),
+  assetAllocationController.createAssetAllocation
 );
 
 // Get All Allocations by Tenant
@@ -49,7 +50,8 @@ router.get(
 router.put(
   "/updateassetallocation/:assetAllocation_id/:tenant_id",
   authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
-  validateParams(["assetAllocation_id", "tenant_id"])
+  validateParams(["assetAllocation_id", "tenant_id"]),
+  assetAllocationController.updateAssetAllocation
 );
 
 // Delete Allocation

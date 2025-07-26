@@ -1,6 +1,7 @@
 const { CustomError } = require("../Middleware/CustomeError");
 const { validateInput } = require("./InputValidation");
 const { checkIfIdExists, checkIfExists } = require("../Model/checkIfExists");
+const { checkReferenceExists } = require("../Utils/ValidateReference");
 
 const asset_allocationColumnConfig = [
   { columnname: "tenant_id", type: "int", null: false },
@@ -35,10 +36,8 @@ const createAssetAllocationValidation = async (details) => {
   validateInput(details, createColumnConfig);
 
   // Check if referenced records exist within the same tenant
-  await Promise.all([
-    checkIfIdExists("tenant", "tenant_id", details.tenant_id),
-    checkIfExists("clinic", "clinic_id", details.clinic_id, details.tenant_id),
-  ]);
+  const check=await checkReferenceExists(details.reference_type,details.reference_id,details.tenant_id)
+  if(!check) throw new CustomError('ReferenceId not exists',400)
 };
 
 /**

@@ -9,7 +9,7 @@ const helper = require("../Utils/Helpers");
 
 const { formatDateOnly, convertUTCToLocal } = require("../Utils/DateUtils");
 const { buildCacheKey } = require("../Utils/RedisCache");
-const { mapFields } = require("../query/Records");
+const { mapFields } = require("../Query/Records");
 
 const assetAllocationFields = {
   tenant_id: (val) => val,
@@ -151,10 +151,16 @@ const getAssetAllocationByTenantIdAndAssetAllocationId = async (tenantId, assetA
       tenantId,
       assetAllocationId
     );
-    const convertedRows = helper.convertDbToFrontend(
-      assetAllocation,
-      assetAllocationFieldsReverseMap
-    );
+  
+    const convertedRows = {...assetAllocation,
+      asset_image_url:helper.safeJsonParse(assetAllocation.asset_image_url),
+      description:helper.safeJsonParse(assetAllocation.description),
+      purchased_date:formatDateOnly(assetAllocation.purchased_date),
+      expired_date:formatDateOnly(assetAllocation.expired_date),
+      allocation_date:formatDateOnly(assetAllocation.allocation_date),
+      expected_return_date:formatDateOnly(assetAllocation.expected_return_date),
+      actual_return_date:formatDateOnly(assetAllocation.actual_return_date)
+    }
 
     return convertedRows;
   } catch (error) {

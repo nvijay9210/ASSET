@@ -1,10 +1,10 @@
-const pool = require("../config/db");
+const {assetPool} = require("../config/db");
 const { CustomError } = require("../Middleware/CustomeError");
 
 const checkIfIdExists = async (table, field, value) => {
   if (table !== "asset") return;
 
-  const conn = await pool.getConnection();
+  const conn = await assetPool.getConnection();
   try {
     // Query using proper placeholder for column name and value
     const [result] = await conn.query(`SELECT 1 FROM ?? WHERE ?? = ? LIMIT 1`, [
@@ -27,8 +27,8 @@ const checkIfIdExists = async (table, field, value) => {
 };
 
 const checkIfExists = async (table, field, value, tenantId) => {
-  if (table !== "asset") return;
-  const conn = await pool.getConnection();
+  if (table !== "asset" && table!=="asset_allocation") return;
+  const conn = await assetPool.getConnection();
   try {
     // Sanitize table name to prevent SQL injection
     const allowedTables = [
@@ -42,6 +42,7 @@ const checkIfExists = async (table, field, value, tenantId) => {
       "statustype",
       "statustypesub",
       "asset",
+      "asset_allocation",
       "expense",
       "supplier",
       "purchase_orders",
@@ -81,7 +82,7 @@ const checkIfExistsWithoutId = async (
   excludeValue,
   tenantId
 ) => {
-  const conn = await pool.getConnection();
+  const conn = await assetPool.getConnection();
   try {
     const [result] = await conn.query(
       `SELECT 1 FROM ?? WHERE ?? = ? AND ?? != ? AND tenant_id = ? LIMIT 1`,

@@ -1,4 +1,4 @@
-const pool = require("../config/db");
+const {assetPool} = require("../config/db");
 
 // ✅ CREATE
 const createRecord = async (table, columns, values) => {
@@ -11,7 +11,7 @@ const createRecord = async (table, columns, values) => {
 
   let conn;
   try {
-    conn = await pool.getConnection();
+    conn = await assetPool.getConnection();
     const [rows] = await conn.query(sql, values);
     return rows;
   } catch (error) {
@@ -29,7 +29,7 @@ const getAllRecords = async (table, tenantColumn, tenantId, limit = 100, offset 
 
   let conn;
   try {
-    conn = await pool.getConnection();
+    conn = await assetPool.getConnection();
 
     // 1. Get total count
     const [countResult] = await conn.query(countSql, [tenantId]);
@@ -61,7 +61,7 @@ const getRecordByIdAndTenantId = async (
   const sql = `SELECT * FROM \`${table}\` WHERE \`${tenantColumn}\` = ? AND \`${idColumn}\` = ?`;
   let conn;
   try {
-    conn = await pool.getConnection();
+    conn = await assetPool.getConnection();
     const [rows] = await conn.query(sql, [tenantId, idValue]);
     return rows[0] || null;
   } catch (error) {
@@ -83,7 +83,7 @@ const updateRecord = async (table, updateColumns, values, conditionColumns = [],
 
   let conn;
   try {
-    conn = await pool.getConnection();
+    conn = await assetPool.getConnection();
     const [rows] = await conn.query(sql, [...values, ...conditionValues]);
     return rows;
   } catch (error) {
@@ -103,7 +103,7 @@ const deleteRecord = async (table, conditionColumns = [], conditionValues = []) 
 
   let conn;
   try {
-    conn = await pool.getConnection();
+    conn = await assetPool.getConnection();
     const result = await conn.query(sql, conditionValues);
     // console.log('res:',result[0])
     return result;
@@ -140,7 +140,7 @@ const recordExists = async (table, conditions) => {
 
   let conn;
   try {
-    conn = await pool.getConnection();
+    conn = await assetPool.getConnection();
     const [rows] = await conn.query(query, values);
     return rows[0].exists > 0;
   } catch (error) {

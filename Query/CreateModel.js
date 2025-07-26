@@ -1,10 +1,10 @@
-const pool = require("../config/db");
+const {assetPool} = require("../config/db");
 
 const {createTableQuery}=require('./DbQuery')
 
 const createAssetTable = async () => {
   const query =  createTableQuery.addAsset
-  const conn = await pool.getConnection();
+  const conn = await assetPool.getConnection();
   try {
     await conn.query(query);
     console.log("Asset table created successfully.");
@@ -19,7 +19,7 @@ const createAssetTable = async () => {
 };
 const createAssetAllocationTable = async () => {
   const query =  createTableQuery.addAssetAllocation
-  const conn = await pool.getConnection();
+  const conn = await assetPool.getConnection();
   try {
     await conn.query(query);
     console.log("AssetAllocation table created successfully.");
