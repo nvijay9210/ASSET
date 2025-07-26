@@ -78,12 +78,11 @@ exports.getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId = async (
  */
 exports.getAssetAllocationByTenantIdAndAssetAllocationId = async (req, res, next) => {
   const { assetAllocation_id, tenant_id } = req.params;
-  if (!tenant_id || !assetAllocation_id)
-    throw new CustomError("Tenantid and AssetAllocationid Required Fields", 400);
+  
   try {
     const assetAllocation1 = await checkIfExists(
-      "assetAllocation",
-      "assetAllocation_id",
+      "asset_allocation",
+      "asset_allocation_id",
       assetAllocation_id,
       tenant_id
     );
@@ -135,8 +134,8 @@ exports.deleteAssetAllocationByTenantIdAndAssetAllocationId = async (req, res, n
   try {
     // Validate if assetAllocation exists
     const assetAllocation1 = await checkIfExists(
-      "assetAllocation",
-      "assetAllocation_id",
+      "asset_allocation",
+      "asset_allocation_id",
       assetAllocation_id,
       tenant_id
     );
