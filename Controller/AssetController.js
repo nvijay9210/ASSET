@@ -16,7 +16,7 @@ exports.createAsset = async (req, res, next) => {
 
   try {
     // Validate asset data
-    // await assetValidation.createAssetValidation(details);
+    await assetValidation.createAssetValidation(details);
 
     // Create the asset
     const id = await assetService.createAsset(details);
@@ -114,7 +114,7 @@ exports.updateAsset = async (req, res, next) => {
 
   try {
     // Validate update input
-    // await assetValidation.updateAssetValidation(asset_id, details);
+    await assetValidation.updateAssetValidation(asset_id, details);
 
     // Update the asset
     await assetService.updateAsset(asset_id, details, tenant_id);

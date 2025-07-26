@@ -136,8 +136,8 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate
     limit,
     offset
   ) => {
-    const query1 = `SELECT * FROM asset WHERE tenant_id = ? AND reference_type=? AND reference_id = ? AND created_time between ? AND ? limit ? offset ?`;
-    const query2 = `SELECT count(*) as total FROM asset WHERE tenant_id = ? AND reference_type=? AND reference_id = ? AND created_time between ?`;
+    const query1 = `SELECT * FROM asset WHERE tenant_id = ? AND reference_type=? AND reference_id = ? AND purchased_date between ? AND ? limit ? offset ?`;
+    const query2 = `SELECT count(*) as total FROM asset WHERE tenant_id = ? AND reference_type = ? AND reference_id = ? AND purchased_date BETWEEN ? AND ?`;
     const conn = await pool.getConnection();
     try {
       const [rows] = await conn.query(query1, [

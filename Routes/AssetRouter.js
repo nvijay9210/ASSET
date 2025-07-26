@@ -23,13 +23,13 @@ const assetFileMiddleware = uploadFileMiddleware({
   folderName: "Asset",
   fileFields: [
     {
-      fieldName: "asset_image_url",
+      fieldName: "asset_photo",
       maxSizeMB: 2,
       multiple: false,
     },
   ],
-  createValidationFn: assetValidationSchema.validateCreateAsset,
-  updateValidationFn: assetValidationSchema.validateUpdateAsset,
+  createValidationFn: assetValidationSchema.createAssetValidation,
+  updateValidationFn: assetValidationSchema.updateAssetValidation,
 });
 
 // ===================== ROUTES ===================== //
@@ -39,7 +39,6 @@ router.post(
   "/createasset",
   authenticateTenantClinicGroup(["tenant", "dentist", "super-user"]),
   upload.any(),
-  validateBody(assetValidationSchema.createAssetSchema),
   assetFileMiddleware,
   assetController.createAsset
 );
@@ -89,7 +88,6 @@ router.put(
   authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
   validateParams(["asset_id", "tenant_id"]),
   upload.any(),
-  validateBody(assetValidationSchema.updateAssetSchema),
   assetFileMiddleware,
   assetController.updateAsset
 );
