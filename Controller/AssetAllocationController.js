@@ -31,8 +31,6 @@ exports.createAssetAllocation = async (req, res, next) => {
 exports.getAllAssetAllocationsByTenantId = async (req, res, next) => {
   const { tenant_id, page, limit } = req.query;
 
-  if (!tenant_id) throw new CustomError("tenant Required Fields", 400);
-
   try {
 
     const assetAllocations = await assetAllocationService.getAllAssetAllocationsByTenantId(
@@ -52,11 +50,7 @@ exports.getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId = async (
   next
 ) => {
   const { tenant_id, reference_type, reference_id, page, limit } = req.query;
-  if (!tenant_id || !reference_type || !reference_id)
-    throw new CustomError(
-      "Tenantid and Referencetype and ReferenceId is Required Fields",
-      400
-    );
+
   
   try {
     const assetAllocations =
@@ -78,8 +72,7 @@ exports.getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId = async (
  */
 exports.getAssetAllocationByTenantIdAndAssetAllocationId = async (req, res, next) => {
   const { assetAllocation_id, tenant_id } = req.params;
-  if (!tenant_id || !assetAllocation_id)
-    throw new CustomError("Tenantid and AssetAllocationid Required Fields", 400);
+
   try {
     const assetAllocation1 = await checkIfExists(
       "asset_allocation",
@@ -108,9 +101,6 @@ exports.updateAssetAllocation = async (req, res, next) => {
 
   const details = req.body;
 
-  if (!tenant_id || !assetAllocation_id)
-    throw new CustomError("Tenantid and AssetAllocationid Required Fields", 400);
-
   try {
     // Validate update input
     await assetAllocationValidation.updateAssetAllocationValidation(assetAllocation_id, details);
@@ -128,9 +118,6 @@ exports.updateAssetAllocation = async (req, res, next) => {
  */
 exports.deleteAssetAllocationByTenantIdAndAssetAllocationId = async (req, res, next) => {
   const { assetAllocation_id, tenant_id } = req.params;
-
-  if (!tenant_id || !assetAllocation_id)
-    throw new CustomError("Tenantid and AssetAllocationid Required Fields", 400);
 
   try {
     // Validate if assetAllocation exists
@@ -164,8 +151,7 @@ exports.getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDa
     try {
       if (!(isValidDate(start_date) && isValidDate(end_date)))
         throw new CustomError("Startdate or enddate format invalid", 400);
-      if (!page || !limit)
-        throw new CustomError("Page and limit is required", 400);
+     
       const assetAllocations =
         await assetAllocationService.getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate(
           tenant_id,

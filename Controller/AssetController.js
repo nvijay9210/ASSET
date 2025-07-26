@@ -32,8 +32,6 @@ exports.createAsset = async (req, res, next) => {
 exports.getAllAssetsByTenantId = async (req, res, next) => {
   const { tenant_id, page, limit } = req.query;
 
-  if (!tenant_id) throw new CustomError("tenant Required Fields", 400);
-
   try {
 
     const assets = await assetService.getAllAssetsByTenantId(
@@ -53,11 +51,7 @@ exports.getAllAssetsByTenantIdAndReferenceTypeAndReferenceId = async (
   next
 ) => {
   const { tenant_id, reference_type, reference_id, page, limit } = req.query;
-  if (!tenant_id || !reference_type || !reference_id)
-    throw new CustomError(
-      "Tenantid and Referencetype and ReferenceId is Required Fields",
-      400
-    );
+
   
   try {
     const assets =
@@ -79,8 +73,7 @@ exports.getAllAssetsByTenantIdAndReferenceTypeAndReferenceId = async (
  */
 exports.getAssetByTenantIdAndAssetId = async (req, res, next) => {
   const { asset_id, tenant_id } = req.params;
-  if (!tenant_id || !asset_id)
-    throw new CustomError("Tenantid and Assetid Required Fields", 400);
+
   try {
     const asset1 = await checkIfExists(
       "asset",
@@ -109,8 +102,7 @@ exports.updateAsset = async (req, res, next) => {
 
   const details = req.body;
 
-  if (!tenant_id || !asset_id)
-    throw new CustomError("Tenantid and Assetid Required Fields", 400);
+ 
 
   try {
     // Validate update input
@@ -129,9 +121,6 @@ exports.updateAsset = async (req, res, next) => {
  */
 exports.deleteAssetByTenantIdAndAssetId = async (req, res, next) => {
   const { asset_id, tenant_id } = req.params;
-
-  if (!tenant_id || !asset_id)
-    throw new CustomError("Tenantid and Assetid Required Fields", 400);
 
   try {
     // Validate if asset exists
@@ -165,8 +154,7 @@ exports.getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDa
     try {
       if (!(isValidDate(start_date) && isValidDate(end_date)))
         throw new CustomError("Startdate or enddate format invalid", 400);
-      if (!page || !limit)
-        throw new CustomError("Page and limit is required", 400);
+ 
       const assets =
         await assetService.getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate(
           tenant_id,
