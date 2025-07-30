@@ -36,15 +36,31 @@ const updateColumnConfig = [
 const createAssetAllocationValidation = async (details) => {
   validateInput(details, createColumnConfig);
 
-  // Check if referenced records exist within the same tenant
-  const check=await checkReferenceExists(details.reference_type,details.reference_id,details.tenant_id)
-  if(!check) throw new CustomError('ReferenceId not exists',400)
+  // Check if referenced entity exists (clinic/hospital/patient/etc)
+  const referenceExists = await checkReferenceExists(
+    details.reference_type,
+    details.reference_id,
+    details.tenant_id
+  );
+  if (!referenceExists) {
+    throw new CustomError("ReferenceId does not exist", 400);
+  }
 
-  const asset=await getAssetByTenantAndAssetId(details.asset_id,details.tenant_id)
+  // Check if asset exists and has sufficient quantity
+  const asset = await getAssetByTenantAndAssetId(
+    details.asset_id,
+    details.tenant_id
+  );
 
-  if(asset.quantity<details.asset_allocation_quantity) throw new CustomError(`Asset quantity is only ${asset.quantity}`,400)
-  
+  if (!asset) {
+    throw new CustomError("Asset not found", 404);
+  }
+
+  if (Number(asset.quantity) < Number(details.asset_allocation_quantity)) {
+    throw new CustomError(`Asset quantity is only ${asset.quantity}`, 400);
+  }
 };
+
 
 /**
  * Validate Update AssetAllocation Input with Tenant Scope
@@ -53,15 +69,51 @@ const updateAssetAllocationValidation = async (assetId, details) => {
   validateInput(details, updateColumnConfig);
 
   const exists = await checkIfExists(
-    "asset",
-    "asset_id",
+    "asset_allocation",
+    "asset_allocation_id",
     assetId,
     details.tenant_id
   );
   if (!exists) {
     throw new CustomError("AssetAllocation not found", 404);
   }
+
+  // Optional: Check if reference_id is updated, and validate
+  if (details.reference_type && details.reference_id) {
+    const referenceExists = await checkReferenceExists(
+      details.reference_type,
+      details.reference_id,
+      details.tenant_id
+    );
+    if (!referenceExists) {
+      throw new CustomError("ReferenceId does not exist", 400);
+    }
+  }
+
+  // Optional: If quantity or asset_id is being changed, revalidate quantity
+  if (
+    Object.prototype.hasOwnProperty.call(details, "asset_allocation_quantity") ||
+    Object.prototype.hasOwnProperty.call(details, "asset_id")
+  ) {
+    const asset = await getAssetByTenantAndAssetId(
+      details.asset_id,
+      details.tenant_id
+    );
+    if (!asset) {
+      throw new CustomError("Asset not found", 404);
+    }
+
+    if (
+      Number(asset.quantity) < Number(details.asset_allocation_quantity)
+    ) {
+      throw new CustomError(
+        `Asset quantity is only ${asset.quantity}`,
+        400
+      );
+    }
+  }
 };
+
 
 module.exports = {
   createAssetAllocationValidation,

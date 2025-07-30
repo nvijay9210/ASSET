@@ -206,6 +206,7 @@ const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
     ...assetAllocationFields,
     updated_by: (val) => val,
   };
+
   try {
     const { columns, values } = mapFields(data, fieldMap);
 
@@ -223,6 +224,18 @@ const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
       );
     }
 
+    // 🔒 Only update asset quantity if asset_allocation_quantity is explicitly provided
+    if (Object.prototype.hasOwnProperty.call(data, 'asset_allocation_quantity')) {
+      const asset = await getAssetByTenantAndAssetId(
+        data.asset_id,
+        tenant_id
+      );
+      const newQuantity =
+        Number(asset.quantity) - Number(data.asset_allocation_quantity);
+
+      await updateAssetQuantity(tenant_id, data.asset_id, newQuantity);
+    }
+
     await invalidateCacheByPattern("assetAllocation:*");
     return affectedRows;
   } catch (error) {
@@ -230,6 +243,7 @@ const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
     throw new CustomError(error, 500);
   }
 };
+
 
 // Delete AssetAllocation
 const deleteAssetAllocationByTenantIdAndAssetAllocationId = async (
