@@ -2,6 +2,7 @@ const { CustomError } = require("../Middleware/CustomeError");
 const { validateInput } = require("./InputValidation");
 const { checkIfIdExists, checkIfExists } = require("../Model/checkIfExists");
 const { checkReferenceExists } = require("../Utils/ValidateReference");
+const { getAssetByTenantAndAssetId } = require("../Model/AssetModel");
 
 const asset_allocationColumnConfig = [
   { columnname: "tenant_id", type: "int", null: false },
@@ -38,6 +39,11 @@ const createAssetAllocationValidation = async (details) => {
   // Check if referenced records exist within the same tenant
   const check=await checkReferenceExists(details.reference_type,details.reference_id,details.tenant_id)
   if(!check) throw new CustomError('ReferenceId not exists',400)
+
+  const asset=await getAssetByTenantAndAssetId(details.asset_id,details.tenant_id)
+
+  if(asset.quantity<details.asset_allocation_quantity) throw new CustomError(`Asset quantity is only ${asset.quantity}`,400)
+  
 };
 
 /**

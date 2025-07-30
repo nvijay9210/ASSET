@@ -12,7 +12,7 @@ const createAssetAllocation = async (table, columns, values) => {
     return assetAllocation.insertId;
   } catch (error) {
     console.error("Error creating assetAllocation:", error);
-    throw new CustomError("Database Operation Failed", 500);
+    throw error;
   }
 };
 
@@ -25,7 +25,7 @@ const getAllAssetAllocationsByTenantId = async (tenantId, limit, offset) => {
       limit < 1 ||
       offset < 0
     ) {
-      throw new CustomError("Invalid pagination parameters.", 400);
+      throw error;
     }
     return await record.getAllRecords(
       "asset_allocation",
@@ -36,7 +36,7 @@ const getAllAssetAllocationsByTenantId = async (tenantId, limit, offset) => {
     );
   } catch (error) {
     console.error("Error fetching assets:", error);
-    throw new CustomError("Error fetching assets.", 500);
+    throw error;
   }
 };
 
@@ -66,7 +66,7 @@ const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId = async (
     return { data: rows, total: counts[0].total };
   } catch (error) {
     console.error(error);
-    throw new Error("Database Operation Failed");
+    throw error
   } finally {
     conn.release();
   }
@@ -85,7 +85,7 @@ const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId = async (
 //     return rows;
 //   } catch (error) {
 //     console.error("Error fetching assetAllocation:", error);
-//     throw new CustomError("Error fetching assetAllocation.", 500);
+//     throw error;
 //   }
 // };
 
@@ -111,7 +111,7 @@ const getAssetAllocationByTenantAndAssetAllocationId = async (
     return rows.length > 0 ? rows[0] : null;
   } catch (error) {
     console.log(error);
-    throw new Error("Database Operation Failed");
+    throw error
   } finally {
     conn.release();
   }
@@ -132,7 +132,7 @@ const updateAssetAllocation = async (asset_allocation_id, columns, values, tenan
     );
   } catch (error) {
     console.error("Error updating assetAllocation:", error);
-    throw new CustomError("Error updating assetAllocation.", 500);
+    throw error;
   }
 };
 
@@ -150,7 +150,7 @@ const deleteAssetAllocationByTenantAndAssetAllocationId = async (tenant_id, asse
     return result.affectedRows;
   } catch (error) {
     console.error("Error deleting assetAllocation:", error);
-    throw new CustomError("Error deleting assetAllocation.", 500);
+    throw error;
   }
 };
 
@@ -187,7 +187,7 @@ const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDate
       return { data: rows, total: counts[0].total };
     } catch (error) {
       console.error(error);
-      throw new Error("Database Operation Failed");
+      throw error
     } finally {
       conn.release();
     }

@@ -1,4 +1,4 @@
-const {assetPool} = require("../config/db");
+const { assetPool } = require("../config/db");
 const { CustomError } = require("../Middleware/CustomeError");
 const record = require("../Query/Records");
 
@@ -12,7 +12,7 @@ const createAsset = async (table, columns, values) => {
     return asset.insertId;
   } catch (error) {
     console.error("Error creating asset:", error);
-    throw new CustomError("Database Operation Failed", 500);
+    throw error;
   }
 };
 
@@ -25,7 +25,7 @@ const getAllAssetsByTenantId = async (tenantId, limit, offset) => {
       limit < 1 ||
       offset < 0
     ) {
-      throw new CustomError("Invalid pagination parameters.", 400);
+      throw error;
     }
     return await record.getAllRecords(
       "asset",
@@ -36,7 +36,7 @@ const getAllAssetsByTenantId = async (tenantId, limit, offset) => {
     );
   } catch (error) {
     console.error("Error fetching assets:", error);
-    throw new CustomError("Error fetching assets.", 500);
+    throw error;
   }
 };
 
@@ -85,7 +85,7 @@ const getAssetByTenantAndAssetId = async (tenant_id, asset_id) => {
     return rows;
   } catch (error) {
     console.error("Error fetching asset:", error);
-    throw new CustomError("Error fetching asset.", 500);
+    throw error;
   }
 };
 
@@ -104,7 +104,7 @@ const updateAsset = async (asset_id, columns, values, tenant_id) => {
     );
   } catch (error) {
     console.error("Error updating asset:", error);
-    throw new CustomError("Error updating asset.", 500);
+    throw error;
   }
 };
 
@@ -122,7 +122,7 @@ const deleteAssetByTenantAndAssetId = async (tenant_id, asset_id) => {
     return result.affectedRows;
   } catch (error) {
     console.error("Error deleting asset:", error);
-    throw new CustomError("Error deleting asset.", 500);
+    throw error;
   }
 };
 
@@ -165,6 +165,25 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate
     }
   };
 
+  const updateAssetQuantity = async (tenantId, assetId, newQuantity) => {
+    const query = `
+      UPDATE asset
+      SET quantity = ?
+      WHERE tenant_id = ? AND asset_id = ?;
+    `;
+  
+    const values = [newQuantity, tenantId, assetId];
+  
+    try {
+      const [result] = await assetPool.query(query, values);
+      return result;
+    } catch (error) {
+      console.error("Error updating asset quantity:", error);
+      throw error;
+    }
+  };
+  
+
 module.exports = {
   createAsset,
   getAllAssetsByTenantId,
@@ -172,5 +191,6 @@ module.exports = {
   getAssetByTenantAndAssetId,
   updateAsset,
   deleteAssetByTenantAndAssetId,
+  updateAssetQuantity,
   getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate,
 };

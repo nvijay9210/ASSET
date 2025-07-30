@@ -16,7 +16,7 @@ const createRecord = async (table, columns, values) => {
     return rows;
   } catch (error) {
     console.error("Error executing INSERT:", error);
-    throw error;
+    throw error.sqlMessage;
   } finally {
     if (conn) conn.release();
   }
@@ -42,7 +42,7 @@ const getAllRecords = async (table, tenantColumn, tenantId, limit = 100, offset 
     return { total, data };
   } catch (error) {
     console.error("Error executing SELECT ALL with count:", error);
-    throw error;
+    throw error.sqlMessage;
   } finally {
     if (conn) conn.release();
   }
@@ -66,7 +66,7 @@ const getRecordByIdAndTenantId = async (
     return rows[0] || null;
   } catch (error) {
     console.error("Error executing SELECT BY ID:", error);
-    throw error;
+    throw error.sqlMessage;
   } finally {
     if (conn) conn.release();
   }
@@ -87,7 +87,7 @@ const updateRecord = async (table, updateColumns, values, conditionColumns = [],
     const [rows] = await conn.query(sql, [...values, ...conditionValues]);
     return rows;
   } catch (error) {
-    throw error;
+    throw error.sqlMessage;
   } finally {
     if (conn) conn.release();
   }
@@ -109,7 +109,7 @@ const deleteRecord = async (table, conditionColumns = [], conditionValues = []) 
     return result;
   } catch (error) {
     console.error("Error executing DELETE:", error);
-    throw error;
+    throw error.sqlMessage;
   } finally {
     if (conn) conn.release();
   }

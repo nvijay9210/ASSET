@@ -10,6 +10,10 @@ const helper = require("../Utils/Helpers");
 const { formatDateOnly, convertUTCToLocal } = require("../Utils/DateUtils");
 const { buildCacheKey } = require("../Utils/RedisCache");
 const { mapFields } = require("../Query/Records");
+const {
+  updateAssetQuantity,
+  getAssetByTenantAndAssetId,
+} = require("../Model/AssetModel");
 
 const assetAllocationFields = {
   tenant_id: (val) => val,
@@ -17,6 +21,7 @@ const assetAllocationFields = {
   reference_type: (val) => val,
   reference_id: (val) => val,
 
+  asset_allocation_quantity: (val) => parseInt(val),
   allocated_to: (val) => val,
   allocated_by: (val) => val,
   allocation_date: (val) => val,
@@ -36,6 +41,7 @@ const assetAllocationFieldsReverseMap = {
   reference_type: (val) => val,
   reference_id: (val) => val,
 
+  asset_allocation_quantity: (val) => parseInt(val),
   allocated_to: (val) => val,
   allocated_by: (val) => val,
   allocation_date: (val) => (val ? formatDateOnly(val) : null),
@@ -65,19 +71,29 @@ const createAssetAllocation = async (data) => {
       columns,
       values
     );
+    const asset = await getAssetByTenantAndAssetId(
+      data.asset_id,
+      data.tenant_id
+    );
+    await updateAssetQuantity(
+      data.tenant_id,
+      data.asset_id,
+      Number(asset.quantity - data.asset_allocation_quantity)
+    );
     await invalidateCacheByPattern("assetAllocation:*");
     return assetAllocationId;
   } catch (error) {
     console.error("Failed to create assetAllocation:", error);
-    throw new CustomError(
-      `Failed to create assetAllocation: ${error.message}`,
-      404
-    );
+    throw new CustomError(error, 500);
   }
 };
 
 // Get All AssetAllocations by Tenant ID with Caching
-const getAllAssetAllocationsByTenantId = async (tenantId, page = 1, limit = 10) => {
+const getAllAssetAllocationsByTenantId = async (
+  tenantId,
+  page = 1,
+  limit = 10
+) => {
   const offset = (page - 1) * limit;
   const cacheKey = buildCacheKey("assetAllocation", "list", {
     tenant_id: tenantId,
@@ -95,13 +111,16 @@ const getAllAssetAllocationsByTenantId = async (tenantId, page = 1, limit = 10) 
     });
 
     const convertedRows = assets.data.map((assetAllocation) =>
-      helper.convertDbToFrontend(assetAllocation, assetAllocationFieldsReverseMap)
+      helper.convertDbToFrontend(
+        assetAllocation,
+        assetAllocationFieldsReverseMap
+      )
     );
 
     return { data: convertedRows, total: assets.total };
-  } catch (err) {
+  } catch (error) {
     console.error("Database error while fetching assets:", err);
-    throw new CustomError("Failed to fetch assets", 404);
+    throw new CustomError(error, 500);
   }
 };
 
@@ -134,33 +153,43 @@ const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId = async (
     });
 
     const convertedRows = assets.data.map((assetAllocation) =>
-      helper.convertDbToFrontend(assetAllocation, assetAllocationFieldsReverseMap)
+      helper.convertDbToFrontend(
+        assetAllocation,
+        assetAllocationFieldsReverseMap
+      )
     );
 
     return { data: convertedRows, total: assets.total };
-  } catch (err) {
+  } catch (error) {
     console.error("Database error while fetching assets:", err);
-    throw new CustomError("Failed to fetch assets", 404);
+    throw new CustomError(error, 500);
   }
 };
 
 // Get AssetAllocationAllocation by ID & Tenant
-const getAssetAllocationByTenantIdAndAssetAllocationId = async (tenantId, assetAllocationId) => {
+const getAssetAllocationByTenantIdAndAssetAllocationId = async (
+  tenantId,
+  assetAllocationId
+) => {
   try {
-    const assetAllocation = await assetModel.getAssetAllocationByTenantAndAssetAllocationId(
-      tenantId,
-      assetAllocationId
-    );
-  
-    const convertedRows = {...assetAllocation,
-      asset_image_url:helper.safeJsonParse(assetAllocation.asset_image_url),
-      description:helper.safeJsonParse(assetAllocation.description),
-      purchased_date:formatDateOnly(assetAllocation.purchased_date),
-      expired_date:formatDateOnly(assetAllocation.expired_date),
-      allocation_date:formatDateOnly(assetAllocation.allocation_date),
-      expected_return_date:formatDateOnly(assetAllocation.expected_return_date),
-      actual_return_date:formatDateOnly(assetAllocation.actual_return_date)
-    }
+    const assetAllocation =
+      await assetModel.getAssetAllocationByTenantAndAssetAllocationId(
+        tenantId,
+        assetAllocationId
+      );
+
+    const convertedRows = {
+      ...assetAllocation,
+      asset_image_url: helper.safeJsonParse(assetAllocation.asset_image_url),
+      description: helper.safeJsonParse(assetAllocation.description),
+      purchased_date: formatDateOnly(assetAllocation.purchased_date),
+      expired_date: formatDateOnly(assetAllocation.expired_date),
+      allocation_date: formatDateOnly(assetAllocation.allocation_date),
+      expected_return_date: formatDateOnly(
+        assetAllocation.expected_return_date
+      ),
+      actual_return_date: formatDateOnly(assetAllocation.actual_return_date),
+    };
 
     return convertedRows;
   } catch (error) {
@@ -198,19 +227,23 @@ const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
     return affectedRows;
   } catch (error) {
     console.error("Update Error:", error);
-    throw new CustomError("Failed to update assetAllocation", 404);
+    throw new CustomError(error, 500);
   }
 };
 
 // Delete AssetAllocation
-const deleteAssetAllocationByTenantIdAndAssetAllocationId = async (tenantId, assetAllocationId) => {
+const deleteAssetAllocationByTenantIdAndAssetAllocationId = async (
+  tenantId,
+  assetAllocationId
+) => {
   try {
-    const affectedRows = await assetModel.deleteAssetAllocationByTenantAndAssetAllocationId(
-      tenantId,
-      assetAllocationId
-    );
+    const affectedRows =
+      await assetModel.deleteAssetAllocationByTenantAndAssetAllocationId(
+        tenantId,
+        assetAllocationId
+      );
     if (affectedRows === 0) {
-      throw new CustomError("AssetAllocation not found.", 404);
+      throw new CustomError(error, 500);
     }
 
     await invalidateCacheByPattern("assetAllocation:*");
@@ -259,13 +292,16 @@ const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDate
       });
 
       const convertedRows = assets.data.map((assetAllocation) =>
-        helper.convertDbToFrontend(assetAllocation, assetAllocationFieldsReverseMap)
+        helper.convertDbToFrontend(
+          assetAllocation,
+          assetAllocationFieldsReverseMap
+        )
       );
 
       return { data: convertedRows, total: assets.total };
-    } catch (err) {
+    } catch (error) {
       console.error("Database error while fetching assets:", err);
-      throw new CustomError("Failed to fetch assets", 404);
+      throw new CustomError(error, 500);
     }
   };
 

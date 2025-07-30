@@ -9,7 +9,7 @@ const helper = require("../Utils/Helpers");
 
 const { formatDateOnly, convertUTCToLocal } = require("../Utils/DateUtils");
 const { buildCacheKey } = require("../Utils/RedisCache");
-const { mapFields } = require("../query/Records");
+const { mapFields } = require("../Query/Records");
 
 const assetFields = {
   tenant_id: (val) => val,
@@ -103,7 +103,7 @@ const createAsset = async (data) => {
     return assetId;
   } catch (error) {
     console.error("Failed to create asset:", error);
-    throw new CustomError(`Failed to create asset: ${error.message}`, 404);
+    throw new CustomError(error, 500);;
   }
 };
 
@@ -130,9 +130,9 @@ const getAllAssetsByTenantId = async (tenantId, page = 1, limit = 10) => {
     );
 
     return { data: convertedRows, total: assets.total };
-  } catch (err) {
+  } catch (error) {
     console.error("Database error while fetching assets:", err);
-    throw new CustomError("Failed to fetch assets", 404);
+    throw new CustomError(error, 500);
   }
 };
 
@@ -168,9 +168,9 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceId = async (
     );
 
     return { data: convertedRows, total: assets.total };
-  } catch (err) {
+  } catch (error) {
     console.error("Database error while fetching assets:", err);
-    throw new CustomError("Failed to fetch assets", 404);
+    throw new CustomError(error, 500);;
   }
 };
 
@@ -188,7 +188,7 @@ const getAssetByTenantIdAndAssetId = async (tenantId, assetId) => {
 
     return convertedRows;
   } catch (error) {
-    throw new CustomError("Failed to get asset: " + error.message, 404);
+    throw new CustomError(error, 500);;
   }
 };
 
@@ -209,14 +209,14 @@ const updateAsset = async (assetId, data, tenant_id) => {
     );
 
     if (affectedRows === 0) {
-      throw new CustomError("Asset not found or no changes made.", 404);
+      throw new CustomError(error, 500);;
     }
 
     await invalidateCacheByPattern("asset:*");
     return affectedRows;
   } catch (error) {
     console.error("Update Error:", error);
-    throw new CustomError("Failed to update asset", 404);
+    throw new CustomError(error, 500);;
   }
 };
 
@@ -228,13 +228,13 @@ const deleteAssetByTenantIdAndAssetId = async (tenantId, assetId) => {
       assetId
     );
     if (affectedRows === 0) {
-      throw new CustomError("Asset not found.", 404);
+      throw new CustomError(error, 500);;
     }
 
     await invalidateCacheByPattern("asset:*");
     return affectedRows;
   } catch (error) {
-    throw new CustomError(`Failed to delete asset: ${error.message}`, 404);
+    throw new CustomError(error, 500);;
   }
 };
 
@@ -259,9 +259,9 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate
     );
 
     return { data: convertedRows, total: assets.total };
-  } catch (err) {
+  } catch (error) {
     console.error("Database error while fetching assets:", err);
-    throw new CustomError("Failed to fetch assets", 404);
+    throw new CustomError(error, 500);;
   }
 };
 
