@@ -210,6 +210,9 @@ const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
   try {
     const { columns, values } = mapFields(data, fieldMap);
 
+    const assetAllocation=await getAssetAllocationByTenantIdAndAssetAllocationId(assetAllocationId,tenant_id)
+
+
     const affectedRows = await assetModel.updateAssetAllocation(
       assetAllocationId,
       columns,
@@ -224,8 +227,7 @@ const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
       );
     }
 
-    // 🔒 Only update asset quantity if asset_allocation_quantity is explicitly provided
-    if (Object.prototype.hasOwnProperty.call(data, 'asset_allocation_quantity')) {
+    if(Number(assetAllocation.asset_allocation_quantity)!==Number(data.asset_allocation_quantity)){
       const asset = await getAssetByTenantAndAssetId(
         data.asset_id,
         tenant_id
