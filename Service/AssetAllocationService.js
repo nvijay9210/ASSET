@@ -18,30 +18,26 @@ const {
 const assetAllocationFields = {
   tenant_id: (val) => val,
   asset_id: (val) => val,
+  asset_allocation_quantity: (val) => (val ? parseInt(val) : 0),
   reference_type: (val) => val,
   reference_id: (val) => val,
-
-  asset_allocation_quantity: (val) => parseInt(val),
   allocated_to: (val) => val,
   allocated_by: (val) => val,
-  allocation_date: (val) => val,
-  expected_return_date: (val) => val,
-  actual_return_date: (val) => val,
+  allocation_date: (val) => formatDateOnly(val),
+  expected_return_date: (val) => formatDateOnly(val),
+  actual_return_date: (val) => formatDateOnly(val),
   status: (val) => val,
   remarks: (val) => val,
-
-  created_by: (val) => val,
-  updated_by: (val) => val,
+  asset_allocation_comments: (val) => val,
 };
 
 const assetAllocationFieldsReverseMap = {
   asset_allocation_id: (val) => val,
   tenant_id: (val) => val,
   asset_id: (val) => val,
+  asset_allocation_quantity: (val) => (val ? parseInt(val) : 0),
   reference_type: (val) => val,
   reference_id: (val) => val,
-
-  asset_allocation_quantity: (val) => parseInt(val),
   allocated_to: (val) => val,
   allocated_by: (val) => val,
   allocation_date: (val) => (val ? formatDateOnly(val) : null),
@@ -49,6 +45,7 @@ const assetAllocationFieldsReverseMap = {
   actual_return_date: (val) => (val ? formatDateOnly(val) : null),
   status: (val) => val,
   remarks: (val) => val,
+  asset_allocation_comments: (val) => val,
 
   created_by: (val) => val,
   created_time: (val) => (val ? convertUTCToLocal(val) : null),
@@ -180,15 +177,18 @@ const getAssetAllocationByTenantIdAndAssetAllocationId = async (
 
     const convertedRows = {
       ...assetAllocation,
-      asset_image_url: helper.safeJsonParse(assetAllocation.asset_image_url),
+      asset_images: helper.safeJsonParse(assetAllocation.asset_images),
       description: helper.safeJsonParse(assetAllocation.description),
       purchased_date: formatDateOnly(assetAllocation.purchased_date),
       expired_date: formatDateOnly(assetAllocation.expired_date),
+      warranty_expiry: formatDateOnly(assetAllocation.warranty_expiry),
       allocation_date: formatDateOnly(assetAllocation.allocation_date),
       expected_return_date: formatDateOnly(
         assetAllocation.expected_return_date
       ),
       actual_return_date: formatDateOnly(assetAllocation.actual_return_date),
+      next_service_date: formatDateOnly(assetAllocation.next_service_date),
+      insurance_end_date: formatDateOnly(assetAllocation.insurance_end_date),
     };
 
     return convertedRows;
@@ -210,8 +210,11 @@ const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
   try {
     const { columns, values } = mapFields(data, fieldMap);
 
-    const assetAllocation=await getAssetAllocationByTenantIdAndAssetAllocationId(assetAllocationId,tenant_id)
-
+    const assetAllocation =
+      await getAssetAllocationByTenantIdAndAssetAllocationId(
+        assetAllocationId,
+        tenant_id
+      );
 
     const affectedRows = await assetModel.updateAssetAllocation(
       assetAllocationId,
@@ -227,11 +230,11 @@ const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
       );
     }
 
-    if(Number(assetAllocation.asset_allocation_quantity)!==Number(data.asset_allocation_quantity)){
-      const asset = await getAssetByTenantAndAssetId(
-        data.asset_id,
-        tenant_id
-      );
+    if (
+      Number(assetAllocation.asset_allocation_quantity) !==
+      Number(data.asset_allocation_quantity)
+    ) {
+      const asset = await getAssetByTenantAndAssetId(data.asset_id, tenant_id);
       const newQuantity =
         Number(asset.quantity) - Number(data.asset_allocation_quantity);
 
@@ -245,7 +248,6 @@ const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
     throw new CustomError(error, 500);
   }
 };
-
 
 // Delete AssetAllocation
 const deleteAssetAllocationByTenantIdAndAssetAllocationId = async (

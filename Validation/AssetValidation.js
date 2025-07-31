@@ -7,9 +7,10 @@ const assetColumnConfig = [
   { columnname: "source_app", type: "varchar", size: 50, null: false },
   { columnname: "reference_type", type: "varchar", size: 50, null: false },
   { columnname: "reference_id", type: "varchar", size: 100, null: false },
+
   { columnname: "asset_code", type: "varchar", size: 50, null: true },
   { columnname: "serial_number", type: "varchar", size: 100, null: true },
-  { columnname: "model", type: "varchar", size: 100, null: true },
+  { columnname: "model_number", type: "varchar", size: 100, null: true },
   { columnname: "asset_name", type: "varchar", size: 100, null: false },
   { columnname: "asset_type", type: "varchar", size: 50, null: true },
   { columnname: "category", type: "varchar", size: 50, null: true },
@@ -18,10 +19,21 @@ const assetColumnConfig = [
   { columnname: "asset_condition", type: "varchar", size: 50, null: true },
   { columnname: "quantity", type: "int", null: true },
   { columnname: "price", type: "decimal", size: "10,2", null: true },
+
   { columnname: "asset_photo", type: "varchar", size: 255, null: true },
-  { columnname: "asset_image_url", type: "text", null: true },
+  { columnname: "asset_images", type: "text", null: true },
+
+  { columnname: "year_of_manufacturing", type: "year", null: true },
+  { columnname: "appreciation_type", type: "enum", values: ["appreciating", "depreciating"], null: true },
+  { columnname: "next_service_date", type: "date", null: true },
+  { columnname: "colour", type: "varchar", size: 50, null: true },
+  { columnname: "contact_name_number", type: "varchar", size: 150, null: true },
+  { columnname: "insurance_number", type: "varchar", size: 100, null: true },
+  { columnname: "insurance_end_date", type: "date", null: true },
+
   { columnname: "description", type: "text", null: true },
   { columnname: "allocated_to", type: "varchar", size: 100, null: true },
+
   { columnname: "purchased_date", type: "date", null: true },
   { columnname: "purchased_by", type: "varchar", size: 50, null: true },
   { columnname: "vendor_name", type: "varchar", size: 100, null: true },
@@ -31,6 +43,7 @@ const assetColumnConfig = [
   { columnname: "location", type: "varchar", size: 100, null: true },
   { columnname: "remarks", type: "text", null: true },
 ];
+
 
 // Asset Column Configuration for Validation
 const createColumnConfig = [

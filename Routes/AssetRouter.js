@@ -14,7 +14,7 @@ const {
   validateBody,
 } = require("../Middleware/ValidateFilters");
 
-const { uploadFileMiddleware } = require("../utils/UploadFiles");
+const { uploadFileMiddleware } = require("../Utils/UploadFiles");
 
 // Multer setup
 const upload = multer({ storage: multer.memoryStorage() });
@@ -27,6 +27,11 @@ const assetFileMiddleware = uploadFileMiddleware({
       maxSizeMB: 2,
       multiple: false,
     },
+    {
+      fieldName: "asset_images",  // Added for document uploads (optional)
+      maxSizeMB: 10,
+      multiple: true
+    }
   ],
   createValidationFn: assetValidationSchema.createAssetValidation,
   updateValidationFn: assetValidationSchema.updateAssetValidation,
@@ -38,8 +43,8 @@ const assetFileMiddleware = uploadFileMiddleware({
 router.post(
   "/createasset",
   authenticateTenantClinicGroup(["tenant", "dentist", "super-user"]),
-  upload.any(),
-  assetFileMiddleware,
+  upload.any(), // Use multer to handle file uploads
+  assetFileMiddleware, // Call the file upload middleware
   assetController.createAsset
 );
 
@@ -87,8 +92,8 @@ router.put(
   "/updateasset/:asset_id/:tenant_id",
   authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
   validateParams(["asset_id", "tenant_id"]),
-  upload.any(),
-  assetFileMiddleware,
+  upload.any(), // Use multer to handle file uploads
+  assetFileMiddleware, // Call the file upload middleware
   assetController.updateAsset
 );
 

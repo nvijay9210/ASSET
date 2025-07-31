@@ -9,6 +9,7 @@ const asset_allocationColumnConfig = [
   { columnname: "asset_id", type: "int", null: false },
   { columnname: "reference_type", type: "varchar", size: 50, null: false },
   { columnname: "reference_id", type: "varchar", size: 100, null: false },
+  { columnname: "asset_allocation_quantity", type: "int", null: false },
   { columnname: "allocated_to", type: "varchar", size: 100, null: true },
   { columnname: "allocated_by", type: "varchar", size: 100, null: true },
   { columnname: "allocation_date", type: "date", null: true },
@@ -16,7 +17,9 @@ const asset_allocationColumnConfig = [
   { columnname: "actual_return_date", type: "date", null: true },
   { columnname: "status", type: "varchar", size: 50, null: true },
   { columnname: "remarks", type: "text", null: true },
+  { columnname: "allocation_comments", type: "text", null: true },
 ];
+
 
 
 // AssetAllocation Column Configuration for Validation

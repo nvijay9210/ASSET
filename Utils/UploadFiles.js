@@ -12,7 +12,6 @@ const uploadFileMiddleware = (options) => {
   } = options;
 
   return async (req, res, next) => {
-    
     try {
       // Ensure folder exists
       const ensureFolderExists = (folderPath) => {
@@ -97,56 +96,70 @@ const uploadFileMiddleware = (options) => {
         ".tiff",
       ];
 
+      console.log(fileFields);
+
       for (const fileField of fileFields) {
-        // Generic file handling (single or multiple)
-        const files =
-          req.files?.filter((file) => file.fieldname === fileField.fieldName) ||
-          [];
+        // ✅ Special case: asset_images with indexed handling
+        if (fileField.fieldName === "asset_images") {
+          const assetImages = [];
+          let idx = 0;
 
-        if (files.length > 0) {
-          const savedPaths = [];
+          while (true) {
+            const fileFieldName = `asset_images${idx}`;
+            const file = req.files?.find((f) => f.fieldname === fileFieldName);
+            const existingImagePath = req.body[fileFieldName];
+            if (!file && !existingImagePath) break;
 
-          for (let i = 0; i < files.length; i++) {
-            const file = files[i];
-            const maxSizeBytes = fileField.maxSizeMB * 1024 * 1024;
-            if (file.size > maxSizeBytes) {
-              return res.status(400).json({
-                message: `${fileField.fieldName.replace(
-                  /_/g,
-                  " "
-                )} must be less than ${fileField.maxSizeMB}MB`,
-              });
+            if (file) {
+              const maxSizeBytes = fileField.maxSizeMB * 1024 * 1024;
+              if (file.size > maxSizeBytes) {
+                return res.status(400).json({
+                  message: `Asset image must be less than ${fileField.maxSizeMB}MB`,
+                });
+              }
+
+              const extension = path.extname(file.originalname).toLowerCase();
+              const dynamicSubFolder = imageExtensions.includes(extension)
+                ? "photo"
+                : "document";
+              const fieldTenantPath = path.join(
+                baseTenantPath,
+                dynamicSubFolder
+              );
+
+              const bufferToSave = imageExtensions.includes(extension)
+                ? await compressImage(file.buffer, 100)
+                : file.buffer;
+
+              const fileName = `${
+                path.parse(file.originalname).name
+              }_${Date.now()}_${Math.floor(Math.random() * 10000)}${extension}`;
+              const savedPath = await saveFile(
+                bufferToSave,
+                fieldTenantPath,
+                fileName
+              );
+              assetImages.push(savedPath);
+            } else if (existingImagePath) {
+              assetImages.push(existingImagePath);
             }
 
-            const extension = path.extname(file.originalname).toLowerCase();
-            const dynamicSubFolder = imageExtensions.includes(extension)
-              ? "photo"
-              : "document";
-            const fieldTenantPath = path.join(baseTenantPath, dynamicSubFolder);
-
-            const bufferToSave = imageExtensions.includes(extension)
-              ? await compressImage(file.buffer, 100)
-              : file.buffer;
-
-            const fileName = `${
-              path.parse(file.originalname).name
-            }_${Date.now()}_${Math.floor(Math.random() * 10000)}${extension}`;
-            const savedPath = await saveFile(
-              bufferToSave,
-              fieldTenantPath,
-              fileName
-            );
-
-            savedPaths.push(savedPath); // Only push the string path
+            idx++;
           }
 
-          // Always store as array of strings
-          req.body[fileField.fieldName] = savedPaths;
-          uploadedFiles[fileField.fieldName] = savedPaths;
+          req.body.asset_images = assetImages;
+          uploadedFiles.asset_images = assetImages;
+          continue; // skip to next fileField
         }
-      }
 
-      next();
+        // ✅ Add logging here (after all files processed)
+        console.log(
+          `${req.method} ${req.originalUrl} - Files uploaded:`,
+          uploadedFiles
+        );
+
+        next();
+      }
     } catch (error) {
       console.error("Error uploading files:", error.message);
       return res.status(500).json({ message: error.message });

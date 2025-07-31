@@ -19,7 +19,7 @@ const assetFields = {
 
   asset_code: (val) => val,
   serial_number: (val) => val,
-  model: (val) => val,
+  model_number: (val) => val,
   asset_name: (val) => val,
   asset_type: (val) => val,
   category: (val) => val,
@@ -31,9 +31,19 @@ const assetFields = {
   price: (val) => (val ? parseFloat(val) : 0),
 
   asset_photo: (val) => val,
-  asset_image_url: (val) => helper.safeStringify(val),
+  asset_images: (val) => helper.safeStringify(val),
 
-  description:  (val) => helper.safeStringify(val),
+  year_of_manufacturing: (val) => val,
+  appreciating: (val) =>Boolean(val),
+  deprecitating: (val) =>Boolean(val),
+  next_service_date: (val) => formatDateOnly(val),
+  colour: (val) => val,
+  contact_name_number: (val) => val,
+  insurance_provider: (val) => val,
+  insurance_number: (val) => val,
+  insurance_end_date: (val) => formatDateOnly(val),
+
+  description: (val) => helper.safeStringify(val),
   allocated_to: (val) => val,
 
   purchased_date: (val) => formatDateOnly(val),
@@ -46,6 +56,7 @@ const assetFields = {
   remarks: (val) => val,
 };
 
+
 const assetFieldsReverseMap = {
   asset_id: (val) => val,
 
@@ -56,7 +67,7 @@ const assetFieldsReverseMap = {
 
   asset_code: (val) => val,
   serial_number: (val) => val,
-  model: (val) => val,
+  model_number: (val) => val,
   asset_name: (val) => val,
   asset_type: (val) => val,
   category: (val) => val,
@@ -68,7 +79,17 @@ const assetFieldsReverseMap = {
   price: (val) => (val ? parseFloat(val) : 0),
 
   asset_photo: (val) => val,
-  asset_image_url: (val) => helper.safeJsonParse(val),
+  asset_images: (val) => helper.safeJsonParse(val),
+
+  year_of_manufacturing: (val) => val,
+  appreciating: (val) =>helper.parseBoolean(val),
+  deprecitating: (val) =>helper.parseBoolean(val),
+  next_service_date: (val) => (val ? formatDateOnly(val) : null),
+  colour: (val) => val,
+  contact_name_number: (val) => val,
+  insurance_provider: (val) => val,
+  insurance_number: (val) => val,
+  insurance_end_date: (val) => (val ? formatDateOnly(val) : null),
 
   description: (val) => helper.safeJsonParse(val),
   allocated_to: (val) => val,
@@ -87,6 +108,7 @@ const assetFieldsReverseMap = {
   updated_by: (val) => val,
   updated_time: (val) => (val ? convertUTCToLocal(val) : null),
 };
+
 
 // Field mapping for assets (similar to treatment)
 
