@@ -20,7 +20,7 @@ const createTableQuery = {
     asset_images TEXT, -- renamed from asset_images
     year_of_manufacturing YEAR NULL,
     appreciating TINYINT(1) DEFAULT 1,
-    deprecitating TINYINT(1) DEFAULT 1,
+    depreciating  TINYINT(1) DEFAULT 1,
     next_service_date DATE NULL,
     colour VARCHAR(50) NULL,
     contact_name_number VARCHAR(150) NULL,

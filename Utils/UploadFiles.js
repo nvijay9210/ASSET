@@ -105,7 +105,7 @@ const uploadFileMiddleware = (options) => {
           let idx = 0;
 
           while (true) {
-            const fileFieldName = `asset_images${idx}`;
+            const fileFieldName = `asset_images_${idx}`;
             const file = req.files?.find((f) => f.fieldname === fileFieldName);
             const existingImagePath = req.body[fileFieldName];
             if (!file && !existingImagePath) break;
@@ -150,6 +150,58 @@ const uploadFileMiddleware = (options) => {
           req.body.asset_images = assetImages;
           uploadedFiles.asset_images = assetImages;
           continue; // skip to next fileField
+        }
+        else {
+          // Generic file handling (single or multiple)
+          const files =
+            req.files?.filter(
+              (file) => file.fieldname === fileField.fieldName
+            ) || [];
+
+          if (files.length > 0) {
+            const savedPaths = [];
+
+            for (let i = 0; i < files.length; i++) {
+              const file = files[i];
+              const maxSizeBytes = fileField.maxSizeMB * 1024 * 1024;
+              if (file.size > maxSizeBytes) {
+                return res.status(400).json({
+                  message: `${fileField.fieldName.replace(
+                    /_/g,
+                    " "
+                  )} must be less than ${fileField.maxSizeMB}MB`,
+                });
+              }
+
+              const extension = path.extname(file.originalname).toLowerCase();
+              const dynamicSubFolder = imageExtensions.includes(extension)
+                ? "photo"
+                : "document";
+              const fieldTenantPath = path.join(
+                baseTenantPath,
+                dynamicSubFolder
+              );
+
+              const bufferToSave = imageExtensions.includes(extension)
+                ? await compressImage(file.buffer, 100)
+                : file.buffer;
+
+              const fileName = `${
+                path.parse(file.originalname).name
+              }_${Date.now()}_${Math.floor(Math.random() * 10000)}${extension}`;
+              const savedPath = await saveFile(
+                bufferToSave,
+                fieldTenantPath,
+                fileName
+              );
+
+              savedPaths.push(savedPath); // Only push the string path
+            }
+
+            // Always store as array of strings
+            req.body[fileField.fieldName] = savedPaths;
+            uploadedFiles[fileField.fieldName] = savedPaths;
+          }
         }
 
         // ✅ Add logging here (after all files processed)

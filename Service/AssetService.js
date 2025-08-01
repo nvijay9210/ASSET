@@ -9,7 +9,7 @@ const helper = require("../Utils/Helpers");
 
 const { formatDateOnly, convertUTCToLocal } = require("../Utils/DateUtils");
 const { buildCacheKey } = require("../Utils/RedisCache");
-const { mapFields } = require("../Query/Records");
+const { mapFields, patchRecord } = require("../Query/Records");
 
 const assetFields = {
   tenant_id: (val) => val,
@@ -35,7 +35,7 @@ const assetFields = {
 
   year_of_manufacturing: (val) => val,
   appreciating: (val) =>Boolean(val),
-  deprecitating: (val) =>Boolean(val),
+  depreciating : (val) =>Boolean(val),
   next_service_date: (val) => formatDateOnly(val),
   colour: (val) => val,
   contact_name_number: (val) => val,
@@ -83,7 +83,7 @@ const assetFieldsReverseMap = {
 
   year_of_manufacturing: (val) => val,
   appreciating: (val) =>helper.parseBoolean(val),
-  deprecitating: (val) =>helper.parseBoolean(val),
+  depreciating : (val) =>helper.parseBoolean(val),
   next_service_date: (val) => (val ? formatDateOnly(val) : null),
   colour: (val) => val,
   contact_name_number: (val) => val,
@@ -287,6 +287,8 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate
   }
 };
 
+
+
 module.exports = {
   createAsset,
   getAllAssetsByTenantId,
@@ -294,5 +296,5 @@ module.exports = {
   getAssetByTenantIdAndAssetId,
   updateAsset,
   deleteAssetByTenantIdAndAssetId,
-  getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate,
+  getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate
 };
