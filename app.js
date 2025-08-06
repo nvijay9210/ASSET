@@ -32,6 +32,7 @@ async function initializeTables() {
   try {
     await createTable.createAssetTable();
     await createTable.createAssetAllocationTable();
+    await createTable.createDocumentTable();
     console.log('✅ Asset tables created.');
   } catch (err) {
     console.error('❌ Error creating tables:', err);

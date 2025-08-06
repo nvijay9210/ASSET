@@ -164,6 +164,41 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate
       conn.release();
     }
   };
+const getAllExpireAssetsByTenantIdAndReferenceTypeAndReferenceId =
+  async (
+    tenant_id,
+    reference_type,
+    reference_id
+  ) => {
+    const query1 = ` SELECT
+        aa.asset_allocation_id,
+        aa.asset_id,
+        a.asset_name,
+        aa.allocated_to,
+        aa.allocated_by,
+        aa.expected_return_date
+      FROM asset_allocation aa
+      JOIN asset a ON aa.asset_id = a.asset_id
+      WHERE DATEDIFF(aa.expected_return_date, CURDATE()) = 7
+        AND aa.status != 'Returned'
+        AND aa.tenant_id = ?
+        AND aa.reference_type = ?
+        AND aa.reference_id = ?`;
+    const conn = await assetPool.getConnection();
+    try {
+      const [rows] = await conn.query(query1, [
+        tenant_id,
+        reference_type,
+        reference_id
+      ]);
+      return rows
+    } catch (error) {
+      console.error(error);
+      throw new Error("Database Operation Failed");
+    } finally {
+      conn.release();
+    }
+  };
 
   const updateAssetQuantity = async (tenantId, assetId, newQuantity) => {
     const query = `
@@ -192,5 +227,6 @@ module.exports = {
   updateAsset,
   deleteAssetByTenantAndAssetId,
   updateAssetQuantity,
+  getAllExpireAssetsByTenantIdAndReferenceTypeAndReferenceId,
   getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate,
 };

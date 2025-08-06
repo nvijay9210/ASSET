@@ -32,8 +32,24 @@ const createAssetAllocationTable = async () => {
     conn.release();
   }
 };
+const createDocumentTable = async () => {
+  const query =  createTableQuery.addDocumentTable
+  const conn = await assetPool.getConnection();
+  try {
+    await conn.query(query);
+    console.log("Document table created successfully.");
+  } catch (error) {
+    console.error("Error creating Document table:", error);
+    throw new Error(
+      "Database error occurred while creating the Document table."
+    );
+  } finally {
+    conn.release();
+  }
+};
 
 module.exports = {
   createAssetTable,
-  createAssetAllocationTable
+  createAssetAllocationTable,
+  createDocumentTable
 };

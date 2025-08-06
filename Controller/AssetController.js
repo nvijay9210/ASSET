@@ -170,3 +170,24 @@ exports.getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDa
       next(err);
     }
   };
+
+exports.getAllExpireAssetsByTenantIdAndReferenceTypeAndReferenceId =
+  async (req, res, next) => {
+    const {
+      tenant_id,
+      reference_type,
+      reference_id
+    } = req.query;
+    try {
+    
+      const assets =
+        await assetService.getAllExpireAssetsByTenantIdAndReferenceTypeAndReferenceId(
+          tenant_id,
+          reference_type,
+          reference_id
+        );
+      res.status(200).json(assets);
+    } catch (err) {
+      next(err);
+    }
+  };

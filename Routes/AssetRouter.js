@@ -128,5 +128,20 @@ router.get(
   ]),
   assetController.getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate
 );
+router.get(
+  "/getexpireasset",
+  authenticateTenantClinicGroup([
+    "tenant",
+    "dentist",
+    "super-user",
+    "receptionist",
+  ]),
+  validateQuery([
+    "tenant_id",
+    "reference_type",
+    "reference_id"
+  ]),
+  assetController.getAllExpireAssetsByTenantIdAndReferenceTypeAndReferenceId
+);
 
 module.exports = router;
