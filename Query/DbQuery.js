@@ -16,8 +16,6 @@ const createTableQuery = {
     asset_condition VARCHAR(50),
     quantity INT,
     price DECIMAL(10,2),
-    asset_photo VARCHAR(255),
-    asset_images TEXT, -- renamed from asset_images
     year_of_manufacturing YEAR NULL,
     appreciating TINYINT(1) DEFAULT 1,
     depreciating  TINYINT(1) DEFAULT 1,
@@ -71,7 +69,7 @@ const createTableQuery = {
     KEY idx_reference (reference_type, reference_id),
     KEY idx_status (status)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;`,
-   
+
   addDocumentTable: `
   CREATE TABLE IF NOT EXISTS document (
     document_id INT(11) NOT NULL AUTO_INCREMENT,

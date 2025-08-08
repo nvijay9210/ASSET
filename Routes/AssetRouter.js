@@ -14,19 +14,27 @@ const {
   validateBody,
 } = require("../Middleware/ValidateFilters");
 
-const { uploadFileMiddleware } = require("../Utils/UploadFiles");
+const { uploadFileMiddleware, uploadFileMiddleware2 } = require("../Utils/UploadFiles");
 
 // Multer setup
 const upload = multer({ storage: multer.memoryStorage() });
 
-const assetFileMiddleware = uploadFileMiddleware({
+const assetPhotoFileMiddleware = uploadFileMiddleware2({
   folderName: "Asset",
   fileFields: [
     {
       fieldName: "asset_photo",
       maxSizeMB: 2,
       multiple: false,
-    },
+    }
+  ],
+  createValidationFn: assetValidationSchema.createAssetValidation,
+  updateValidationFn: assetValidationSchema.updateAssetValidation,
+});
+
+const assetFileMiddleware = uploadFileMiddleware({
+  folderName: "Dentist",
+  fileFields: [
     {
       fieldName: "asset_images",  // Added for document uploads (optional)
       maxSizeMB: 10,
@@ -36,6 +44,7 @@ const assetFileMiddleware = uploadFileMiddleware({
   createValidationFn: assetValidationSchema.createAssetValidation,
   updateValidationFn: assetValidationSchema.updateAssetValidation,
 });
+
 
 // ===================== ROUTES ===================== //
 

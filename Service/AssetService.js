@@ -119,20 +119,25 @@ const createAsset = async (data) => {
   try {
     const { columns, values } = mapFields(data, fieldMap);
     const assetId = await assetModel.createAsset("asset", columns, values);
-    await saveDocuments({
-      table_name: "asset",
-      table_id: assetId,
-      field_name: "asset_photo",
-      files: data.asset_photo,
-      created_by: data.created_by,
-    });
-    await saveDocuments({
-      table_name: "asset",
+    if (data?.asset_photo) {
+      await saveDocuments({
+        table_name: "asset",
+        table_id: assetId,
+        field_name: "asset_photo",
+        files: data.asset_photo,
+        created_by: data.created_by,
+      });
+    }
+
+    if (data?.asset_images) {
+      await saveDocuments({
+        table_name: "asset",
       table_id: assetId,
       field_name: "asset_images",
       files: data.asset_images,
       created_by: data.created_by,
-    });
+      });
+    }
     await invalidateCacheByPattern("asset:*");
     return assetId;
   } catch (error) {
@@ -345,27 +350,31 @@ const updateAsset = async (assetId, data, tenant_id) => {
       tenant_id
     );
 
-    // Save or update asset photo using document system
-    await updateDocumentsDiffBased({
+    if (data?.asset_photo) {
+      await updateSingleDocument2({
+        table_name: "asset",
+        table_id: assetId,
+        field_name: "asset_photo",
+        newFile: data?.asset_photo,
+        deleteOld: true,
+        created_by: data.created_by,
+        updated_by: data.updated_by,
+      });
+    }
+
+    const asset_images = data.asset_images || req?.body?.asset_images || [];
+
+    if(data?.asset_images){
+       await updateDocumentsDiffBased({
       table_name: "asset",
       table_id: assetId,
-      field_name: "asset_photo",
-      newFiles: Array.isArray(data.asset_photo)
-        ? data.asset_photo
-        : [data.asset_photo],
-      updated_by: data.updated_by,
-    });
-
-    // Save or update asset photo using document system
-    await updateDocumentsDiffBased({
-      table_name: "asset",
-      table_id: asset_images,
       field_name: "asset_images",
-      newFiles: Array.isArray(data.asset_images)
-        ? data.asset_images
-        : [data.asset_images],
+      newFiles: asset_images,
+      deletedFileIds:data.deletedFileIds,
       updated_by: data.updated_by,
     });
+    }
+   
 
     await invalidateCacheByPattern("asset:*");
     return affectedRows;
@@ -379,7 +388,10 @@ const updateAsset = async (assetId, data, tenant_id) => {
 const deleteAssetByTenantIdAndAssetId = async (tenantId, assetId) => {
   try {
     await handleFileCleanupByTable("asset", assetId);
-    const affectedRows = await assetModel.deleteAssetByTenantAndAssetId(tenantId, assetId);
+    const affectedRows = await assetModel.deleteAssetByTenantAndAssetId(
+      tenantId,
+      assetId
+    );
     if (affectedRows === 0) {
       throw new CustomError(error, 500);
     }
