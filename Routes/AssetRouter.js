@@ -33,7 +33,7 @@ const assetPhotoFileMiddleware = uploadFileMiddleware2({
 });
 
 const assetFileMiddleware = uploadFileMiddleware({
-  folderName: "Dentist",
+  folderName: "Asset",
   fileFields: [
     {
       fieldName: "asset_images",  // Added for document uploads (optional)
@@ -53,6 +53,7 @@ router.post(
   "/createasset",
   authenticateTenantClinicGroup(["tenant", "dentist", "super-user"]),
   upload.any(), // Use multer to handle file uploads
+  assetPhotoFileMiddleware,
   assetFileMiddleware, // Call the file upload middleware
   assetController.createAsset
 );
@@ -102,6 +103,7 @@ router.put(
   authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
   validateParams(["asset_id", "tenant_id"]),
   upload.any(), // Use multer to handle file uploads
+  assetPhotoFileMiddleware,
   assetFileMiddleware, // Call the file upload middleware
   assetController.updateAsset
 );

@@ -128,11 +128,28 @@ const deleteDocumentById = async (document_id) => {
   }
 };
 
+const updateDocumentDescription = async (document_id, description) => {
+  const conn = await pool.getConnection();
+  try {
+    const [result] = await conn.query(
+      `UPDATE document SET description = ? WHERE document_id = ?`,
+      [description, document_id]
+    );
+    return result.affectedRows;
+  } catch (error) {
+    console.error("Error in updateDocument:", error);
+    throw error;
+  } finally {
+    conn.release();
+  }
+};
+
 module.exports = {
   createDocument,
   getDocumentsByTableAndId,
   getDocumentsByField,
   updateDocument,
   deleteDocumentsByTableAndId,
-  deleteDocumentById
+  deleteDocumentById,
+  updateDocumentDescription
 };

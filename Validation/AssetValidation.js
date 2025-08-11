@@ -20,9 +20,6 @@ const assetColumnConfig = [
   { columnname: "quantity", type: "int", null: true },
   { columnname: "price", type: "decimal", size: "10,2", null: true },
 
-  { columnname: "asset_photo", type: "varchar", size: 255, null: true },
-  { columnname: "asset_images", type: "text", null: true },
-
   { columnname: "year_of_manufacturing", type: "year", null: true },
   { columnname: "appreciation_type", type: "enum", values: ["appreciating", "depreciating"], null: true },
   { columnname: "next_service_date", type: "date", null: true },

@@ -9,13 +9,16 @@ const helper = require("../Utils/Helpers");
 
 const { formatDateOnly, convertUTCToLocal } = require("../Utils/DateUtils");
 const { buildCacheKey } = require("../Utils/RedisCache");
-const { mapFields, patchRecord } = require("../Query/Records");
+
 const {
   saveDocuments,
   handleFileCleanupByTable,
   updateDocumentsDiffBased,
+  updateSingleDocument2,
 } = require("../Utils/UploadFiles");
 const { getDocumentsByField } = require("../Model/documentModel");
+const { mapFields } = require("../Query/Records");
+
 
 const assetFields = {
   tenant_id: (val) => val,
@@ -30,6 +33,7 @@ const assetFields = {
   asset_type: (val) => val,
   category: (val) => val,
   manufacturer: (val) => val,
+  asset_photo: (val) => val,
 
   asset_status: (val) => val,
   asset_condition: (val) => val,
@@ -74,6 +78,7 @@ const assetFieldsReverseMap = {
   asset_type: (val) => val,
   category: (val) => val,
   manufacturer: (val) => val,
+  asset_photo: (val) => val,
 
   asset_status: (val) => val,
   asset_condition: (val) => val,
@@ -119,15 +124,6 @@ const createAsset = async (data) => {
   try {
     const { columns, values } = mapFields(data, fieldMap);
     const assetId = await assetModel.createAsset("asset", columns, values);
-    if (data?.asset_photo) {
-      await saveDocuments({
-        table_name: "asset",
-        table_id: assetId,
-        field_name: "asset_photo",
-        files: data.asset_photo,
-        created_by: data.created_by,
-      });
-    }
 
     if (data?.asset_images) {
       await saveDocuments({
@@ -172,25 +168,12 @@ const getAllAssetsByTenantId = async (tenantId, page = 1, limit = 10) => {
           assetFieldsReverseMap
         );
 
-        // Fetch asset_photo documents
-        const photoDocs = await getDocumentsByField(
-          "asset",
-          asset.asset_id,
-          "asset_photo"
-        );
-
         // Fetch asset_images documents
         const imageDocs = await getDocumentsByField(
           "asset",
           asset.asset_id,
           "asset_images"
         );
-
-        // Extract document_id and file_url for both
-        const asset_photo = photoDocs.map((doc) => ({
-          document_id: doc.document_id,
-          file_url: doc.file_url,
-        }));
 
         const asset_images = imageDocs.map((doc) => ({
           document_id: doc.document_id,
@@ -199,7 +182,6 @@ const getAllAssetsByTenantId = async (tenantId, page = 1, limit = 10) => {
 
         return {
           ...formatted,
-          asset_photo,
           asset_images,
         };
       })
@@ -248,25 +230,12 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceId = async (
           assetFieldsReverseMap
         );
 
-        // Fetch asset_photo documents
-        const photoDocs = await getDocumentsByField(
-          "asset",
-          asset.asset_id,
-          "asset_photo"
-        );
-
         // Fetch asset_images documents
         const imageDocs = await getDocumentsByField(
           "asset",
           asset.asset_id,
           "asset_images"
         );
-
-        // Extract document_id and file_url for both
-        const asset_photo = photoDocs.map((doc) => ({
-          document_id: doc.document_id,
-          file_url: doc.file_url,
-        }));
 
         const asset_images = imageDocs.map((doc) => ({
           document_id: doc.document_id,
@@ -275,7 +244,6 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceId = async (
 
         return {
           ...formatted,
-          asset_photo,
           asset_images,
         };
       })
@@ -298,12 +266,6 @@ const getAssetByTenantIdAndAssetId = async (tenantId, assetId) => {
     const convertedRows = helper.convertDbToFrontend(
       asset,
       assetFieldsReverseMap
-    );
-
-    const photoDocs = await getDocumentsByField(
-      "asset",
-      asset.asset_id,
-      "asset_photo"
     );
 
     // Fetch asset_images documents
@@ -335,7 +297,7 @@ const getAssetByTenantIdAndAssetId = async (tenantId, assetId) => {
 };
 
 // Update Asset
-const updateAsset = async (assetId, data, tenant_id) => {
+const updateAsset = async (assetId, data, tenant_id,req) => {
   const fieldMap = {
     ...assetFields,
     updated_by: (val) => val,
@@ -350,18 +312,6 @@ const updateAsset = async (assetId, data, tenant_id) => {
       tenant_id
     );
 
-    if (data?.asset_photo) {
-      await updateSingleDocument2({
-        table_name: "asset",
-        table_id: assetId,
-        field_name: "asset_photo",
-        newFile: data?.asset_photo,
-        deleteOld: true,
-        created_by: data.created_by,
-        updated_by: data.updated_by,
-      });
-    }
-
     const asset_images = data.asset_images || req?.body?.asset_images || [];
 
     if(data?.asset_images){
@@ -371,7 +321,9 @@ const updateAsset = async (assetId, data, tenant_id) => {
       field_name: "asset_images",
       newFiles: asset_images,
       deletedFileIds:data.deletedFileIds,
+      created_by: data.created_by,
       updated_by: data.updated_by,
+      descriptions: data.descriptions,
     });
     }
    
