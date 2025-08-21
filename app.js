@@ -40,6 +40,8 @@ async function initializeTables() {
 }
 // initializeTables(); // Uncomment only if required on startup
 
+// require('./Query/AlterTable')
+
 // Health check route
 app.get('/test', (req, res) => {
   res.status(200).json({ status: 'OK', message: 'Successfully Running' });

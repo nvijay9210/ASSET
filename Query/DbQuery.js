@@ -9,6 +9,7 @@ const createTableQuery = {
     serial_number VARCHAR(100),
     model_number VARCHAR(100) NULL,
     asset_name VARCHAR(100) NOT NULL,
+    asset_photo VARCHAR(255) NOT NULL,
     asset_type VARCHAR(50),
     category VARCHAR(50),
     manufacturer VARCHAR(50),
