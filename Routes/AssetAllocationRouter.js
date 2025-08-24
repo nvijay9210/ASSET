@@ -75,5 +75,13 @@ router.get(
   ]),
   assetAllocationController.getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate
 );
+router.get(
+  "/getallassetandassetallocationbytenantid",
+  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
+  validateQuery([
+    "tenant_id"
+  ]),
+  assetAllocationController.getAllAssetAndAllocationsByTenantId
+);
 
 module.exports = router;

@@ -1,0 +1,34 @@
+{
+    "clientId": "asset",
+    "protocol": "openid-connect",
+    "publicClient": true,
+    "standardFlowEnabled": true,
+    "implicitFlowEnabled": false,
+    "directAccessGrantsEnabled": false,
+    "frontchannelLogout": true,
+    "rootUrl": "http://localhost:5173/smilecare",
+    "baseUrl": "/asset/",
+    "redirectUris": ["http://localhost:5173/smilecare/asset/*"],
+    "webOrigins": ["http://localhost:5173"],
+    "fullScopeAllowed": false,
+    "defaultClientScopes": ["web-origins","acr","profile","roles","basic","email","groups"],
+    "optionalClientScopes": ["address","phone","offline_access","organization","microprofile-jwt"],
+    "attributes": {
+      "pkce.code.challenge.method": "S256",
+      "use.refresh.tokens": "true"
+    },
+    "protocolMappers": [
+      {
+        "name": "audience: dental",
+        "protocol": "openid-connect",
+        "protocolMapper": "oidc-audience-mapper",
+        "consentRequired": false,
+        "config": {
+          "included.client.audience": "dental",
+          "id.token.claim": "false",
+          "access.token.claim": "true"
+        }
+      }
+    ]
+  }
+  

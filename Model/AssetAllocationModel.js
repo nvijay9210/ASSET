@@ -193,6 +193,89 @@ const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDate
     }
   };
 
+const getAllAssetAndAllocationsByTenantId =
+  async (
+    tenant_id
+  ) => {
+    const query1 = `SELECT 
+    -- asset table fields
+    a.asset_id,
+    a.tenant_id,
+    a.source_app,
+    a.reference_type,
+    a.reference_id,
+    a.asset_code,
+    a.serial_number,
+    a.model_number,
+    a.asset_name,
+    a.asset_photo,
+    a.asset_type,
+    a.category,
+    a.manufacturer,
+    a.asset_status,
+    a.asset_condition,
+    a.quantity,
+    a.price,
+    a.year_of_manufacturing,
+    a.appreciating,
+    a.depreciating,
+    a.next_service_date,
+    a.colour,
+    a.contact_name_number,
+    a.insurance_number,
+    a.insurance_provider,
+    a.insurance_end_date,
+    a.description,
+    a.allocated_to AS asset_allocated_to,
+    a.purchased_date,
+    a.purchased_by,
+    a.vendor_name,
+    a.warranty_expiry,
+    a.expired_date,
+    a.invoice_number,
+    a.location,
+    a.remarks AS asset_remarks,
+    a.created_by AS asset_created_by,
+    a.created_time AS asset_created_time,
+    a.updated_by AS asset_updated_by,
+    a.updated_time AS asset_updated_time,
+
+    -- asset_allocation table fields
+    aa.asset_allocation_id,
+    aa.asset_allocation_quantity,
+    aa.allocated_to AS allocation_allocated_to,
+    aa.allocated_by,
+    aa.allocation_date,
+    aa.expected_return_date,
+    aa.actual_return_date,
+    aa.status,
+    aa.remarks AS assetallocation_remarks,
+    aa.asset_allocation_comments,
+    aa.created_by AS allocation_created_by,
+    aa.created_time AS allocation_created_time,
+    aa.updated_by AS allocation_updated_by,
+    aa.updated_time AS allocation_updated_time
+
+FROM asset_allocation aa
+LEFT JOIN asset a 
+       ON a.asset_id = aa.asset_id
+WHERE aa.tenant_id = ?;
+`;
+    
+    const conn = await assetPool.getConnection();
+    try {
+      const [rows] = await conn.query(query1, [
+        tenant_id
+      ]);
+      return rows
+    } catch (error) {
+      console.error(error);
+      throw error
+    } finally {
+      conn.release();
+    }
+  };
+
 module.exports = {
   createAssetAllocation,
   getAllAssetAllocationsByTenantId,
@@ -201,4 +284,6 @@ module.exports = {
   updateAssetAllocation,
   deleteAssetAllocationByTenantAndAssetAllocationId,
   getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate,
+ getAllAssetAndAllocationsByTenantId
+
 };

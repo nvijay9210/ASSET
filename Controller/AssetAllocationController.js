@@ -167,3 +167,22 @@ exports.getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDa
       next(err);
     }
   };
+
+  
+exports.getAllAssetAndAllocationsByTenantId =
+  async (req, res, next) => {
+    const {
+      tenant_id
+      
+    } = req.query;
+    try {
+      const assetAllocations =
+        await assetAllocationService.getAllAssetAndAllocationsByTenantId(
+          tenant_id
+          
+        );
+      res.status(200).json(assetAllocations);
+    } catch (err) {
+      next(err);
+    }
+  };

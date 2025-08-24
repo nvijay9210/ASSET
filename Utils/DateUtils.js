@@ -132,6 +132,18 @@ function getSystemTimeOnly() {
   return now.toTimeString().split(" ")[0]; // returns 'HH:MM:SS'
 }
 
+function dateToString(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // 01-12
+  const day = String(date.getDate()).padStart(2, '0'); // 01-31
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}
+// Output: "2024-06-21"
+
 
 
 

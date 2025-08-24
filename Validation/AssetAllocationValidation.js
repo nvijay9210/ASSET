@@ -51,8 +51,8 @@ const createAssetAllocationValidation = async (details) => {
 
   // Check if asset exists and has sufficient quantity
   const asset = await getAssetByTenantAndAssetId(
-    details.asset_id,
-    details.tenant_id
+    details.tenant_id,
+    details.asset_id
   );
 
   if (!asset) {
@@ -99,8 +99,8 @@ const updateAssetAllocationValidation = async (assetId, details) => {
     Object.prototype.hasOwnProperty.call(details, "asset_id")
   ) {
     const asset = await getAssetByTenantAndAssetId(
-      details.asset_id,
-      details.tenant_id
+      details.tenant_id,
+      details.asset_id
     );
     if (!asset) {
       throw new CustomError("Asset not found", 404);

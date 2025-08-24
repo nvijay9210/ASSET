@@ -69,8 +69,8 @@ const createAssetAllocation = async (data) => {
       values
     );
     const asset = await getAssetByTenantAndAssetId(
-      data.asset_id,
-      data.tenant_id
+      data.tenant_id,
+      data.asset_id
     );
     await updateAssetQuantity(
       data.tenant_id,
@@ -177,18 +177,15 @@ const getAssetAllocationByTenantIdAndAssetAllocationId = async (
 
     const convertedRows = {
       ...assetAllocation,
-      asset_images: helper.safeJsonParse(assetAllocation.asset_images),
-      description: helper.safeJsonParse(assetAllocation.description),
-      purchased_date: formatDateOnly(assetAllocation.purchased_date),
-      expired_date: formatDateOnly(assetAllocation.expired_date),
-      warranty_expiry: formatDateOnly(assetAllocation.warranty_expiry),
-      allocation_date: formatDateOnly(assetAllocation.allocation_date),
-      expected_return_date: formatDateOnly(
+      description: assetAllocation?.description && helper.safeJsonParse(assetAllocation?.description),
+      purchased_date: assetAllocation?.purchased_date && formatDateOnly(assetAllocation.purchased_date),
+      allocation_date: assetAllocation?.allocation_date && formatDateOnly(assetAllocation.allocation_date),
+      expected_return_date: assetAllocation?.expected_return_date && formatDateOnly(
         assetAllocation.expected_return_date
       ),
-      actual_return_date: formatDateOnly(assetAllocation.actual_return_date),
-      next_service_date: formatDateOnly(assetAllocation.next_service_date),
-      insurance_end_date: formatDateOnly(assetAllocation.insurance_end_date),
+      actual_return_date: assetAllocation?.actual_return_date && formatDateOnly(assetAllocation.actual_return_date),
+      next_service_date: assetAllocation?.next_service_date && formatDateOnly(assetAllocation.next_service_date),
+      insurance_end_date: assetAllocation?.insurance_end_date && formatDateOnly(assetAllocation.insurance_end_date),
     };
 
     return convertedRows;
@@ -212,8 +209,8 @@ const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
 
     const assetAllocation =
       await getAssetAllocationByTenantIdAndAssetAllocationId(
-        assetAllocationId,
-        tenant_id
+        tenant_id,
+        assetAllocationId
       );
 
     const affectedRows = await assetModel.updateAssetAllocation(
@@ -230,13 +227,15 @@ const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
       );
     }
 
+    console.log('assetAllocation:',assetAllocation)
+
     if (
       Number(assetAllocation.asset_allocation_quantity) !==
       Number(data.asset_allocation_quantity)
     ) {
-      const asset = await getAssetByTenantAndAssetId(data.asset_id, tenant_id);
+      const asset = await getAssetByTenantAndAssetId(tenant_id,data.asset_id, );
       const newQuantity =
-        Number(asset.quantity) - Number(data.asset_allocation_quantity);
+        Number(asset.quantity)+Number(assetAllocation.asset_allocation_quantity) - Number(data.asset_allocation_quantity);
 
       await updateAssetQuantity(tenant_id, data.asset_id, newQuantity);
     }
@@ -323,6 +322,48 @@ const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDate
     }
   };
 
+const getAllAssetAndAllocationsByTenantId = async (tenant_id, asset_id) => {
+  const cacheKey = buildCacheKey("assetAllocation-assetandAllocation", "list", {
+    tenant_id,
+    asset_id: asset_id,
+  });
+  try {
+    const assets = await getOrSetCache(cacheKey, async () => {
+      const result = await assetModel.getAllAssetAndAllocationsByTenantId(
+        tenant_id
+      );
+      return result;
+    });
+
+    const convertedRows = assets.map((assetAllocation) => ({
+      ...assetAllocation,
+      next_service_date: formatDateOnly(assetAllocation.next_service_date),
+      insurance_end_date: formatDateOnly(assetAllocation.insurance_end_date),
+      purchased_date: formatDateOnly(assetAllocation.purchased_date),
+      expired_date: formatDateOnly(assetAllocation.expired_date),
+      allocation_date: formatDateOnly(assetAllocation.allocation_date),
+      expected_return_date: formatDateOnly(
+        assetAllocation.expected_return_date
+      ),
+      actual_return_date: formatDateOnly(assetAllocation.actual_return_date),
+      description:
+        assetAllocation.description &&
+        helper.safeJsonParse(assetAllocation.description),
+      remarks:
+        assetAllocation.remarks &&
+        helper.safeJsonParse(assetAllocation.remarks),
+      asset_allocation_comments:
+        assetAllocation.asset_allocation_comments &&
+        helper.safeJsonParse(assetAllocation.asset_allocation_comments),
+    }));
+
+    return convertedRows;
+  } catch (error) {
+    console.error("Database error while fetching assets:", error);
+    throw new CustomError(error, 500);
+  }
+};
+
 module.exports = {
   createAssetAllocation,
   getAllAssetAllocationsByTenantId,
@@ -331,4 +372,5 @@ module.exports = {
   updateAssetAllocation,
   deleteAssetAllocationByTenantIdAndAssetAllocationId,
   getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate,
+  getAllAssetAndAllocationsByTenantId,
 };
