@@ -1,5 +1,6 @@
 const { CustomError } = require("../Middleware/CustomeError");
 const assetModel = require("../Model/AssetAllocationModel");
+const { assetPool } = require("../config/db");
 const {
   getOrSetCache,
   invalidateCacheByPattern,
@@ -61,9 +62,11 @@ const createAssetAllocation = async (data) => {
     ...assetAllocationFields,
     created_by: (val) => val,
   };
+  const conn=await assetPool.getConnection()
   try {
     const { columns, values } = mapFields(data, fieldMap);
     const assetAllocationId = await assetModel.createAssetAllocation(
+      conn,
       "asset_allocation",
       columns,
       values
@@ -78,10 +81,15 @@ const createAssetAllocation = async (data) => {
       Number(asset.quantity - data.asset_allocation_quantity)
     );
     await invalidateCacheByPattern("assetAllocation:*");
+    conn.commit();
     return assetAllocationId;
   } catch (error) {
+    conn.rollback()
     console.error("Failed to create assetAllocation:", error);
     throw new CustomError(error, 500);
+  }
+  finally{
+    conn.release()
   }
 };
 
@@ -203,7 +211,7 @@ const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
     ...assetAllocationFields,
     updated_by: (val) => val,
   };
-
+  const conn=await assetPool.getConnection()
   try {
     const { columns, values } = mapFields(data, fieldMap);
 
@@ -214,6 +222,7 @@ const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
       );
 
     const affectedRows = await assetModel.updateAssetAllocation(
+      conn,
       assetAllocationId,
       columns,
       values,
@@ -241,10 +250,15 @@ const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
     }
 
     await invalidateCacheByPattern("assetAllocation:*");
+    conn.commit()
     return affectedRows;
   } catch (error) {
+    conn.rollback()
     console.error("Update Error:", error);
     throw new CustomError(error, 500);
+  }
+  finally{
+    conn.release()
   }
 };
 

@@ -1,4 +1,5 @@
 const { CustomError } = require("../Middleware/CustomeError");
+const { assetPool } = require("../config/db");
 const assetModel = require("../Model/AssetModel");
 const {
   getOrSetCache,
@@ -18,7 +19,6 @@ const {
 } = require("../Utils/UploadFiles");
 const { getDocumentsByField } = require("../Model/documentModel");
 const { mapFields } = require("../Query/Records");
-
 
 const assetFields = {
   tenant_id: (val) => val,
@@ -121,24 +121,36 @@ const createAsset = async (data) => {
     ...assetFields,
     created_by: (val) => val,
   };
+
+  const connection = await assetPool.getConnection();
   try {
+    await connection.beginTransaction();
     const { columns, values } = mapFields(data, fieldMap);
-    const assetId = await assetModel.createAsset("asset", columns, values);
+    const assetId = await assetModel.createAsset(
+      connection,
+      "asset",
+      columns,
+      values
+    );
 
     if (data?.asset_images) {
       await saveDocuments({
         table_name: "asset",
-      table_id: assetId,
-      field_name: "asset_images",
-      files: data.asset_images,
-      created_by: data.created_by,
+        table_id: assetId,
+        field_name: "asset_images",
+        files: data.asset_images,
+        created_by: data.created_by,
       });
     }
     await invalidateCacheByPattern("asset:*");
+    await connection.commit();
     return assetId;
   } catch (error) {
     console.error("Failed to create asset:", error);
+    connection.rollback();
     throw new CustomError(error, 500);
+  } finally {
+    connection.release();
   }
 };
 
@@ -297,7 +309,7 @@ const getAssetByTenantIdAndAssetId = async (tenantId, assetId) => {
 };
 
 // Update Asset
-const updateAsset = async (assetId, data, tenant_id,req) => {
+const updateAsset = async (assetId, data, tenant_id, req) => {
   const fieldMap = {
     ...assetFields,
     updated_by: (val) => val,
@@ -314,19 +326,18 @@ const updateAsset = async (assetId, data, tenant_id,req) => {
 
     const asset_images = data.asset_images || req?.body?.asset_images || [];
 
-    if(data?.asset_images){
-       await updateDocumentsDiffBased({
-      table_name: "asset",
-      table_id: assetId,
-      field_name: "asset_images",
-      newFiles: asset_images,
-      deletedFileIds:data.deletedFileIds,
-      created_by: data.created_by,
-      updated_by: data.updated_by,
-      descriptions: data.descriptions,
-    });
+    if (data?.asset_images) {
+      await updateDocumentsDiffBased({
+        table_name: "asset",
+        table_id: assetId,
+        field_name: "asset_images",
+        newFiles: asset_images,
+        deletedFileIds: data.deletedFileIds,
+        created_by: data.created_by,
+        updated_by: data.updated_by,
+        descriptions: data.descriptions,
+      });
     }
-   
 
     await invalidateCacheByPattern("asset:*");
     return affectedRows;

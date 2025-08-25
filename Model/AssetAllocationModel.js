@@ -5,9 +5,9 @@ const record = require("../Query/Records");
 const TABLE = "asset_allocation";
 
 // Create AssetAllocation
-const createAssetAllocation = async (table, columns, values) => {
+const createAssetAllocation = async (conn,table, columns, values) => {
   try {
-    const assetAllocation = await record.createRecord(table, columns, values);
+    const assetAllocation = await record.createRecord(table, columns, values,conn);
 
     return assetAllocation.insertId;
   } catch (error) {
@@ -118,7 +118,7 @@ const getAssetAllocationByTenantAndAssetAllocationId = async (
 };
 
 // Update assetAllocation
-const updateAssetAllocation = async (asset_allocation_id, columns, values, tenant_id) => {
+const updateAssetAllocation = async (conn,asset_allocation_id, columns, values, tenant_id) => {
   try {
     const conditionColumn = ["tenant_id", "asset_allocation_id"];
     const conditionValue = [tenant_id, asset_allocation_id];
@@ -128,7 +128,8 @@ const updateAssetAllocation = async (asset_allocation_id, columns, values, tenan
       columns,
       values,
       conditionColumn,
-      conditionValue
+      conditionValue,
+      conn
     );
   } catch (error) {
     console.error("Error updating assetAllocation:", error);

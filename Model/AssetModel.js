@@ -5,9 +5,9 @@ const record = require("../Query/Records");
 const TABLE = "asset";
 
 // Create Asset
-const createAsset = async (table, columns, values) => {
+const createAsset = async (conn,table, columns, values) => {
   try {
-    const asset = await record.createRecord(table, columns, values);
+    const asset = await record.createRecord(table, columns, values,conn);
 
     return asset.insertId;
   } catch (error) {
