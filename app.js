@@ -24,8 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/files", express.static("uploads"));
 
-// Redis connection
-redisconnect();
+//redisconnecction
+const { connect: redisConnect, closeRedis } = require('./Config/redisConfig');
 
 // Optional: initialize DB tables
 async function initializeTables() {
@@ -41,6 +41,8 @@ async function initializeTables() {
 // initializeTables(); // Uncomment only if required on startup
 
 // require('./Query/AlterTable')
+
+redisConnect().catch((err) => console.warn("Redis failed:", err.message));
 
 // Health check route
 app.get('/test', (req, res) => {

@@ -201,7 +201,7 @@ const getAllAssetsByTenantId = async (tenantId, page = 1, limit = 10) => {
 
     return { data: convertedRows, total: assets.total };
   } catch (error) {
-    console.error("Database error while fetching assets:", err);
+    console.error("Database error while fetching assets:", error);
     throw new CustomError(error, 500);
   }
 };
@@ -263,7 +263,7 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceId = async (
 
     return { data: convertedRows, total: assets.total };
   } catch (error) {
-    console.error("Database error while fetching assets:", err);
+    console.error("Database error while fetching assets:", error);
     throw new CustomError(error, 500);
   }
 };
@@ -407,7 +407,7 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate
 
       return { data: convertedRows, total: assets.total };
     } catch (error) {
-      console.error("Database error while fetching assets:", err);
+      console.error("Database error while fetching assets:", error);
       throw new CustomError(error, 500);
     }
   };
@@ -438,7 +438,7 @@ const getAllExpireAssetsByTenantIdAndReferenceTypeAndReferenceId = async (
 
     return { data: convertedRows, total: assets.total };
   } catch (error) {
-    console.error("Database error while fetching assets:", err);
+    console.error("Database error while fetching assets:", error);
     throw new CustomError(error, 500);
   }
 };
