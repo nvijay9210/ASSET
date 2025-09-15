@@ -1,0 +1,271 @@
+[INFO] 14/9/2025, 12:49:53 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 12:49:54 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 12:49:54 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[ERROR] 14/9/2025, 12:53:45 pm   - CustomError is not defined
+ReferenceError: CustomError is not defined
+    at D:\ASSET\Keycloak\AuthenticateTenantAndClient.js:130:26
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[INFO] 14/9/2025, 12:59:49 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 12:59:49 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 12:59:50 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[ERROR] 14/9/2025, 1:02:26 pm   - CustomError is not defined
+ReferenceError: CustomError is not defined
+    at D:\ASSET\Keycloak\AuthenticateTenantAndClient.js:130:26
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[INFO] 14/9/2025, 1:03:45 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 1:03:45 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 1:03:45 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[ERROR] 14/9/2025, 1:04:36 pm   - JsonWebTokenError: jwt malformed
+[ERROR] 14/9/2025, 1:05:03 pm   - JsonWebTokenError: jwt malformed
+[INFO] 14/9/2025, 1:06:56 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 1:06:57 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 1:06:57 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[ERROR] 14/9/2025, 1:07:38 pm   - JsonWebTokenError: jwt malformed
+[INFO] 14/9/2025, 1:08:46 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 1:08:46 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 1:08:46 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[INFO] 14/9/2025, 1:09:34 pm   - null dentalhub
+[ERROR] 14/9/2025, 1:09:34 pm   - JsonWebTokenError: jwt malformed
+[INFO] 14/9/2025, 1:15:26 pm   - null dentalhub
+[ERROR] 14/9/2025, 1:15:26 pm   - JsonWebTokenError: jwt malformed
+[INFO] 14/9/2025, 1:15:45 pm   - null dentalhub
+[ERROR] 14/9/2025, 1:15:45 pm   - JsonWebTokenError: jwt malformed
+[INFO] 14/9/2025, 1:17:22 pm   - null dentalhub
+[ERROR] 14/9/2025, 1:17:22 pm   - JsonWebTokenError: jwt malformed
+[INFO] 14/9/2025, 1:17:38 pm   - null dentalhub
+[ERROR] 14/9/2025, 1:17:38 pm   - JsonWebTokenError: jwt malformed
+[INFO] 14/9/2025, 1:22:51 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 1:22:51 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 1:22:51 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[ERROR] 14/9/2025, 1:24:04 pm   - JsonWebTokenError: jwt malformed
+[INFO] 14/9/2025, 1:25:59 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 1:26:00 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 1:26:00 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[INFO] 14/9/2025, 1:26:30 pm   - null
+[ERROR] 14/9/2025, 1:26:30 pm   - JsonWebTokenError: jwt malformed
+[INFO] 14/9/2025, 1:29:48 pm   - null
+[ERROR] 14/9/2025, 1:29:49 pm   - JsonWebTokenError: jwt malformed
+[INFO] 14/9/2025, 1:38:48 pm   - null
+[ERROR] 14/9/2025, 1:38:48 pm   - JsonWebTokenError: jwt malformed
+[INFO] 14/9/2025, 1:43:24 pm   - eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwbnRHNE5hV0Q5VkxHZEp4SXloSkVuZGllMXBUOXFiTEdrNEl3bmZkcTBrIn0.eyJleHAiOjE3NTc4NDA5MjUsImlhdCI6MTc1NzgzNzMyNSwiYXV0aF90aW1lIjoxNzU3ODI3MzA0LCJqdGkiOiIxYWJlNTlmMi1lMWU5LTRjNjQtYWZlMy1hMzgxODdjM2E0NjciLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2RlbnRhbGh1YiIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIyYzhjOTQ3My1kMjE5LTQ2ODYtOWJlNC04MGE0NzI2YmRiZDciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhc3NldCIsInNpZCI6ImUyZjU5Y2RkLTQxNGEtNDJhMy04MGZjLTcxNTUzYzIxYTMwYyIsImFjciI6IjAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo1MTc0Il0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImd1ZXN0Iiwic3VwZXItdXNlciIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1kZW50YWxodWIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbIm1hbmFnZS1yZWFsbSIsIm1hbmFnZS11c2VycyIsInZpZXctdXNlcnMiLCJ2aWV3LWF1dGhvcml6YXRpb24iLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctZ3JvdXBzIiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIGdyb3VwcyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiU3VwZXJVc2VyIEEiLCJncm91cHMiOlsiZGVudGFsLTItMSJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzdXBlcnVzZXItYSIsImdpdmVuX25hbWUiOiJTdXBlclVzZXIiLCJmYW1pbHlfbmFtZSI6IkEiLCJlbWFpbCI6InN1cGVydXNlcmFhQGdtYWlsLmNvbSJ9.hLmFcFRgr_8iLVv8bStgxXo5gwoI2RquFd1Rcynz7uVvtwZgSCxYOBVfGB1sIempa6IXbikF7F90BC3uCr_Lahw1LaJZyp61YmsnVzfn1ukHOdRxoY-UXPblXd15KXUchTitch6HyeZC-72SHV-NvEfxAXN1ONAcCA9HQBXBgKk2E9eCyimyazS0AGycMeO2DhRAPGncL-IJ_adExJ2JvaUyk6emkIKlM7hYGZMQGOTSg1PmKwuHj6MWkmuAEUZFdATBZATryzkdfZW5_WNgOAXMF6_grpz5Zf3q6W02qF3uorK3cneKHUwZ4WLX8cLUZUyttTadZJ8MNp0WO8K9bg
+[ERROR] 14/9/2025, 1:43:26 pm   - JsonWebTokenError: error in secret or public key callback: 
+[INFO] 14/9/2025, 1:55:14 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 1:55:15 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 1:55:15 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[INFO] 14/9/2025, 1:56:12 pm   - null dentalhub
+[ERROR] 14/9/2025, 1:56:12 pm   - JsonWebTokenError: jwt malformed
+[INFO] 14/9/2025, 2:03:20 pm   - eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwbnRHNE5hV0Q5VkxHZEp4SXloSkVuZGllMXBUOXFiTEdrNEl3bmZkcTBrIn0.eyJleHAiOjE3NTc4NDIzOTcsImlhdCI6MTc1NzgzODc5NywiYXV0aF90aW1lIjoxNzU3ODI3MzA0LCJqdGkiOiI0OTU5ZmRmYi1lODBkLTQ2YzQtYmZhYS0zZjdhYjA2YzFkZTIiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2RlbnRhbGh1YiIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIyYzhjOTQ3My1kMjE5LTQ2ODYtOWJlNC04MGE0NzI2YmRiZDciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhc3NldCIsInNpZCI6ImUyZjU5Y2RkLTQxNGEtNDJhMy04MGZjLTcxNTUzYzIxYTMwYyIsImFjciI6IjAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo1MTc0Il0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImd1ZXN0Iiwic3VwZXItdXNlciIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1kZW50YWxodWIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbIm1hbmFnZS1yZWFsbSIsIm1hbmFnZS11c2VycyIsInZpZXctdXNlcnMiLCJ2aWV3LWF1dGhvcml6YXRpb24iLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctZ3JvdXBzIiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIGdyb3VwcyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiU3VwZXJVc2VyIEEiLCJncm91cHMiOlsiZGVudGFsLTItMSJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzdXBlcnVzZXItYSIsImdpdmVuX25hbWUiOiJTdXBlclVzZXIiLCJmYW1pbHlfbmFtZSI6IkEiLCJlbWFpbCI6InN1cGVydXNlcmFhQGdtYWlsLmNvbSJ9.jq1y5L9M8vL7iPaAhQ4LbDSc4svRx1PXtJVyUWfnbTvi-_HctPkezKCda8F_iWtnJ5m2Uspm37R2tzcMDsS-k6IbcGhXdCeGcLkebW3SM4bFQ4PvlNSVC8jYvKdB2Yswi8w_EKO4871AWoa7-hKIh48ouCHPyzFGj3kQz8X41nF1CcrwNnCQxLrz030A54wuURKnfZfmddBA1OtFcux9auq4TxBhK9JETWDfJyWu82qR7eg-Pv2yBsqDzGYXdMaxFqoYNVqeQYoZjjmBELe7KBIh0KDRzTvabQ9VeukYhC-0XsqDmDsaLN-2AYAD-OAh9aXmnCvXSk1zNS-6mX9qBg dentalhub
+[ERROR] 14/9/2025, 2:03:21 pm   - JsonWebTokenError: error in secret or public key callback: 
+[INFO] 14/9/2025, 2:15:00 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 2:15:01 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 2:15:01 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[ERROR] 14/9/2025, 2:15:59 pm   - AggregateError
+[ERROR] 14/9/2025, 2:18:43 pm   - AggregateError
+[INFO] 14/9/2025, 2:21:19 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 2:21:19 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 2:21:19 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[INFO] 14/9/2025, 2:22:50 pm   - eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwbnRHNE5hV0Q5VkxHZEp4SXloSkVuZGllMXBUOXFiTEdrNEl3bmZkcTBrIn0.eyJleHAiOjE3NTc4NDM1NjcsImlhdCI6MTc1NzgzOTk2NywiYXV0aF90aW1lIjoxNzU3ODI3MzA0LCJqdGkiOiJkMzdmMDE4My1lMGQ3LTQ5MmMtOGJjMi0zNDBkM2JiMTgxNjYiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2RlbnRhbGh1YiIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIyYzhjOTQ3My1kMjE5LTQ2ODYtOWJlNC04MGE0NzI2YmRiZDciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhc3NldCIsInNpZCI6ImUyZjU5Y2RkLTQxNGEtNDJhMy04MGZjLTcxNTUzYzIxYTMwYyIsImFjciI6IjAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo1MTc0Il0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImd1ZXN0Iiwic3VwZXItdXNlciIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1kZW50YWxodWIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbIm1hbmFnZS1yZWFsbSIsIm1hbmFnZS11c2VycyIsInZpZXctdXNlcnMiLCJ2aWV3LWF1dGhvcml6YXRpb24iLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctZ3JvdXBzIiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIGdyb3VwcyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiU3VwZXJVc2VyIEEiLCJncm91cHMiOlsiZGVudGFsLTItMSJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzdXBlcnVzZXItYSIsImdpdmVuX25hbWUiOiJTdXBlclVzZXIiLCJmYW1pbHlfbmFtZSI6IkEiLCJlbWFpbCI6InN1cGVydXNlcmFhQGdtYWlsLmNvbSJ9.IHISIHK9LWq9YPSSgPHPMkRglNjl8ZZj44yonAUGQjmFzqbS0ImNrojjgjDXVGd1kX5Dwmf3aGegXuprT_9K1Zm07T_eTAk3HPKNhHhZ43wrlCfNWsWoNF3yy8ztbNf3Yn9EuZepT5BqtfbESJt-lWShGi3K5Ub01xGe_zfgVfbuxWkOTVegdG858nFSaoxq9-knlnNqahUI6upSaMv4_3EURFdMJLlfUb6cvjsLWwLlydaVxxskoyQhGTrym38LqC7Ry85yKZ_PSY12rB9Vj6mchOsqLRUWtSi3CGb1z6HUHGeo7PcVc38CCDVgnvx5Uz7bGTgLq9-y2iR1ucOiuA dentalhub
+[ERROR] 14/9/2025, 2:22:52 pm   - AggregateError
+[INFO] 14/9/2025, 3:01:44 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 3:01:45 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 3:01:45 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[WARN] 14/9/2025, 3:17:03 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 14/9/2025, 3:31:41 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 14/9/2025, 3:32:38 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 14/9/2025, 3:38:36 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 14/9/2025, 3:39:08 pm   - ⚠️ Redis unavailable – fetching directly from source
+[ERROR] 14/9/2025, 3:52:53 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[ERROR] 14/9/2025, 3:56:41 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[ERROR] 14/9/2025, 4:01:18 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[ERROR] 14/9/2025, 4:02:44 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[ERROR] 14/9/2025, 4:04:01 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[ERROR] 14/9/2025, 4:04:56 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[ERROR] 14/9/2025, 4:05:43 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[ERROR] 14/9/2025, 4:05:49 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[ERROR] 14/9/2025, 4:07:20 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[ERROR] 14/9/2025, 4:09:30 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[ERROR] 14/9/2025, 4:10:37 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[ERROR] 14/9/2025, 4:10:54 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[INFO] 14/9/2025, 4:13:09 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 4:13:10 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 4:13:10 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[INFO] 14/9/2025, 4:14:03 pm   - eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwbnRHNE5hV0Q5VkxHZEp4SXloSkVuZGllMXBUOXFiTEdrNEl3bmZkcTBrIn0.eyJleHAiOjE3NTc4NTAyMzYsImlhdCI6MTc1Nzg0NjYzNiwiYXV0aF90aW1lIjoxNzU3ODI3MzA0LCJqdGkiOiIxNTUyZWE2YS1kMTcyLTQxMDgtOGI2OS1lOTI5YzMyNTA2MGQiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2RlbnRhbGh1YiIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIyYzhjOTQ3My1kMjE5LTQ2ODYtOWJlNC04MGE0NzI2YmRiZDciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhc3NldCIsInNpZCI6ImUyZjU5Y2RkLTQxNGEtNDJhMy04MGZjLTcxNTUzYzIxYTMwYyIsImFjciI6IjAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo1MTc0Il0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImd1ZXN0Iiwic3VwZXItdXNlciIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1kZW50YWxodWIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbIm1hbmFnZS1yZWFsbSIsIm1hbmFnZS11c2VycyIsInZpZXctdXNlcnMiLCJ2aWV3LWF1dGhvcml6YXRpb24iLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctZ3JvdXBzIiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIGdyb3VwcyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiU3VwZXJVc2VyIEEiLCJncm91cHMiOlsiZGVudGFsLTItMSJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzdXBlcnVzZXItYSIsImdpdmVuX25hbWUiOiJTdXBlclVzZXIiLCJmYW1pbHlfbmFtZSI6IkEiLCJlbWFpbCI6InN1cGVydXNlcmFhQGdtYWlsLmNvbSJ9.GoH7XLEhLgkqGJDBjTmEjY2dpSAQIix4AfiZUoyzA5S7UsqHYmn3Z5gVwS-M2r66OAeCQEFv0UtNrlv2W8WfBQaiGqJqh2B63M3TaLT4YmU9Rt-a8eLLnrNgvovChVw3B3I32EGxfvZJ6ooeOhL3yWApdYHz9G06oEeTIauCZfTAhKeL3mn6QdstqJX4ql0MejdybRcquV7xb7CHf_aDPMmJHxm5TvO_Bwl4FvmJ47bCKA7jjaTWow0w8KzFX91htETnLQr1kXxBb-5nYNV2FsYhDcfDdLtPLkD-13CiYV9C47ZmvJUDEv0sZwCWQZh_hLXhkktS46eilRv4VLMWQA dental
+[ERROR] 14/9/2025, 4:14:06 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[INFO] 14/9/2025, 4:15:43 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 4:15:44 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 4:15:44 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[INFO] 14/9/2025, 4:16:55 pm   - eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwbnRHNE5hV0Q5VkxHZEp4SXloSkVuZGllMXBUOXFiTEdrNEl3bmZkcTBrIn0.eyJleHAiOjE3NTc4NTA0MDgsImlhdCI6MTc1Nzg0NjgwOCwiYXV0aF90aW1lIjoxNzU3ODI3MzA0LCJqdGkiOiI1MzMxMzRlZi0wMTU5LTRhNDgtOWZkYS02MjlkMTFkMDg5Y2IiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2RlbnRhbGh1YiIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIyYzhjOTQ3My1kMjE5LTQ2ODYtOWJlNC04MGE0NzI2YmRiZDciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhc3NldCIsInNpZCI6ImUyZjU5Y2RkLTQxNGEtNDJhMy04MGZjLTcxNTUzYzIxYTMwYyIsImFjciI6IjAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo1MTc0Il0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImd1ZXN0Iiwic3VwZXItdXNlciIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1kZW50YWxodWIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbIm1hbmFnZS1yZWFsbSIsIm1hbmFnZS11c2VycyIsInZpZXctdXNlcnMiLCJ2aWV3LWF1dGhvcml6YXRpb24iLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctZ3JvdXBzIiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIGdyb3VwcyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiU3VwZXJVc2VyIEEiLCJncm91cHMiOlsiZGVudGFsLTItMSJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzdXBlcnVzZXItYSIsImdpdmVuX25hbWUiOiJTdXBlclVzZXIiLCJmYW1pbHlfbmFtZSI6IkEiLCJlbWFpbCI6InN1cGVydXNlcmFhQGdtYWlsLmNvbSJ9.DO6yzzQbPjJCqTDqY_NIKY6h1UeAbXx_DshIo9BgXwSR0wc4pAS0QgF-gWkN5Y5dCPU31k7ImP-Xm7uef6DfpaPo0jYR5qYgwk5sCmFh0-UPeYtmMVfDAMnd95zHJGOi7tjXuF704FTeuaZTLJlIm4rw_F4lVFqlp78w-_LqiDyTlbq8R7EGE-NGv5GDGVNkyJ5VMAGr0Vijar2wXQ3R1TSQYy16qy9YQonU_QcBrc8nUx6JPoN63eC_6Izivz-fXYnF3FYRB9lcfIqOjDuO49hNbzm1Sxjm-c7Sr9mpe5uqjgjy2eBylrR3RN1MdF-lOGGgdX40acecS2fPL1o2Zg dental
+[ERROR] 14/9/2025, 4:16:55 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[INFO] 14/9/2025, 4:21:22 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 4:21:23 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 4:21:23 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[INFO] 14/9/2025, 4:22:16 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 4:22:17 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 4:22:17 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[INFO] 14/9/2025, 4:23:14 pm   - eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwbnRHNE5hV0Q5VkxHZEp4SXloSkVuZGllMXBUOXFiTEdrNEl3bmZkcTBrIn0.eyJleHAiOjE3NTc4NTA3ODgsImlhdCI6MTc1Nzg0NzE4OCwiYXV0aF90aW1lIjoxNzU3ODI3MzA0LCJqdGkiOiI4ZDJlZjVkOS1hNTliLTQ4ODktOGJlNi1lMDhiNDhhZjc0ODkiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2RlbnRhbGh1YiIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIyYzhjOTQ3My1kMjE5LTQ2ODYtOWJlNC04MGE0NzI2YmRiZDciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhc3NldCIsInNpZCI6ImUyZjU5Y2RkLTQxNGEtNDJhMy04MGZjLTcxNTUzYzIxYTMwYyIsImFjciI6IjAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo1MTc0Il0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImd1ZXN0Iiwic3VwZXItdXNlciIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1kZW50YWxodWIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbIm1hbmFnZS1yZWFsbSIsIm1hbmFnZS11c2VycyIsInZpZXctdXNlcnMiLCJ2aWV3LWF1dGhvcml6YXRpb24iLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctZ3JvdXBzIiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIGdyb3VwcyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiU3VwZXJVc2VyIEEiLCJncm91cHMiOlsiZGVudGFsLTItMSJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzdXBlcnVzZXItYSIsImdpdmVuX25hbWUiOiJTdXBlclVzZXIiLCJmYW1pbHlfbmFtZSI6IkEiLCJlbWFpbCI6InN1cGVydXNlcmFhQGdtYWlsLmNvbSJ9.enLRU_sz9JHXPcxh5xxK36rIRYOvblRxa4tfe26ih3ez4GOtKln5ee3kCbnqel9hhiyHx85VHrduuZb5NyA6MVX7bmziSniH33sOs39mlW8nEBIlnwQST4LMnijNvkAetSAZAESE_264ekUFuN7OwVupKsYhdJJxtFfYF8rVSoMagjTBsWo0YymikbHOm3mOp5tGCrx_4Ku0RGrzGt7D2DznOxxJtRUIqm3tsDGr4ISmvcUAiBJA8Bk-N0vZLg29R7Fb77TIyOdunuG8CIC3L49UsLzvTeRr1D6azHFGJEnjFoJF0z8DdlfW9y2-ZKoLysD24raPPax9HpFoDzWcqA asset
+[ERROR] 14/9/2025, 4:23:16 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[INFO] 14/9/2025, 4:24:01 pm   - eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwbnRHNE5hV0Q5VkxHZEp4SXloSkVuZGllMXBUOXFiTEdrNEl3bmZkcTBrIn0.eyJleHAiOjE3NTc4NTA4MzcsImlhdCI6MTc1Nzg0NzIzNywiYXV0aF90aW1lIjoxNzU3ODI3MzA0LCJqdGkiOiJhYTFjMmZjOC0wMzY1LTRlZTktOTczYi04MDNiNTgyZDU5NzgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2RlbnRhbGh1YiIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIyYzhjOTQ3My1kMjE5LTQ2ODYtOWJlNC04MGE0NzI2YmRiZDciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhc3NldCIsInNpZCI6ImUyZjU5Y2RkLTQxNGEtNDJhMy04MGZjLTcxNTUzYzIxYTMwYyIsImFjciI6IjAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo1MTc0Il0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImd1ZXN0Iiwic3VwZXItdXNlciIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1kZW50YWxodWIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbIm1hbmFnZS1yZWFsbSIsIm1hbmFnZS11c2VycyIsInZpZXctdXNlcnMiLCJ2aWV3LWF1dGhvcml6YXRpb24iLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctZ3JvdXBzIiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIGdyb3VwcyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiU3VwZXJVc2VyIEEiLCJncm91cHMiOlsiZGVudGFsLTItMSJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzdXBlcnVzZXItYSIsImdpdmVuX25hbWUiOiJTdXBlclVzZXIiLCJmYW1pbHlfbmFtZSI6IkEiLCJlbWFpbCI6InN1cGVydXNlcmFhQGdtYWlsLmNvbSJ9.KjOQtzFMKwIKvg7d3_f1BF423T1OS-cAAJF35PJdKp7c6dh-hAgPf2_OvPHK8X8SLkUpc96Om_tJQMJXZzxnh3811ehkoihYIM8n3jumpX0ZYYnz0xOgriMUlhyM5dRwEjYAeJrjhBgxN79d-NofV0tnGySn3jn0TfSgIsXcZhWhSULRBeFjT72ndFAHzIJbO6hY3F3SXN2YxBTa-bxd1nd88VzgowYSuSOcrwSiRnl-1JEBQA2loN_MGMvOxHpOmMSsxgda38GXYmAKvaJUMPqgVmImuzF4tOoGOC6Kpapdzu9l-K4RBZ_JM-OIfYdPLwBqX2YvjiHf-AYB1yTm9g asset
+[ERROR] 14/9/2025, 4:24:01 pm   - Authentication Error: Not Found
+JwksError: Not Found
+    at JwksClient.getKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:48:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async JwksClient.getSigningKeys (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:53:18)
+    at async JwksClient.getSigningKey (D:\ASSET\node_modules\jwks-rsa\src\JwksClient.js:71:18)
+[INFO] 14/9/2025, 4:26:25 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 4:26:27 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 4:26:27 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[INFO] 14/9/2025, 4:26:43 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 4:26:44 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 4:26:44 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[INFO] 14/9/2025, 4:27:30 pm   - eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwbnRHNE5hV0Q5VkxHZEp4SXloSkVuZGllMXBUOXFiTEdrNEl3bmZkcTBrIn0.eyJleHAiOjE3NTc4NTEwNDcsImlhdCI6MTc1Nzg0NzQ0NywiYXV0aF90aW1lIjoxNzU3ODI3MzA0LCJqdGkiOiJlMDhjYjhkZC0xMzRjLTRjNjAtYTk1OS05MWJmMDU3NjJhZDEiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2RlbnRhbGh1YiIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIyYzhjOTQ3My1kMjE5LTQ2ODYtOWJlNC04MGE0NzI2YmRiZDciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhc3NldCIsInNpZCI6ImUyZjU5Y2RkLTQxNGEtNDJhMy04MGZjLTcxNTUzYzIxYTMwYyIsImFjciI6IjAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo1MTc0Il0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImd1ZXN0Iiwic3VwZXItdXNlciIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1kZW50YWxodWIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbIm1hbmFnZS1yZWFsbSIsIm1hbmFnZS11c2VycyIsInZpZXctdXNlcnMiLCJ2aWV3LWF1dGhvcml6YXRpb24iLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctZ3JvdXBzIiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIGdyb3VwcyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiU3VwZXJVc2VyIEEiLCJncm91cHMiOlsiZGVudGFsLTItMSJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzdXBlcnVzZXItYSIsImdpdmVuX25hbWUiOiJTdXBlclVzZXIiLCJmYW1pbHlfbmFtZSI6IkEiLCJlbWFpbCI6InN1cGVydXNlcmFhQGdtYWlsLmNvbSJ9.QytVPegJOZRy-yoMsi5urD5ygJTi-wObj32s593KItqrSWJ7kQOKRM9u0hWTXKwKd3NLLWpXISpBvS0lZdNz7eErh4LjFUQPkuI80iLpMV6aeuLO4dZ-OUHvEPca5l0o9aIOmg_rATANZX7mNnWdq4UpbfBQ3_BsHqcRJSkc17lmbGUXMmOgvwzEQTdbZCFSYXVFfHeXrI2UKn6Ce0UeuMDiEsJDUVIYRwu1OMuKxYQacWH4rAdAFO_JPM0tqecBu5sAnR6vPZWcN_XN9asl1DipivzlUH02dHvqfADwAHbpgrLMYWdd1jAF892Grr4gvRMMlqJBn6ADIdxjVNS80g dentalhub
+[WARN] 14/9/2025, 4:27:32 pm   - ⚠️ Redis unavailable – fetching directly from source
+[INFO] 14/9/2025, 4:27:52 pm   - eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwbnRHNE5hV0Q5VkxHZEp4SXloSkVuZGllMXBUOXFiTEdrNEl3bmZkcTBrIn0.eyJleHAiOjE3NTc4NTEwNzIsImlhdCI6MTc1Nzg0NzQ3MiwiYXV0aF90aW1lIjoxNzU3ODI3MzA0LCJqdGkiOiI3OTcwNmRiMy1kMDdiLTRjMGEtOGJjZS00M2RlY2Y1NWNlYmMiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2RlbnRhbGh1YiIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIyYzhjOTQ3My1kMjE5LTQ2ODYtOWJlNC04MGE0NzI2YmRiZDciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhc3NldCIsInNpZCI6ImUyZjU5Y2RkLTQxNGEtNDJhMy04MGZjLTcxNTUzYzIxYTMwYyIsImFjciI6IjAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo1MTc0Il0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImd1ZXN0Iiwic3VwZXItdXNlciIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1kZW50YWxodWIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbIm1hbmFnZS1yZWFsbSIsIm1hbmFnZS11c2VycyIsInZpZXctdXNlcnMiLCJ2aWV3LWF1dGhvcml6YXRpb24iLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctZ3JvdXBzIiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIGdyb3VwcyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiU3VwZXJVc2VyIEEiLCJncm91cHMiOlsiZGVudGFsLTItMSJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzdXBlcnVzZXItYSIsImdpdmVuX25hbWUiOiJTdXBlclVzZXIiLCJmYW1pbHlfbmFtZSI6IkEiLCJlbWFpbCI6InN1cGVydXNlcmFhQGdtYWlsLmNvbSJ9.fjOkIc-U--HLtHbTVWIHD7iIb1WNOAHWonbsvbsmq3Nj65RrBTfhAvDq_b7QQy27KJ-2zGftWq5_RhmMdcM2UjVBi2gjHDjsmm5cm2LOXThguyuwt4gP5bM_B2FXGFWTITHMOyu4i1iSHqCAVLxoUOQMZXTzG_27mq7vcwaDd4rZ1VkqachSKE5qoY9OP9wgPd9jXaG_HPDrNujvCoMPKi-MZwyEo35WL758ZEiuvjLCx1XveYbYA-5pBZz9_9svNJU1pbzX_p3n6WzsoGaaz6kjfVyLwJQdN4u9D72JFPqQ2vLRsfsGj-2vu5N4x473YVl6lkDHv_QHOb_WHsJbCw dentalhub
+[WARN] 14/9/2025, 4:27:53 pm   - ⚠️ Redis unavailable – fetching directly from source
+[INFO] 14/9/2025, 4:34:57 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 4:34:58 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 4:34:58 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[WARN] 14/9/2025, 4:35:27 pm   - ⚠️ x-realm header (dental) does not match token realm (dentalhub). Using token realm.
+[WARN] 14/9/2025, 4:35:28 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 14/9/2025, 4:35:56 pm   - ⚠️ x-realm header (dental) does not match token realm (dentalhub). Using token realm.
+[WARN] 14/9/2025, 4:35:57 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 14/9/2025, 4:36:12 pm   - ⚠️ x-realm header (dental) does not match token realm (dentalhub). Using token realm.
+[WARN] 14/9/2025, 4:36:12 pm   - ⚠️ Redis unavailable – fetching directly from source
+[INFO] 14/9/2025, 4:37:15 pm   - create
+[WARN] 14/9/2025, 4:37:15 pm   - No mapping found for folderName: Asset
+[INFO] 14/9/2025, 4:37:16 pm   - create
+[INFO] 14/9/2025, 4:37:16 pm   - files: []
+[INFO] 14/9/2025, 4:37:16 pm   - {
+  "asset_name": "Chairs",
+  "asset_type": "Dental Chair",
+  "category": "Wood",
+  "model_number": "HERO",
+  "tenant_id": "2",
+  "source_app": "dental",
+  "reference_type": "clinic",
+  "reference_id": "1",
+  "purchased_by": "Doctor",
+  "quantity": "1",
+  "price": "500",
+  "purchased_date": "2025-09-10",
+  "year_of_manufacturing": "2018",
+  "expired_date": "2030-05-21",
+  "next_service_date": "2025-09-25",
+  "insurance_end_date": "2025-09-30",
+  "asset_status": "Available",
+  "appreciating": "true",
+  "depreciating": "true",
+  "created_by": "Ajay",
+  "asset_photo": [
+    "uploads/tenant_2/Asset/photo/tooth-1670434_1280_1757848036011_6412.png"
+  ],
+  "asset_images": []
+}
+[WARN] 14/9/2025, 4:37:16 pm   - 🚫 Redis disconnected – skip invalidation
+[WARN] 14/9/2025, 4:37:17 pm   - ⚠️ x-realm header (dental) does not match token realm (dentalhub). Using token realm.
+[WARN] 14/9/2025, 4:37:18 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 14/9/2025, 4:37:49 pm   - ⚠️ x-realm header (dental) does not match token realm (dentalhub). Using token realm.
+[WARN] 14/9/2025, 4:37:49 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 14/9/2025, 4:41:40 pm   - ⚠️ x-realm header (dental) does not match token realm (dentalhub). Using token realm.
+[WARN] 14/9/2025, 4:41:40 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 14/9/2025, 4:42:19 pm   - ⚠️ x-realm header (dental) does not match token realm (dentalhub). Using token realm.
+[WARN] 14/9/2025, 4:42:19 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 14/9/2025, 4:45:52 pm   - ⚠️ x-realm header (dental) does not match token realm (dentalhub). Using token realm.
+[WARN] 14/9/2025, 4:45:58 pm   - ⚠️ Redis unavailable – fetching directly from source
+[INFO] 14/9/2025, 4:47:08 pm   - create
+[INFO] 14/9/2025, 4:47:08 pm   - create
+[INFO] 14/9/2025, 4:47:08 pm   - files: []
+[INFO] 14/9/2025, 4:47:08 pm   - asset 14 asset_images [] [] Ajay ajay []
+[WARN] 14/9/2025, 4:47:08 pm   - 🚫 Redis disconnected – skip invalidation
+[WARN] 14/9/2025, 4:47:09 pm   - ⚠️ x-realm header (dental) does not match token realm (dentalhub). Using token realm.
+[WARN] 14/9/2025, 4:47:09 pm   - ⚠️ Redis unavailable – fetching directly from source
+[INFO] 14/9/2025, 4:47:29 pm   - create
+[INFO] 14/9/2025, 4:47:29 pm   - create
+[INFO] 14/9/2025, 4:47:29 pm   - files: []
+[INFO] 14/9/2025, 4:47:29 pm   - asset 14 asset_images [] [] Ajay ajay []
+[WARN] 14/9/2025, 4:47:29 pm   - 🚫 Redis disconnected – skip invalidation
+[WARN] 14/9/2025, 4:47:30 pm   - ⚠️ x-realm header (dental) does not match token realm (dentalhub). Using token realm.
+[WARN] 14/9/2025, 4:47:30 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 14/9/2025, 4:47:56 pm   - ⚠️ x-realm header (dental) does not match token realm (dentalhub). Using token realm.
+[WARN] 14/9/2025, 4:47:56 pm   - 🚫 Redis disconnected – skip invalidation
+[WARN] 14/9/2025, 4:49:00 pm   - ⚠️ x-realm header (dental) does not match token realm (dentalhub). Using token realm.
+[WARN] 14/9/2025, 4:49:00 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 14/9/2025, 4:49:11 pm   - ⚠️ x-realm header (dental) does not match token realm (dentalhub). Using token realm.
+[WARN] 14/9/2025, 4:49:11 pm   - ⚠️ Redis unavailable – fetching directly from source
+[INFO] 14/9/2025, 5:10:35 pm   - 🚀 Server running on port 8005
+[ERROR] 14/9/2025, 5:10:36 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[ERROR] 14/9/2025, 5:10:36 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
