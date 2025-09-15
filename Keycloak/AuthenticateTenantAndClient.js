@@ -81,6 +81,10 @@ function authenticateTenantClinicGroup(requiredRoles = []) {
       // ✅ Optional: Allow override via x-realm header (for testing/debugging)
       if (headerRealm && headerRealm !== realm) {
         console.warn(`⚠️ x-realm header (${headerRealm}) does not match token realm (${realm}). Using token realm.`);
+         return res.status(401).json({
+          message: `Access denied: realm '${extractedRealm}' not allowed.`,
+          allowedRealms: ALLOWED_REALMS,
+        });
       }
 
       // ✅ STEP 5: Fetch public key and verify token
