@@ -51,7 +51,7 @@ const assetFileMiddleware = uploadFileMiddleware({
 // Create Asset
 router.post(
   "/createasset",
-  authenticateTenantClinicGroup(["tenant", "dentist", "super-user"]),
+  authenticateTenantClinicGroup(["tenant", "dentist", "superuser"]),
   upload.any(), // Use multer to handle file uploads
   assetPhotoFileMiddleware,
   assetFileMiddleware, // Call the file upload middleware
@@ -64,7 +64,7 @@ router.get(
   authenticateTenantClinicGroup([
     "tenant",
     "dentist",
-    "super-user",
+    "superuser",
     "receptionist",
   ]),
   validateQuery(["tenant_id"]),
@@ -77,7 +77,7 @@ router.get(
   authenticateTenantClinicGroup([
     "tenant",
     "dentist",
-    "super-user",
+    "superuser",
     "receptionist",
   ]),
   validateQuery(["tenant_id", "reference_type", "reference_id"]),
@@ -90,7 +90,7 @@ router.get(
   authenticateTenantClinicGroup([
     "tenant",
     "dentist",
-    "super-user",
+    "superuser",
     "receptionist",
   ]),
   validateParams(["asset_id", "tenant_id"]),
@@ -100,7 +100,7 @@ router.get(
 // Update Asset
 router.put(
   "/updateasset/:asset_id/:tenant_id",
-  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
+  authenticateTenantClinicGroup(["tenant", "dentist", "superuser", "receptionist"]),
   validateParams(["asset_id", "tenant_id"]),
   upload.any(), // Use multer to handle file uploads
   assetPhotoFileMiddleware,
@@ -114,7 +114,7 @@ router.delete(
   authenticateTenantClinicGroup([
     "tenant",
     "dentist",
-    "super-user",
+    "superuser",
     "receptionist",
   ]),
   validateParams(["asset_id", "tenant_id"]),
@@ -127,7 +127,7 @@ router.get(
   authenticateTenantClinicGroup([
     "tenant",
     "dentist",
-    "super-user",
+    "superuser",
     "receptionist",
   ]),
   validateQuery([
@@ -144,7 +144,7 @@ router.get(
   authenticateTenantClinicGroup([
     "tenant",
     "dentist",
-    "super-user",
+    "superuser",
     "receptionist",
   ]),
   validateQuery([

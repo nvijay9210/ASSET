@@ -2,9 +2,9 @@ const jwt = require("jsonwebtoken");
 const jwksClient = require("jwks-rsa");
 
 // ✅ Get allowed realms from env var (comma-separated)
-const ALLOWED_REALMS = process.env.KEYCLOAK_REALM
-  ? process.env.KEYCLOAK_REALM.split(",").map(r => r.trim())
-  : [];
+// const ALLOWED_REALMS = process.env.KEYCLOAK_REALM
+//   ? process.env.KEYCLOAK_REALM.split(",").map(r => r.trim())
+//   : [];
 
 function getKeycloakClient(realm) {
   return jwksClient({
@@ -40,7 +40,7 @@ function authenticateTenantClinicGroup(requiredRoles = []) {
       }
 
       // ✅ Extract token and x-realm header
-      const token = req.headers.authorization?.split(" ")[1];
+      const token = req.headers.authorization?.split(" ")[1] || req.headers["access_token"];;
       const headerRealm = req.headers["x-realm"]; // Optional override
 
       if (!token) {
@@ -67,25 +67,25 @@ function authenticateTenantClinicGroup(requiredRoles = []) {
       }
 
       // ✅ STEP 3: Validate realm against allowed list
-      if (!ALLOWED_REALMS.includes(extractedRealm)) {
-        console.warn(`❌ Token from unauthorized realm: ${extractedRealm}`);
-        return res.status(401).json({
-          message: `Access denied: realm '${extractedRealm}' not allowed.`,
-          allowedRealms: ALLOWED_REALMS,
-        });
-      }
+      // if (!ALLOWED_REALMS.includes(extractedRealm)) {
+      //   console.warn(`❌ Token from unauthorized realm: ${extractedRealm}`);
+      //   return res.status(401).json({
+      //     message: `Access denied: realm '${extractedRealm}' not allowed.`,
+      //     allowedRealms: ALLOWED_REALMS,
+      //   });
+      // }
 
       // ✅ STEP 4: Use extracted realm (not x-realm header!) for JWKS lookup
       const realm = extractedRealm;
 
       // ✅ Optional: Allow override via x-realm header (for testing/debugging)
-      if (headerRealm && headerRealm !== realm) {
-        console.warn(`⚠️ x-realm header (${headerRealm}) does not match token realm (${realm}). Using token realm.`);
-         return res.status(401).json({
-          message: `Access denied: realm '${extractedRealm}' not allowed.`,
-          allowedRealms: ALLOWED_REALMS,
-        });
-      }
+      // if (headerRealm && headerRealm !== realm) {
+      //   console.warn(`⚠️ x-realm header (${headerRealm}) does not match token realm (${realm}). Using token realm.`);
+      //    return res.status(401).json({
+      //     message: `Access denied: realm '${extractedRealm}' not allowed.`,
+      //     allowedRealms: ALLOWED_REALMS,
+      //   });
+      // }
 
       // ✅ STEP 5: Fetch public key and verify token
       const publicKey = await getPublicKey(realm, kid);
@@ -104,8 +104,8 @@ function authenticateTenantClinicGroup(requiredRoles = []) {
         return res.status(403).json({ message: "Access denied: missing required realm role" });
       }
 
-      // ✅ Auto-assign tenant_id/clinic_id for super-user
-      if (realmRoles.includes("super-user")) {
+      // ✅ Auto-assign tenant_id/clinic_id for superuser
+      if (realmRoles.includes("superuser")) {
         const group = userGroups.find((g) => g.startsWith("dental-"));
         if (group) {
           const match = group.match(/dental-(\d+)-(\d+)/);

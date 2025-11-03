@@ -269,3 +269,40 @@ JwksError: Not Found
 [INFO] 14/9/2025, 5:10:35 pm   - 🚀 Server running on port 8005
 [ERROR] 14/9/2025, 5:10:36 pm   - ❌ Redis is not connected. Feature performance may be degraded.
 [ERROR] 14/9/2025, 5:10:36 pm   - 💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.
+[INFO] 3/11/2025, 7:55:05 pm   - 🚀 Server running on port 8005
+[WARN] 3/11/2025, 7:55:07 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[INFO] 3/11/2025, 7:55:07 pm   - 💡 Tip: Run 'npm run start-redis-asset' if not running.
+[INFO] 3/11/2025, 8:00:30 pm   - 🚀 Server running on port 8005
+[WARN] 3/11/2025, 8:00:30 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[INFO] 3/11/2025, 8:00:30 pm   - 💡 Tip: Run 'npm run start-redis-asset' if not running.
+[WARN] 3/11/2025, 8:03:41 pm   - ⚠️ x-realm header (mydentist) != token realm (dentalhub)
+[INFO] 3/11/2025, 8:12:44 pm   - 🚀 Server running on port 8005
+[WARN] 3/11/2025, 8:12:46 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[INFO] 3/11/2025, 8:12:46 pm   - 💡 Tip: Run 'npm run start-redis-asset' if not running.
+[WARN] 3/11/2025, 8:18:23 pm   - ⚠️ x-realm header (mydentist) does not match token realm (dentalhub). Using token realm.
+[WARN] 3/11/2025, 8:19:21 pm   - ⚠️ x-realm header (mydentist) does not match token realm (dentalhub). Using token realm.
+[WARN] 3/11/2025, 8:23:57 pm   - ⚠️ x-realm header (mydentist) does not match token realm (dentalhub). Using token realm.
+[WARN] 3/11/2025, 8:26:17 pm   - ⚠️ x-realm header (mydentist) does not match token realm (dentalhub). Using token realm.
+[WARN] 3/11/2025, 8:28:50 pm   - ⚠️ x-realm header (mydentist) does not match token realm (dentalhub). Using token realm.
+[WARN] 3/11/2025, 8:29:40 pm   - ⚠️ x-realm header (mydentist) does not match token realm (dentalhub). Using token realm.
+[WARN] 3/11/2025, 8:33:40 pm   - ⚠️ x-realm header (mydentist) does not match token realm (dentalhub). Using token realm.
+[INFO] 3/11/2025, 8:42:51 pm   - 🚀 Server running on port 8005
+[WARN] 3/11/2025, 8:42:52 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[INFO] 3/11/2025, 8:42:52 pm   - 💡 Tip: Run 'npm run start-redis-asset' if not running.
+[WARN] 3/11/2025, 8:43:42 pm   - ⚠️ x-realm header (mydentist) does not match token realm (dentalhub). Using token realm.
+[INFO] 3/11/2025, 8:44:51 pm   - 🚀 Server running on port 8005
+[WARN] 3/11/2025, 8:44:52 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[INFO] 3/11/2025, 8:44:52 pm   - 💡 Tip: Run 'npm run start-redis-asset' if not running.
+[INFO] 3/11/2025, 8:45:07 pm   - 🚀 Server running on port 8005
+[WARN] 3/11/2025, 8:45:07 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[INFO] 3/11/2025, 8:45:07 pm   - 💡 Tip: Run 'npm run start-redis-asset' if not running.
+[INFO] 3/11/2025, 8:46:57 pm   - 🚀 Server running on port 8005
+[WARN] 3/11/2025, 8:46:57 pm   - ❌ Redis is not connected. Feature performance may be degraded.
+[INFO] 3/11/2025, 8:46:57 pm   - 💡 Tip: Run 'npm run start-redis-asset' if not running.
+[WARN] 3/11/2025, 8:47:21 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 3/11/2025, 8:52:40 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 3/11/2025, 8:54:31 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 3/11/2025, 8:59:16 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 3/11/2025, 9:02:14 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 3/11/2025, 10:19:14 pm   - ⚠️ Redis unavailable – fetching directly from source
+[WARN] 3/11/2025, 10:19:36 pm   - ⚠️ Redis unavailable – fetching directly from source

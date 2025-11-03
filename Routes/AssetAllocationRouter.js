@@ -18,14 +18,14 @@ const {
 // Create Asset Allocation
 router.post(
   "/addassetallocation",
-  authenticateTenantClinicGroup(["tenant", "dentist", "super-user"]),
+  authenticateTenantClinicGroup(["tenant", "dentist", "superuser"]),
   assetAllocationController.createAssetAllocation
 );
 
 // Get All Allocations by Tenant
 router.get(
   "/getallassetallocations",
-  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
+  authenticateTenantClinicGroup(["tenant", "dentist", "superuser", "receptionist"]),
   validateQuery(["tenant_id"]),
   assetAllocationController.getAllAssetAllocationsByTenantId
 );
@@ -33,7 +33,7 @@ router.get(
 // Get Allocations by Reference
 router.get(
   "/getallassetallocationsbyreference",
-  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
+  authenticateTenantClinicGroup(["tenant", "dentist", "superuser", "receptionist"]),
   validateQuery(["tenant_id", "reference_type", "reference_id"]),
   assetAllocationController.getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId
 );
@@ -41,7 +41,7 @@ router.get(
 // Get Allocation by ID
 router.get(
   "/getassetallocationbytenant/:assetAllocation_id/:tenant_id",
-  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
+  authenticateTenantClinicGroup(["tenant", "dentist", "superuser", "receptionist"]),
   validateParams(["assetAllocation_id", "tenant_id"]),
   assetAllocationController.getAssetAllocationByTenantIdAndAssetAllocationId
 );
@@ -49,7 +49,7 @@ router.get(
 // Update Allocation
 router.put(
   "/updateassetallocation/:assetAllocation_id/:tenant_id",
-  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
+  authenticateTenantClinicGroup(["tenant", "dentist", "superuser", "receptionist"]),
   validateParams(["assetAllocation_id", "tenant_id"]),
   assetAllocationController.updateAssetAllocation
 );
@@ -57,7 +57,7 @@ router.put(
 // Delete Allocation
 router.delete(
   "/deleteassetallocation/:assetAllocation_id/:tenant_id",
-  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
+  authenticateTenantClinicGroup(["tenant", "dentist", "superuser", "receptionist"]),
   validateParams(["assetAllocation_id", "tenant_id"]),
   assetAllocationController.deleteAssetAllocationByTenantIdAndAssetAllocationId
 );
@@ -65,7 +65,7 @@ router.delete(
 // Report by Date + Reference
 router.get(
   "/getallassetallocationsreportbyreference",
-  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
+  authenticateTenantClinicGroup(["tenant", "dentist", "superuser", "receptionist"]),
   validateQuery([
     "tenant_id",
     "reference_type",
@@ -77,7 +77,7 @@ router.get(
 );
 router.get(
   "/getallassetandassetallocationbytenantid",
-  authenticateTenantClinicGroup(["tenant", "dentist", "super-user", "receptionist"]),
+  authenticateTenantClinicGroup(["tenant", "dentist", "superuser", "receptionist"]),
   validateQuery([
     "tenant_id"
   ]),
