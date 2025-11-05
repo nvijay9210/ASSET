@@ -1,4 +1,4 @@
-const {assetPool} = require("../config/db");
+const {assetPool} = require("../Config/db");
 /**
  * Safely renames a column only if old column exists and new column doesn't.
  */

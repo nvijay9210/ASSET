@@ -1,4 +1,4 @@
-const {assetPool} = require("../config/db");
+const {assetPool} = require("../Config/db");
 const { CustomError } = require("../Middleware/CustomeError");
 const record = require("../Query/Records");
 

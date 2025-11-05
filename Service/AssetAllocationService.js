@@ -1,6 +1,6 @@
 const { CustomError } = require("../Middleware/CustomeError");
 const assetModel = require("../Model/AssetAllocationModel");
-const { assetPool } = require("../config/db");
+const { assetPool } = require("../Config/db");
 const {
   getOrSetCache,
   invalidateCacheByPattern,

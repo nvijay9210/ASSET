@@ -1,4 +1,4 @@
-const {assetPool} = require('../config/db');
+const {assetPool} = require('../Config/db');
 
 const {
   redisClient,

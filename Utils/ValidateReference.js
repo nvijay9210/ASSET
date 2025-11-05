@@ -1,4 +1,4 @@
-const { dentalPool, goldloanPool } = require('../config/db');
+const { dentalPool, goldloanPool } = require('../Config/db');
 
 const dentalTableMap = {
   clinic: 'clinic',

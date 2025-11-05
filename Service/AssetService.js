@@ -1,5 +1,5 @@
 const { CustomError } = require("../Middleware/CustomeError");
-const { assetPool } = require("../config/db");
+const { assetPool } = require("../Config/db");
 const assetModel = require("../Model/AssetModel");
 const {
   getOrSetCache,
