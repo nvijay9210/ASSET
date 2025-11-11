@@ -4,6 +4,7 @@ const {  writeLog } = require("../logs/logger");
 require("dotenv").config();
 
 // 🔐 Config
+const REDIS_ENABLED = process.env.REDIS_ENABLED === "true"; // ✅ Control flag
 const REDIS_HOST = process.env.REDIS_HOST || "127.0.0.1";
 const REDIS_PORT = parseInt(process.env.REDIS_PORT) || 6379;
 const REDIS_PASSWORD = process.env.REDIS_PASSWORD;
@@ -35,7 +36,7 @@ const createRedisClient = () => {
     if (!hasLoggedError) {
       writeLog("warn", "❌ Redis is not connected. Feature performance may be degraded.");
       // writeLog("info", "💡 Tip: Run 'redis-server --requirepass <your-password>' if not running.");
-      writeLog("info", "💡 Tip: Run 'npm run start-redis-asset' if not running.");
+      writeLog("info", "💡 Tip: Run 'npm run start-redis-dental' if not running.");
       hasLoggedError = true;
     }
   });
@@ -57,6 +58,7 @@ const createRedisClient = () => {
 
 // Lazy connect
 const connect = async () => {
+  if (!REDIS_ENABLED) return;
   if (redisConnected) return;
 
   if (!redisClient) {
@@ -75,7 +77,12 @@ const connect = async () => {
 // ✅ Get or Set Cache
 const getOrSetCache = async (cacheKey, fetchFunction, ttlSeconds = REDIS_EXPIRE_TIME) => {
   try {
+    if (!REDIS_ENABLED) {
+      return await fetchFunction(); // Just fetch directly from DB
+    }
+    
     if (!redisConnected) await connect();
+    
 
     if (!redisConnected || !redisClient?.isOpen) {
       writeLog("warn", "⚠️ Redis unavailable – fetching directly from source");
@@ -107,6 +114,11 @@ const scanKeys = async (pattern, count = 100) => {
     writeLog("warn", "🚫 Redis not connected – skipping scan");
     return [];
   }
+
+  if (!REDIS_ENABLED) {
+    return await fetchFunction(); // Just fetch directly from DB
+  }
+  
 
   const keys = [];
   let cursor = '0';

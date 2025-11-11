@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "For Microservice ",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "start": "nodemon index.js",
     "start-redis-asset": "redis-server C:/Redis/redis-asset.conf",

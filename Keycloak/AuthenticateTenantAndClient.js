@@ -40,7 +40,7 @@ function authenticateTenantClinicGroup(requiredRoles = []) {
       }
 
       // ✅ Extract token and x-realm header
-      const token = req.headers.authorization?.split(" ")[1] || req.headers["access_token"];;
+      const token =req.cookies.access_token || req.headers["access_token"] || req.headers.authorization?.split(" ")[1] ;
       const headerRealm = req.headers["x-realm"]; // Optional override
 
       if (!token) {
