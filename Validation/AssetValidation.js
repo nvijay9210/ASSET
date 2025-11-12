@@ -62,7 +62,7 @@ const createAssetValidation = async (details) => {
   // Check if referenced records exist within the same tenant
   await Promise.all([
     checkIfIdExists("tenant", "tenant_id", details.tenant_id),
-    checkIfExists("clinic", "clinic_id", details.clinic_id, details.tenant_id),
+    checkIfExists(details.reference_type, `${details.reference_type}_id`, details.reference_id, details.tenant_id),
   ]);
 };
 

@@ -289,21 +289,6 @@ async function removeExpenseDocumentField(conn) {
   );
 }
 
-async function removeUnwantedFields(conn) {
-  // Dentist table
-  await dropColumnIfExists(conn, "dentist", "profile_picture");
-  await dropColumnIfExists(conn, "dentist", "awards_certifications");
-
-  // Patient table
-  await dropColumnIfExists(conn, "patient", "profile_picture");
-  await dropColumnIfExists(conn, "clinic", "clinic_logo");
-  await dropColumnIfExists(conn, "reception", "profile_picture");
-  await dropColumnIfExists(conn, "supplier", "logo_url");
-  await dropColumnIfExists(conn, "supplier_products", "image_url");
-  await dropColumnIfExists(conn, "notifications", "file_url");
-  await dropColumnIfExists(conn, "treatment", "treatment_images");
-}
-
 async function createAssetPhotoField(conn){
     await addColumnIfNotExists(
         conn,

@@ -83,20 +83,42 @@ app.use("/api/assetallocation", assetAllocationRouter);
 
 const JWT_SECRET = process.env.JWT_SECRET; // same as App A (32 bytes)
 
+
 app.post("/api/load", (req, res) => {
   try {
-    const { token } = req.body; // token from frontend
-    if (!token) {
-      return res.status(400).json({ error: "Missing token" });
+    const { token } = req.body; // frontend sends both
+    const { appname } = req.query; // frontend sends both
+
+    if (!token || !appname) {
+      return res.status(400).json({ error: "Missing token or appname" });
     }
 
-    // ✅ Don't parse it — it's already a string
-    // console.log("Received token:", token);
+    // Parse APP_DETAILS from .env
+    const APP_DETAILS = JSON.parse(process.env.APP_DETAILS);
 
-    // verify JWT using your secret
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    // Get specific app config
+    const appConfig = APP_DETAILS[appname];
+    if (!appConfig) {
+      return res.status(400).json({ error: "Invalid app name" });
+    }
 
-    res.json({ decoded });
+    // Extract fields
+    const { JWT_SECRET, reference_type, reference_id, source_app } = appConfig;
+    if (!JWT_SECRET) {
+      return res.status(500).json({ error: `Missing JWT_SECRET for ${appname}` });
+    }
+
+    // Verify JWT
+    const decoded = jwt.verify(token, JWT_SECRET);
+
+    res.status(200).json({
+      success: true,
+      decoded,
+      app: appname,
+      reference_type,
+      reference_id,
+      source_app,
+    });
   } catch (err) {
     console.error("JWT verify error:", err.message);
     res.status(401).json({ valid: false, error: "Invalid or expired token" });
@@ -104,9 +126,10 @@ app.post("/api/load", (req, res) => {
 });
 
 
+
 app.post("/api/tokensave", (req, res) => {
   try {
-    const { access_token } = req.body;
+    const { access_token,realm,clientid } = req.body;
 
     if (!access_token) {
       return res
@@ -123,6 +146,8 @@ app.post("/api/tokensave", (req, res) => {
 
     // ✅ Set access_token cookie
     res.cookie("access_token", access_token, cookieOptions);
+    res.cookie("realm", realm, cookieOptions);
+    res.cookie("clientId", clientid, cookieOptions);
 
     return res.status(200).json({
       success: true,

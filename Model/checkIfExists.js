@@ -32,28 +32,8 @@ const checkIfExists = async (table, field, value, tenantId) => {
   try {
     // Sanitize table name to prevent SQL injection
     const allowedTables = [
-      "patient",
-      "dentist",
-      "clinic",
-      "tenant",
-      "appointment",
-      "treatment",
-      "prescription",
-      "statustype",
-      "statustypesub",
       "asset",
-      "asset_allocation",
-      "expense",
-      "supplier",
-      "purchase_orders",
-      "supplier_products",
-      "supplier_payments",
-      "supplier_reviews",
-      "reminder",
-      "payment",
-      "reception",
-      "notifications",
-      "toothdetails",
+      "asset_allocation"
     ]; // Add your actual table names here
     if (!allowedTables.includes(table)) {
       throw new Error(`Invalid table name: ${table}`);

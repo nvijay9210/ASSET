@@ -4,7 +4,7 @@ const multer = require("multer");
 
 const assetController = require("../Controller/AssetController");
 const {
-  authenticateTenantClinicGroup,
+  validateKeycloakToken,
 } = require("../Keycloak/AuthenticateTenantAndClient");
 
 const assetValidationSchema = require("../Validation/AssetValidation");
@@ -51,7 +51,7 @@ const assetFileMiddleware = uploadFileMiddleware({
 // Create Asset
 router.post(
   "/createasset",
-  authenticateTenantClinicGroup(["tenant", "dentist", "superuser"]),
+  validateKeycloakToken(["tenant", "dentist", "superuser"]),
   upload.any(), // Use multer to handle file uploads
   assetPhotoFileMiddleware,
   assetFileMiddleware, // Call the file upload middleware
@@ -61,7 +61,7 @@ router.post(
 // Get All Assets by Tenant ID
 router.get(
   "/getallassets",
-  authenticateTenantClinicGroup([
+  validateKeycloakToken([
     "tenant",
     "dentist",
     "superuser",
@@ -74,7 +74,7 @@ router.get(
 // Get All Assets by Tenant + Clinic + Reference
 router.get(
   "/getallassetsbyreference",
-  authenticateTenantClinicGroup([
+  validateKeycloakToken([
     "tenant",
     "dentist",
     "superuser",
@@ -87,7 +87,7 @@ router.get(
 // Get Asset by ID
 router.get(
   "/getassetbytenant/:asset_id/:tenant_id",
-  authenticateTenantClinicGroup([
+  validateKeycloakToken([
     "tenant",
     "dentist",
     "superuser",
@@ -100,7 +100,7 @@ router.get(
 // Update Asset
 router.put(
   "/updateasset/:asset_id/:tenant_id",
-  authenticateTenantClinicGroup(["tenant", "dentist", "superuser", "receptionist"]),
+  validateKeycloakToken(["tenant", "dentist", "superuser", "receptionist"]),
   validateParams(["asset_id", "tenant_id"]),
   upload.any(), // Use multer to handle file uploads
   assetPhotoFileMiddleware,
@@ -111,7 +111,7 @@ router.put(
 // Delete Asset
 router.delete(
   "/deleteasset/:asset_id/:tenant_id",
-  authenticateTenantClinicGroup([
+  validateKeycloakToken([
     "tenant",
     "dentist",
     "superuser",
@@ -124,7 +124,7 @@ router.delete(
 // Asset Report by Date + Clinic
 router.get(
   "/getassetreport",
-  authenticateTenantClinicGroup([
+  validateKeycloakToken([
     "tenant",
     "dentist",
     "superuser",
@@ -141,7 +141,7 @@ router.get(
 );
 router.get(
   "/getexpireasset",
-  authenticateTenantClinicGroup([
+  validateKeycloakToken([
     "tenant",
     "dentist",
     "superuser",

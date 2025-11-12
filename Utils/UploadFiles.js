@@ -379,14 +379,9 @@ const uploadFileMiddleware2 = (options) => {
 
       // Map folderName to ID field
       const idMap = {
-        Notification: "notification_id",
-        Supplier_products: "supplier_product_id",
-        Supplier: "supplier_id",
-        Reception: "reception_id",
-        Patient: "patient_id",
-        Dentist: "dentist_id",
-        Clinic: "clinic_id",
-        Tenant: "tenant_id",
+        Asset: "asset_id",
+        AssetAllocation: "asset_allocation_id",
+        Tenant: "tenant_id"
       };
       id = req.params[idMap[folderName]];
 
@@ -423,16 +418,8 @@ const uploadFileMiddleware2 = (options) => {
       const deleteOldFiles = async (fieldName, req) => {
         try {
           const tableMap = {
-            Dentist: { table: "dentist", idField: "dentist_id" },
-            Patient: { table: "patient", idField: "patient_id" },
-            Clinic: { table: "clinic", idField: "clinic_id" },
-            Reception: { table: "reception", idField: "reception_id" },
-            Supplier: { table: "supplier", idField: "supplier_id" },
-            Supplier_products: {
-              table: "supplier_products",
-              idField: "supplier_product_id",
-            },
-            Notification: { table: "notification", idField: "notification_id" },
+            AssetAllocation: { table: "asset_allocation", idField: "asset_allocation_id" },
+            Asset: { table: "asset", idField: "asset_id" }
           };
 
           const config = tableMap[folderName];
@@ -474,16 +461,8 @@ const uploadFileMiddleware2 = (options) => {
         let oldFileUrls = [];
         if (id) {
           const tableMap = {
-            Dentist: { table: "dentist", idField: "dentist_id" },
-            Patient: { table: "patient", idField: "patient_id" },
-            Clinic: { table: "clinic", idField: "clinic_id" },
-            Reception: { table: "reception", idField: "reception_id" },
-            Supplier: { table: "supplier", idField: "supplier_id" },
-            Supplier_products: {
-              table: "supplier_products",
-              idField: "supplier_product_id",
-            },
-            Notification: { table: "notification", idField: "notification_id" },
+            AssetAllocation: { table: "asset_allocation", idField: "asset_allocation_id" },
+            Asset: { table: "asset", idField: "asset_id" }
           };
 
           const config = tableMap[folderName];
