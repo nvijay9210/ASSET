@@ -2,7 +2,8 @@ const {assetPool} = require("../Config/db");
 const { CustomError } = require("../Middleware/CustomeError");
 
 const checkIfIdExists = async (table, field, value) => {
-  if (table !== "asset") return;
+
+  if(table==='tenant') return
 
   const conn = await assetPool.getConnection();
   try {

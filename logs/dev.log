@@ -601,3 +601,493 @@ TokenExpiredError: jwt expired
 [INFO] 12/11/2025, 9:38:07 pm   - Loaded DB Password: root
 [INFO] 12/11/2025, 9:38:07 pm   - Loaded DB Host: localhost
 [INFO] 12/11/2025, 9:38:07 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 12:38:00 pm   - Environment: development
+[INFO] 13/11/2025, 12:38:00 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 12:38:00 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 12:38:00 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 12:38:00 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 12:38:01 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 12:38:01 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:16:15 pm   - Environment: development
+[INFO] 13/11/2025, 1:16:15 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:16:15 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:16:15 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:16:15 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:16:15 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:16:15 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:17:14 pm   - Environment: development
+[INFO] 13/11/2025, 1:17:14 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:17:14 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:17:14 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:17:14 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:17:14 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:17:14 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:17:39 pm   - Environment: development
+[INFO] 13/11/2025, 1:17:39 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:17:39 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:17:39 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:17:39 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:17:39 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:17:39 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:18:09 pm   - Environment: development
+[INFO] 13/11/2025, 1:18:09 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:18:09 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:18:09 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:18:09 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:18:09 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:18:10 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:19:05 pm   - Environment: development
+[INFO] 13/11/2025, 1:19:06 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:19:06 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:19:06 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:19:06 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:19:06 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:19:06 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:19:16 pm   - Environment: development
+[INFO] 13/11/2025, 1:19:16 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:19:16 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:19:16 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:19:16 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:19:16 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:19:16 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:19:33 pm   - Environment: development
+[INFO] 13/11/2025, 1:19:34 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:19:34 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:19:34 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:19:34 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:19:34 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:19:34 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:20:20 pm   - Environment: development
+[INFO] 13/11/2025, 1:20:20 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:20:20 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:20:20 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:20:20 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:20:20 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:20:20 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:21:05 pm   - Environment: development
+[INFO] 13/11/2025, 1:21:05 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:21:05 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:21:05 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:21:05 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:21:05 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:21:05 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:21:13 pm   - Environment: development
+[INFO] 13/11/2025, 1:21:13 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:21:13 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:21:13 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:21:13 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:21:13 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:21:13 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:22:26 pm   - Environment: development
+[INFO] 13/11/2025, 1:22:26 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:22:26 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:22:26 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:22:26 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:22:26 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:22:26 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:23:58 pm   - Environment: development
+[INFO] 13/11/2025, 1:23:58 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:23:58 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:23:58 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:23:58 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:23:58 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:23:58 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:24:28 pm   - Environment: development
+[INFO] 13/11/2025, 1:24:28 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:24:28 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:24:29 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:24:29 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:24:29 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:24:29 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:25:23 pm   - Environment: development
+[INFO] 13/11/2025, 1:25:23 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:25:23 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:25:23 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:25:23 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:25:23 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:25:23 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:26:14 pm   - Environment: development
+[INFO] 13/11/2025, 1:26:15 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:26:15 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:26:15 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:26:15 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:26:15 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:26:15 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:27:02 pm   - Environment: development
+[INFO] 13/11/2025, 1:27:02 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:27:02 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:27:02 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:27:02 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:27:02 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:27:02 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:27:26 pm   - Environment: development
+[INFO] 13/11/2025, 1:27:26 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:27:26 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:27:26 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:27:26 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:27:26 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:27:26 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:27:43 pm   - Environment: development
+[INFO] 13/11/2025, 1:27:43 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:27:43 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:27:43 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:27:43 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:27:43 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:27:43 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:29:02 pm   - Environment: development
+[INFO] 13/11/2025, 1:29:02 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:29:02 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:29:02 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:29:02 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:29:02 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:29:02 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:29:14 pm   - Environment: development
+[INFO] 13/11/2025, 1:29:15 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:29:15 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:29:15 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:29:15 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:29:15 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:29:15 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:29:50 pm   - Environment: development
+[INFO] 13/11/2025, 1:29:50 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:29:51 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:29:51 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:29:51 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:29:51 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:29:51 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:31:04 pm   - Environment: development
+[INFO] 13/11/2025, 1:31:04 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:31:04 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:31:04 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:31:04 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:31:04 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:31:04 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:31:37 pm   - Environment: development
+[INFO] 13/11/2025, 1:31:37 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:31:37 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:31:37 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:31:37 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:31:37 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:31:37 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:32:04 pm   - Environment: development
+[INFO] 13/11/2025, 1:32:04 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:32:04 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:32:04 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:32:04 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:32:04 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:32:04 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:32:42 pm   - Environment: development
+[INFO] 13/11/2025, 1:32:42 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:32:42 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:32:42 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:32:42 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:32:42 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:32:42 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:32:52 pm   - Environment: development
+[INFO] 13/11/2025, 1:32:52 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:32:52 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:32:52 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:32:52 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:32:52 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:32:52 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:33:05 pm   - Environment: development
+[INFO] 13/11/2025, 1:33:05 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:33:05 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:33:05 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:33:05 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:33:06 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:33:06 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:34:01 pm   - Environment: development
+[INFO] 13/11/2025, 1:34:01 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:34:01 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:34:01 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:34:01 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:34:01 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:34:01 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:34:20 pm   - Environment: development
+[INFO] 13/11/2025, 1:34:20 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:34:20 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:34:20 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:34:20 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:34:20 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:34:20 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:34:35 pm   - Environment: development
+[INFO] 13/11/2025, 1:34:35 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:34:35 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:34:35 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:34:35 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:34:35 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:34:35 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:35:02 pm   - Environment: development
+[INFO] 13/11/2025, 1:35:02 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:35:02 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:35:02 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:35:02 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:35:02 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:35:02 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:35:10 pm   - Environment: development
+[INFO] 13/11/2025, 1:35:10 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:35:10 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:35:10 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:35:10 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:35:10 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:35:10 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:36:21 pm   - Environment: development
+[INFO] 13/11/2025, 1:36:22 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:36:22 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:36:22 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:36:22 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:36:22 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:36:22 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:37:11 pm   - Environment: development
+[INFO] 13/11/2025, 1:37:11 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:37:11 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:37:11 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:37:11 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:37:11 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:37:11 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:37:22 pm   - Environment: development
+[INFO] 13/11/2025, 1:37:22 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:37:22 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:37:22 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:37:22 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:37:22 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:37:22 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:38:34 pm   - Environment: development
+[INFO] 13/11/2025, 1:38:34 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:38:34 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:38:34 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:38:34 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:38:34 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:38:34 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:41:34 pm   - Environment: development
+[INFO] 13/11/2025, 1:41:34 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:41:34 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:41:34 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:41:34 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:41:34 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:41:34 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:42:16 pm   - Environment: development
+[INFO] 13/11/2025, 1:42:16 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:42:16 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:42:16 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:42:16 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:42:17 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:42:17 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:42:21 pm   - Environment: development
+[INFO] 13/11/2025, 1:42:21 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:42:21 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:42:21 pm   - Loaded DB User: root
+[INFO] 13/11/2025, 1:42:21 pm   - Loaded DB Password: root
+[INFO] 13/11/2025, 1:42:21 pm   - Loaded DB Host: localhost
+[INFO] 13/11/2025, 1:42:21 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:42:40 pm   - Environment: development
+[INFO] 13/11/2025, 1:42:40 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:42:40 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:42:40 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:50:17 pm   - Environment: development
+[INFO] 13/11/2025, 1:50:17 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:50:17 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:50:18 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:50:41 pm   - Environment: development
+[INFO] 13/11/2025, 1:50:41 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:50:41 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:50:41 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:51:05 pm   - Environment: development
+[INFO] 13/11/2025, 1:51:05 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:51:05 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:51:05 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:51:30 pm   - Environment: development
+[INFO] 13/11/2025, 1:51:31 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:51:31 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:51:31 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:52:04 pm   - Environment: development
+[INFO] 13/11/2025, 1:52:05 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:52:05 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:52:06 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:53:11 pm   - Environment: development
+[INFO] 13/11/2025, 1:53:12 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:53:12 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:53:12 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:53:22 pm   - Environment: development
+[INFO] 13/11/2025, 1:53:24 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:53:24 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:53:24 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:53:35 pm   - Environment: development
+[INFO] 13/11/2025, 1:53:35 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:53:35 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:53:35 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:53:46 pm   - Environment: development
+[INFO] 13/11/2025, 1:53:46 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:53:46 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:53:46 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:53:57 pm   - Environment: development
+[INFO] 13/11/2025, 1:53:57 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:53:57 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:53:57 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:54:11 pm   - Environment: development
+[INFO] 13/11/2025, 1:54:11 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:54:11 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:54:11 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:54:32 pm   - Environment: development
+[INFO] 13/11/2025, 1:54:33 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:54:33 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:54:33 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:54:51 pm   - Environment: development
+[INFO] 13/11/2025, 1:54:51 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:54:51 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:54:51 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:55:07 pm   - Environment: development
+[INFO] 13/11/2025, 1:55:07 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:55:07 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:55:07 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:55:28 pm   - Environment: development
+[INFO] 13/11/2025, 1:55:30 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:55:30 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:55:30 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:55:56 pm   - Environment: development
+[INFO] 13/11/2025, 1:55:56 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:55:56 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:55:56 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:56:28 pm   - Environment: development
+[INFO] 13/11/2025, 1:56:28 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:56:28 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:56:28 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:56:45 pm   - Environment: development
+[INFO] 13/11/2025, 1:56:45 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:56:45 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:56:45 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:57:12 pm   - Environment: development
+[INFO] 13/11/2025, 1:57:12 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:57:12 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:57:12 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:59:06 pm   - Environment: development
+[INFO] 13/11/2025, 1:59:07 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:59:07 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:59:07 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 1:59:46 pm   - Environment: development
+[INFO] 13/11/2025, 1:59:46 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 1:59:46 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 1:59:46 pm   - ✅ Asset Server running on localhost port 8005
+[ERROR] 13/11/2025, 1:59:55 pm   - Token validation error: jwt expired
+[ERROR] 13/11/2025, 2:00:44 pm - POST - /api/statustypesub/addstatustypesub/asset_type - ReferenceError: pool is not defined
+[INFO] 13/11/2025, 2:01:18 pm   - Environment: development
+[INFO] 13/11/2025, 2:01:18 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 2:01:18 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 2:01:18 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 2:01:27 pm   - Environment: development
+[INFO] 13/11/2025, 2:01:27 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 2:01:27 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 2:01:27 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 2:01:40 pm   - Environment: development
+[INFO] 13/11/2025, 2:01:40 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 2:01:40 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 2:01:40 pm   - ✅ Asset Server running on localhost port 8005
+[ERROR] 13/11/2025, 2:01:55 pm - POST - /api/statustypesub/addstatustypesub/asset_type - ReferenceError: assetPool is not defined
+[INFO] 13/11/2025, 2:02:21 pm   - Environment: development
+[INFO] 13/11/2025, 2:02:21 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 2:02:21 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 2:02:21 pm   - ✅ Asset Server running on localhost port 8005
+[WARN] 13/11/2025, 2:02:29 pm   - 🚫 Redis disconnected – skip invalidation
+[WARN] 13/11/2025, 2:03:25 pm   - 🚫 Redis disconnected – skip invalidation
+[INFO] 13/11/2025, 2:23:31 pm   - Environment: development
+[INFO] 13/11/2025, 2:23:32 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 2:23:32 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 2:23:32 pm   - ✅ Asset Server running on localhost port 8005
+[WARN] 13/11/2025, 2:24:19 pm - GET - /api/statustypesub/getstatustypesub_statustype/asset_type/1?page=1&limit=100 - Statustype not found
+[WARN] 13/11/2025, 2:24:22 pm - GET - /api/statustypesub/getstatustypesub_statustype/asset_status/1?page=1&limit=100 - Statustype not found
+[INFO] 13/11/2025, 2:27:50 pm   - Environment: development
+[INFO] 13/11/2025, 2:27:50 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 2:27:50 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 2:27:50 pm   - ✅ Asset Server running on localhost port 8005
+[WARN] 13/11/2025, 2:29:02 pm - GET - /api/statustypesub/getstatustypesub_statustype/asset_status/1?page=1&limit=100 - Statustype not found
+[WARN] 13/11/2025, 2:29:03 pm - GET - /api/statustypesub/getstatustypesub_statustype/asset_type/1?page=1&limit=100 - Statustype not found
+[INFO] 13/11/2025, 2:32:55 pm   - Environment: development
+[INFO] 13/11/2025, 2:32:55 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 2:32:55 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 2:32:55 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 2:34:56 pm   - create
+[ERROR] 13/11/2025, 2:34:57 pm   - Table 'asset.tenant' doesn't exist
+Error: Table 'asset.tenant' doesn't exist
+    at PromisePoolConnection.query (D:\ASSET\node_modules\mysql2\lib\promise\connection.js:29:22)
+    at checkIfIdExists (D:\ASSET\Model\checkIfExists.js:9:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Promise.all (index 0)
+    at async createAssetValidation (D:\ASSET\Validation\AssetValidation.js:63:3)
+    at async D:\ASSET\Utils\UploadFiles.js:396:11
+[ERROR] 13/11/2025, 2:34:58 pm   - Error uploading files: Error: Table 'asset.tenant' doesn't exist
+[INFO] 13/11/2025, 2:36:30 pm   - Environment: development
+[INFO] 13/11/2025, 2:36:30 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 2:36:30 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 2:36:30 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 2:36:34 pm   - create
+[INFO] 13/11/2025, 2:36:34 pm   - create
+[INFO] 13/11/2025, 2:36:34 pm   - files: []
+[INFO] 13/11/2025, 2:36:34 pm   - {
+  "asset_name": "Chairs",
+  "asset_type": "BRACELET",
+  "category": "Vehicles",
+  "tenant_id": "1",
+  "source_app": "dental",
+  "reference_type": "clinic",
+  "reference_id": "1",
+  "purchased_by": "Admin User",
+  "quantity": "1",
+  "price": "500",
+  "purchased_date": "2025-11-13",
+  "year_of_manufacturing": "2021",
+  "expired_date": "2025-11-30",
+  "insurance_end_date": "2025-11-30",
+  "asset_status": "RING",
+  "appreciating": "true",
+  "depreciating": "true",
+  "created_by": "Ajay",
+  "asset_images": []
+}
+[WARN] 13/11/2025, 2:36:35 pm   - 🚫 Redis disconnected – skip invalidation
+[WARN] 13/11/2025, 2:36:54 pm - GET - /api/statustypesub/getstatustypesub_statustype/asset_type/1?page=1&limit=100 - Statustype not found
+[WARN] 13/11/2025, 2:36:54 pm - GET - /api/statustypesub/getstatustypesub_statustype/asset_status/1?page=1&limit=100 - Statustype not found
+[WARN] 13/11/2025, 2:38:08 pm - GET - /api/statustypesub/getstatustypesub_statustype/asset_type/1?page=1&limit=100 - Statustype not found
+[WARN] 13/11/2025, 2:38:08 pm - GET - /api/statustypesub/getstatustypesub_statustype/asset_status/1?page=1&limit=100 - Statustype not found
+[INFO] 13/11/2025, 2:38:50 pm   - Environment: development
+[INFO] 13/11/2025, 2:38:50 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 2:38:50 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 2:38:50 pm   - ✅ Asset Server running on localhost port 8005
+[WARN] 13/11/2025, 2:39:03 pm - GET - /api/statustypesub/getstatustypesub_statustype/asset_status/1?page=1&limit=100 - Statustype not found
+[WARN] 13/11/2025, 2:39:03 pm - GET - /api/statustypesub/getstatustypesub_statustype/asset_type/1?page=1&limit=100 - Statustype not found
+[INFO] 13/11/2025, 2:39:19 pm   - Environment: development
+[INFO] 13/11/2025, 2:39:19 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 2:39:19 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 2:39:19 pm   - ✅ Asset Server running on localhost port 8005
+[INFO] 13/11/2025, 2:40:24 pm   - Environment: development
+[INFO] 13/11/2025, 2:40:24 pm   - Using DB Host: localhost
+[INFO] 13/11/2025, 2:40:24 pm   - Server listening on port: 8005
+[INFO] 13/11/2025, 2:40:24 pm   - ✅ Asset Server running on localhost port 8005
+[WARN] 13/11/2025, 2:40:50 pm   - 🚫 Redis disconnected – skip invalidation
+[WARN] 13/11/2025, 2:48:17 pm   - 🚫 Redis disconnected – skip invalidation
+[WARN] 13/11/2025, 2:49:18 pm   - 🚫 Redis disconnected – skip invalidation
+[INFO] 13/11/2025, 2:49:25 pm   - create
+[INFO] 13/11/2025, 2:49:25 pm   - create
+[INFO] 13/11/2025, 2:49:25 pm   - files: []
+[INFO] 13/11/2025, 2:49:25 pm   - {
+  "asset_name": "Assetsssss",
+  "asset_type": "MASTER2",
+  "category": "Wood",
+  "tenant_id": "1",
+  "source_app": "dental",
+  "reference_type": "clinic",
+  "reference_id": "1",
+  "purchased_by": "DENTIST A",
+  "quantity": "1",
+  "price": "500",
+  "purchased_date": "2025-11-13",
+  "expired_date": "2025-11-13",
+  "insurance_end_date": "2025-11-30",
+  "asset_status": "FRIEND",
+  "appreciating": "true",
+  "depreciating": "true",
+  "created_by": "Ajay",
+  "asset_images": []
+}
+[WARN] 13/11/2025, 2:49:25 pm   - 🚫 Redis disconnected – skip invalidation
+[ERROR] 13/11/2025, 3:00:18 pm   - Token validation error: jwt expired

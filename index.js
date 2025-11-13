@@ -13,9 +13,9 @@ const PORT = process.env.PORT || 5000;
 console.log(`Environment: ${env}`);
 console.log(`Using DB Host: ${process.env.ASSET_DB_HOST}`);
 console.log(`Server listening on port: ${PORT}`);
-console.log('Loaded DB User:', process.env.ASSET_DB_USER);
-console.log('Loaded DB Password:', process.env.ASSET_DB_PASS);
-console.log('Loaded DB Host:', process.env.ASSET_DB_HOST);
+// console.log('Loaded DB User:', process.env.ASSET_DB_USER);
+// console.log('Loaded DB Password:', process.env.ASSET_DB_PASS);
+// console.log('Loaded DB Host:', process.env.ASSET_DB_HOST);
 
 
 app.listen(PORT, () => {

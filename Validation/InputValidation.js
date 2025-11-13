@@ -124,7 +124,7 @@ function validateInput(userInput, columnConfig) {
       throw error;
     }
 
-    // Type-specific validations
+    // Type-specific Validation
     switch ((type || "").toLowerCase()) {
       case "varchar":
       case "text":

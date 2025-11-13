@@ -9,6 +9,8 @@ const crypto = require("crypto");
 const errorHandler = require("./Middleware/errorHandler");
 const assetRouter = require("./Routes/AssetRouter");
 const assetAllocationRouter = require("./Routes/AssetAllocationRouter");
+const statusTypeRouter = require("./Routes/StatusTypeRouter");
+const statusTypeSubRouter = require("./Routes/StatusTypeSubRouter");
 const createTable = require("./Query/CreateModel"); // Uncomment if needed
 
 // Initialize Express
@@ -80,6 +82,8 @@ app.get("/test", (req, res) => {
 // Routes
 app.use("/api/assetdashboard", assetRouter);
 app.use("/api/assetallocation", assetAllocationRouter);
+app.use("/api/statustype", statusTypeRouter);
+app.use("/api/statustypesub", statusTypeSubRouter);
 
 const JWT_SECRET = process.env.JWT_SECRET; // same as App A (32 bytes)
 

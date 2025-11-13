@@ -1,5 +1,5 @@
-// /middlewares/compressionMiddleware.js
-const { compressBrotli } = require('../utils/compressionUtils');
+// /Middleware/compressionMiddleware.js
+const { compressBrotli } = require('../Utils/compressionUtils');
 
 const compressionMiddleware = async (req, res, next) => {
   // Check if the client supports Brotli compression
