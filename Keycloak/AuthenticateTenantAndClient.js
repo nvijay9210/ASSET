@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
 const jwksClient = require("jwks-rsa");
+const axios = require("axios");
+const qs = require("qs");
 
 /**
  * Create a JWKS client for a given Keycloak realm
@@ -24,51 +26,139 @@ async function getPublicKey(realm, kid) {
 }
 
 /**
- * Middleware to validate Keycloak JWT + roles
- * Realm & clientId are read from cookies
- * @param {string[]} requiredRoles - Optional array of roles required to access route
+ * Refresh Keycloak token
+ */
+async function refreshToken(refreshToken, realm, clientId) {
+  const url = `${process.env.KEYCLOAK_BASE_URL}/realms/${realm}/protocol/openid-connect/token`;
+
+  const data = qs.stringify({
+    grant_type: "refresh_token",
+    client_id: clientId,
+    refresh_token: refreshToken,
+  });
+
+  const resp = await axios.post(url, data, {
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  });
+
+  return {
+    accessToken: resp.data.access_token,
+    refreshToken: resp.data.refresh_token,
+  };
+}
+
+/**
+ * Main validateToken middleware with auto-refresh
  */
 function validateKeycloakToken(requiredRoles = []) {
   return async (req, res, next) => {
     try {
-      // Get token from Authorization header or cookies
-      const token =
-      req.cookies?.access_token || req.headers.authorization?.split(" ")[1];
-      if (!token) return res.status(401).json({ message: "Missing token" });
+      // ------------------------------
+      // GET TOKENS
+      // ------------------------------
+      let accessToken =
+        req.cookies?.access_token ||
+        req.headers.authorization?.split(" ")[1];
 
-      // Read realm & clientId from cookies
+      const refreshTokenCookie = req.cookies?.refresh_token;
       const realm = req.cookies?.realm;
       const clientId = req.cookies?.clientId;
 
-      if (!realm || !clientId) {
+      if (!accessToken)
+        return res.status(401).json({ message: "Missing access token" });
+
+      if (!realm || !clientId)
         return res
           .status(400)
           .json({ message: "Missing realm or clientId in cookies" });
-      }
 
-      // Decode token header to get KID
-      const decodedHeader = jwt.decode(token, { complete: true });
+      // ------------------------------
+      // DECODE TO GET KID
+      // ------------------------------
+      let decodedHeader = jwt.decode(accessToken, { complete: true });
       if (!decodedHeader?.header?.kid)
         return res.status(401).json({ message: "Invalid token header" });
 
-      const kid = decodedHeader.header.kid;
+      let kid = decodedHeader.header.kid;
+      let publicKey = await getPublicKey(realm, kid);
 
-      // Fetch public key from Keycloak
-      const publicKey = await getPublicKey(realm, kid);
+      let decodedUser;
 
-      // Verify token
-      const decoded = jwt.verify(token, publicKey, { algorithms: ["RS256"] });
+      // ------------------------------
+      // TRY VERIFY ACCESS TOKEN
+      // ------------------------------
+      try {
+        decodedUser = jwt.verify(accessToken, publicKey, {
+          algorithms: ["RS256"],
+        });
+      } catch (err) {
+        // -----------------------------------------
+        // ACCESS TOKEN EXPIRED → REFRESH IT
+        // -----------------------------------------
+        if (err.name === "TokenExpiredError") {
+          if (!refreshTokenCookie) {
+            return res.status(401).json({
+              message: "Token expired and no refresh token found",
+            });
+          }
 
-      // Validate clientId (azp claim)
-      if (decoded.azp !== clientId) {
+          console.log("🔄 Access token expired → Refreshing...");
+
+          try {
+            const newTokens = await refreshToken(
+              refreshTokenCookie,
+              realm,
+              clientId
+            );
+
+            // UPDATE COOKIES
+            res.cookie("access_token", newTokens.accessToken, {
+              httpOnly: true,
+              sameSite: "lax",
+            });
+
+            res.cookie("refresh_token", newTokens.refreshToken, {
+              httpOnly: true,
+              sameSite: "lax",
+            });
+
+            // REVERIFY NEW TOKEN
+            accessToken = newTokens.accessToken;
+            decodedHeader = jwt.decode(accessToken, { complete: true });
+            kid = decodedHeader.header.kid;
+            publicKey = await getPublicKey(realm, kid);
+
+            decodedUser = jwt.verify(accessToken, publicKey, {
+              algorithms: ["RS256"],
+            });
+
+            console.log("✅ Token refreshed successfully");
+
+          } catch (refreshErr) {
+            console.log("❌ Refresh failed:", refreshErr.response?.data);
+            return res.status(401).json({
+              message: "Session expired. Please login again.",
+            });
+          }
+        } else {
+          return res.status(401).json({ message: "Invalid token" });
+        }
+      }
+
+      // ------------------------------
+      // VALIDATE CLIENT ID
+      // ------------------------------
+      if (decodedUser.azp !== clientId) {
         return res.status(401).json({ message: "Invalid clientId" });
       }
 
-      // Check required roles
-      const userRoles = decoded?.realm_access?.roles || [];
+      // ------------------------------
+      // ROLE CHECK
+      // ------------------------------
+      const userRoles = decodedUser?.realm_access?.roles || [];
       const hasRole =
         requiredRoles.length === 0 ||
-        requiredRoles.some((role) => userRoles.includes(role));
+        requiredRoles.some((r) => userRoles.includes(r));
 
       if (!hasRole) {
         return res
@@ -76,18 +166,15 @@ function validateKeycloakToken(requiredRoles = []) {
           .json({ message: "Access denied: missing required role" });
       }
 
-      // ✅ Attach info to request
-      req.user = decoded;
+      // Attach user
+      req.user = decodedUser;
+      req.token = accessToken;
       req.realm = realm;
       req.clientId = clientId;
-      req.token = token;
 
       next();
     } catch (err) {
-      console.error("Token validation error:", err.message);
-      if (err.name === "TokenExpiredError") {
-        return res.status(401).json({ message: "Token has expired" });
-      }
+      console.error("Token validation error:", err);
       return res.status(401).json({ message: "Invalid or expired token" });
     }
   };

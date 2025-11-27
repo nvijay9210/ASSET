@@ -133,7 +133,7 @@ app.post("/api/load", (req, res) => {
 
 app.post("/api/tokensave", (req, res) => {
   try {
-    const { access_token,realm,clientid } = req.body;
+    const { access_token,realm,clientid,refresh_token } = req.body;
 
     if (!access_token) {
       return res
@@ -150,6 +150,7 @@ app.post("/api/tokensave", (req, res) => {
 
     // ✅ Set access_token cookie
     res.cookie("access_token", access_token, cookieOptions);
+    res.cookie("refresh_token", refresh_token, cookieOptions);
     res.cookie("realm", realm, cookieOptions);
     res.cookie("clientId", clientid, cookieOptions);
 
