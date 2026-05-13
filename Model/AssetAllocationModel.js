@@ -92,7 +92,7 @@ const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceId = async (
 const getAssetAllocationByTenantAndAssetAllocationId = async (
   tenant_id, asset_allocation_id
 ) => {
-  console.log(tenant_id,asset_allocation_id)
+  // console.log(tenant_id,asset_allocation_id)
   const query = `
   SELECT 
     a.*, 
@@ -107,7 +107,7 @@ const getAssetAllocationByTenantAndAssetAllocationId = async (
   const conn = await assetPool.getConnection();
   try {
     const [rows] = await conn.query(query, [tenant_id, asset_allocation_id]);
-    console.log(rows)
+    // console.log(rows)
     return rows.length > 0 ? rows[0] : null;
   } catch (error) {
     console.log(error);

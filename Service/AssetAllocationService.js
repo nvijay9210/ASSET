@@ -236,7 +236,7 @@ const updateAssetAllocation = async (assetAllocationId, data, tenant_id) => {
       );
     }
 
-    console.log('assetAllocation:',assetAllocation)
+    // console.log('assetAllocation:',assetAllocation)
 
     if (
       Number(assetAllocation.asset_allocation_quantity) !==
@@ -336,18 +336,72 @@ const getAllAssetAllocationsByTenantIdAndReferenceTypeAndReferenceIdAndStartDate
     }
   };
 
-const getAllAssetAndAllocationsByTenantId = async (tenant_id, asset_id) => {
-  const cacheKey = buildCacheKey("assetAllocation-assetandAllocation", "list", {
-    tenant_id,
-    asset_id: asset_id,
-  });
+const axios = require("axios");
+
+const getAllAssetAndAllocationsByTenantId = async (
+  tenant_id,
+  asset_id
+) => {
+
+  const cacheKey = buildCacheKey(
+    "assetAllocation-assetandAllocation",
+    "list",
+    {
+      tenant_id,
+      asset_id,
+    }
+  );
+
   try {
-    const assets = await getOrSetCache(cacheKey, async () => {
-      const result = await assetModel.getAllAssetAndAllocationsByTenantId(
-        tenant_id
-      );
-      return result;
-    });
+    const assets = await getOrSetCache(
+      cacheKey,
+      async () => {
+        return await assetModel.getAllAssetAndAllocationsByTenantId(tenant_id);
+      }
+    );
+
+    // console.log('assets:', assets);
+
+    let clinicData = null;
+
+    // Find first asset with reference_type 'clinic'
+    const clinicAsset = assets.find(asset => asset.reference_type?.toLowerCase() === 'clinic');
+    
+    if (clinicAsset) {
+      try {
+        const clinicResponse = await axios.get(
+          `${process.env.DENTAL_SERVICE_URL}/clinic/getclinic_microservice/${clinicAsset.reference_id}/${clinicAsset.tenant_id}`,
+          {
+            headers: {
+              tenant_id,
+              'x-realm': 'dental'
+            }
+          }
+        );
+        
+        const fullClinicData = clinicResponse.data || null;
+        
+        // Extract only the required fields
+        if (fullClinicData) {
+          clinicData = {
+            clinic_id: fullClinicData.clinic_id,
+            clinic_name: fullClinicData.clinic_name,
+            clinic_logo: fullClinicData.clinic_logo,
+            address: fullClinicData.address,
+            city: fullClinicData.city,
+            state: fullClinicData.state,
+            pin_code: fullClinicData.pin_code,
+            country: fullClinicData.country,
+            email: fullClinicData.email,
+            phone_number: fullClinicData.phone_number,
+            website: fullClinicData.website || null
+          };
+        }
+      } catch (clinicError) {
+        console.error('Error fetching clinic data:', clinicError.message);
+        clinicData = null;
+      }
+    }
 
     const convertedRows = assets.map((assetAllocation) => ({
       ...assetAllocation,
@@ -356,26 +410,69 @@ const getAllAssetAndAllocationsByTenantId = async (tenant_id, asset_id) => {
       purchased_date: formatDateOnly(assetAllocation.purchased_date),
       expired_date: formatDateOnly(assetAllocation.expired_date),
       allocation_date: formatDateOnly(assetAllocation.allocation_date),
-      expected_return_date: formatDateOnly(
-        assetAllocation.expected_return_date
-      ),
+      expected_return_date: formatDateOnly(assetAllocation.expected_return_date),
       actual_return_date: formatDateOnly(assetAllocation.actual_return_date),
-      description:
-        assetAllocation.description &&
-        helper.safeJsonParse(assetAllocation.description),
-      remarks:
-        assetAllocation.remarks &&
-        helper.safeJsonParse(assetAllocation.remarks),
-      asset_allocation_comments:
-        assetAllocation.asset_allocation_comments &&
+      description: assetAllocation.description && helper.safeJsonParse(assetAllocation.description),
+      remarks: assetAllocation.remarks && helper.safeJsonParse(assetAllocation.remarks),
+      asset_allocation_comments: assetAllocation.asset_allocation_comments && 
         helper.safeJsonParse(assetAllocation.asset_allocation_comments),
     }));
 
-    return convertedRows;
+    return {
+      clinic: clinicData,
+      data: convertedRows,
+    };
+
   } catch (error) {
     console.error("Database error while fetching assets:", error);
     throw new CustomError(error, 500);
   }
+};
+
+// Helper function for batch fetching
+const fetchBatchReferenceData = async (reference_type, referenceIds, tenant_id) => {
+  const dataMap = new Map();
+  
+  try {
+    switch (reference_type?.toLowerCase()) {
+      case 'clinic':
+        const clinicResponse = await axios.post(
+          `${process.env.DENTAL_SERVICE_URL}/clinics/batch`,
+          { ids: referenceIds },
+          { headers: { tenant_id } }
+        );
+        const clinics = clinicResponse.data?.data || [];
+        clinics.forEach(clinic => {
+          dataMap.set(clinic.id, { type: 'clinic', data: clinic });
+        });
+        break;
+      
+      case 'employee':
+        const employeeResponse = await axios.post(
+          `${process.env.EMPLOYEE_SERVICE_URL}/employees/batch`,
+          { ids: referenceIds },
+          { headers: { tenant_id } }
+        );
+        const employees = employeeResponse.data?.data || [];
+        employees.forEach(employee => {
+          dataMap.set(employee.id, { type: 'employee', data: employee });
+        });
+        break;
+      
+      default:
+        console.warn(`Unknown reference_type for batch fetch: ${reference_type}`);
+        referenceIds.forEach(id => {
+          dataMap.set(id, { type: reference_type, data: null, error: 'No handler configured' });
+        });
+    }
+  } catch (error) {
+    console.error(`Error batch fetching ${reference_type}:`, error.message);
+    referenceIds.forEach(id => {
+      dataMap.set(id, { type: reference_type, data: null, error: error.message });
+    });
+  }
+  
+  return dataMap;
 };
 
 module.exports = {
