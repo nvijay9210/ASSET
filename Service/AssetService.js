@@ -155,53 +155,175 @@ const createAsset = async (data) => {
 };
 
 // Get All Assets by Tenant ID with Caching
-const getAllAssetsByTenantId = async (tenantId, page = 1, limit = 10) => {
-  const offset = (page - 1) * limit;
-  const cacheKey = buildCacheKey("asset", "list", {
-    tenant_id: tenantId,
-    page,
-    limit,
-  });
+const axios = require("axios");
+
+const getAllAssetsByTenantId = async (
+  tenant_id,
+  asset_id
+) => {
+
+  const cacheKey = buildCacheKey(
+    "assetAllocation-assetandAllocation",
+    "list",
+    {
+      tenant_id,
+      asset_id,
+    }
+  );
+
   try {
-    const assets = await getOrSetCache(cacheKey, async () => {
-      const result = await assetModel.getAllAssetsByTenantId(
-        tenantId,
-        Number(limit),
-        offset
-      );
-      return result;
-    });
 
-    const convertedRows = await Promise.all(
-      assets.data.map(async (asset) => {
-        // Convert asset fields using reverse mapping
-        const formatted = helper.convertDbToFrontend(
-          asset,
-          assetFieldsReverseMap
+    let assets = await getOrSetCache(
+      cacheKey,
+      async () => {
+        return await assetModel.getAllAssetsByTenantId(
+          tenant_id
+        );
+      }
+    );
+
+    assets = assets.data || [];
+
+    console.log("Assets fetched from DB:", assets);
+
+    let clinicData = null;
+
+    // Find first clinic reference
+    const clinicAsset = assets.find(
+      (asset) =>
+        asset.reference_type?.toLowerCase() === "clinic"
+    );
+
+    if (clinicAsset?.reference_id) {
+
+      try {
+
+        const clinicResponse = await axios.get(
+          `${process.env.DENTAL_SERVICE_URL}/clinic/getclinic_microservice/${clinicAsset.reference_id}/${clinicAsset.tenant_id}`,
+          {
+            headers: {
+              tenant_id,
+              "x-realm": "dental",
+            },
+          }
         );
 
-        // Fetch asset_images documents
-        const imageDocs = await getDocumentsByField(
-          "asset",
-          asset.asset_id,
-          "asset_images"
+        const fullClinicData =
+          clinicResponse?.data || null;
+
+        if (fullClinicData) {
+
+          clinicData = {
+            clinic_id: fullClinicData.clinic_id,
+
+            clinic_name:
+              fullClinicData.clinic_name,
+
+            clinic_logo:
+              fullClinicData.clinic_logo,
+
+            address:
+              fullClinicData.address &&
+              helper.safeJsonParse(
+                fullClinicData.address
+              ),
+
+            city: fullClinicData.city,
+
+            state: fullClinicData.state,
+
+            pin_code:
+              fullClinicData.pin_code,
+
+            country:
+              fullClinicData.country,
+
+            email:
+              fullClinicData.email,
+
+            phone_number:
+              fullClinicData.phone_number,
+
+            website:
+              fullClinicData.website || null,
+          };
+        }
+
+      } catch (clinicError) {
+
+        console.error(
+          "Error fetching clinic data:",
+          clinicError.message
         );
 
-        const asset_images = imageDocs.map((doc) => ({
-          document_id: doc.document_id,
-          file_url: doc.file_url,
-        }));
+        clinicData = null;
+      }
+    }
 
-        return {
-          ...formatted,
-          asset_images,
-        };
+    const convertedRows = assets.map(
+      (assetAllocation) => ({
+        ...assetAllocation,
+
+        next_service_date: formatDateOnly(
+          assetAllocation.next_service_date
+        ),
+
+        insurance_end_date: formatDateOnly(
+          assetAllocation.insurance_end_date
+        ),
+
+        purchased_date: formatDateOnly(
+          assetAllocation.purchased_date
+        ),
+
+        expired_date: formatDateOnly(
+          assetAllocation.expired_date
+        ),
+
+        allocation_date: formatDateOnly(
+          assetAllocation.allocation_date
+        ),
+
+        expected_return_date: formatDateOnly(
+          assetAllocation.expected_return_date
+        ),
+
+        actual_return_date: formatDateOnly(
+          assetAllocation.actual_return_date
+        ),
+
+        description:
+          assetAllocation.description &&
+          helper.safeJsonParse(
+            assetAllocation.description
+          ),
+
+        remarks:
+          assetAllocation.remarks &&
+          helper.safeJsonParse(
+            assetAllocation.remarks
+          ),
+
+        asset_allocation_comments:
+          assetAllocation.asset_allocation_comments &&
+          helper.safeJsonParse(
+            assetAllocation.asset_allocation_comments
+          ),
       })
     );
 
-    return { data: convertedRows, total: assets.total };
+    return {
+      clinic: clinicData,
+      data: convertedRows,
+    };
+
   } catch (error) {
-    console.error("Database error while fetching assets:", error);
+
+    console.error(
+      "Database error while fetching assets:",
+      error
+    );
+
     throw new CustomError(error, 500);
   }
 };

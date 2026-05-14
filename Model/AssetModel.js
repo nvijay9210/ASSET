@@ -5,9 +5,9 @@ const record = require("../Query/Records");
 const TABLE = "asset";
 
 // Create Asset
-const createAsset = async (conn,table, columns, values) => {
+const createAsset = async (conn, table, columns, values) => {
   try {
-    const asset = await record.createRecord(table, columns, values,conn);
+    const asset = await record.createRecord(table, columns, values, conn);
 
     return asset.insertId;
   } catch (error) {
@@ -19,20 +19,12 @@ const createAsset = async (conn,table, columns, values) => {
 // Get all assets by tenant ID with pagination
 const getAllAssetsByTenantId = async (tenantId, limit, offset) => {
   try {
-    if (
-      !Number.isInteger(limit) ||
-      !Number.isInteger(offset) ||
-      limit < 1 ||
-      offset < 0
-    ) {
-      throw error;
-    }
     return await record.getAllRecords(
       "asset",
       "tenant_id",
       tenantId,
       limit,
-      offset
+      offset,
     );
   } catch (error) {
     console.error("Error fetching assets:", error);
@@ -45,7 +37,7 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceId = async (
   reference_type,
   reference_id,
   limit,
-  offset
+  offset,
 ) => {
   const query1 = `SELECT * FROM asset  WHERE tenant_id = ? AND reference_type=? AND reference_id = ? limit ? offset ?`;
   const query2 = `SELECT count(*) as total FROM asset  WHERE tenant_id = ? AND reference_type=? AND reference_id = ?`;
@@ -80,7 +72,7 @@ const getAssetByTenantAndAssetId = async (tenant_id, asset_id) => {
       "tenant_id",
       tenant_id,
       "asset_id",
-      asset_id
+      asset_id,
     );
     return rows;
   } catch (error) {
@@ -100,7 +92,7 @@ const updateAsset = async (asset_id, columns, values, tenant_id) => {
       columns,
       values,
       conditionColumn,
-      conditionValue
+      conditionValue,
     );
   } catch (error) {
     console.error("Error updating asset:", error);
@@ -117,7 +109,7 @@ const deleteAssetByTenantAndAssetId = async (tenant_id, asset_id) => {
     const result = await record.deleteRecord(
       TABLE,
       conditionColumn,
-      conditionValue
+      conditionValue,
     );
     return result.affectedRows;
   } catch (error) {
@@ -134,7 +126,7 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate
     start_date,
     end_date,
     limit,
-    offset
+    offset,
   ) => {
     const query1 = `SELECT * FROM asset WHERE tenant_id = ? AND reference_type=? AND reference_id = ? AND purchased_date between ? AND ? limit ? offset ?`;
     const query2 = `SELECT count(*) as total FROM asset WHERE tenant_id = ? AND reference_type = ? AND reference_id = ? AND purchased_date BETWEEN ? AND ?`;
@@ -164,13 +156,12 @@ const getAllAssetsByTenantIdAndReferenceTypeAndReferenceIdAndStartDateAndEndDate
       conn.release();
     }
   };
-const getAllExpireAssetsByTenantIdAndReferenceTypeAndReferenceId =
-  async (
-    tenant_id,
-    reference_type,
-    reference_id
-  ) => {
-    const query1 = ` SELECT
+const getAllExpireAssetsByTenantIdAndReferenceTypeAndReferenceId = async (
+  tenant_id,
+  reference_type,
+  reference_id,
+) => {
+  const query1 = ` SELECT
         aa.asset_allocation_id,
         aa.asset_id,
         a.asset_name,
@@ -184,40 +175,39 @@ const getAllExpireAssetsByTenantIdAndReferenceTypeAndReferenceId =
         AND aa.tenant_id = ?
         AND aa.reference_type = ?
         AND aa.reference_id = ?`;
-    const conn = await assetPool.getConnection();
-    try {
-      const [rows] = await conn.query(query1, [
-        tenant_id,
-        reference_type,
-        reference_id
-      ]);
-      return rows
-    } catch (error) {
-      console.error(error);
-      throw new Error("Database Operation Failed");
-    } finally {
-      conn.release();
-    }
-  };
+  const conn = await assetPool.getConnection();
+  try {
+    const [rows] = await conn.query(query1, [
+      tenant_id,
+      reference_type,
+      reference_id,
+    ]);
+    return rows;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Database Operation Failed");
+  } finally {
+    conn.release();
+  }
+};
 
-  const updateAssetQuantity = async (tenantId, assetId, newQuantity) => {
-    const query = `
+const updateAssetQuantity = async (tenantId, assetId, newQuantity) => {
+  const query = `
       UPDATE asset
       SET quantity = ?
       WHERE tenant_id = ? AND asset_id = ?;
     `;
-  
-    const values = [newQuantity, tenantId, assetId];
-  
-    try {
-      const [result] = await assetPool.query(query, values);
-      return result;
-    } catch (error) {
-      console.error("Error updating asset quantity:", error);
-      throw error;
-    }
-  };
-  
+
+  const values = [newQuantity, tenantId, assetId];
+
+  try {
+    const [result] = await assetPool.query(query, values);
+    return result;
+  } catch (error) {
+    console.error("Error updating asset quantity:", error);
+    throw error;
+  }
+};
 
 module.exports = {
   createAsset,
